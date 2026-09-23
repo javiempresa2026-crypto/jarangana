@@ -1,0 +1,127 @@
+{{ 'jarandana.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign reviews = shop.metaobjects.resena.values
+  assign pid = 0
+  if product and section.settings.filter_product
+    assign pid = product.id
+  endif
+  assign m_count = 0
+  assign m_sum = 0
+  assign a_count = 0
+  assign a_sum = 0
+  for r in reviews
+    assign v = r.valoracion.value | plus: 0
+    assign a_count = a_count | plus: 1
+    assign a_sum = a_sum | plus: v
+    if pid != 0 and r.producto.value.id == pid
+      assign m_count = m_count | plus: 1
+      assign m_sum = m_sum | plus: v
+    endif
+  endfor
+  assign use_filter = false
+  if m_count > 0
+    assign use_filter = true
+    assign count = m_count
+    assign sum = m_sum
+  else
+    assign count = a_count
+    assign sum = a_sum
+  endif
+  if count > 0
+    assign avg = sum | times: 1.0 | divided_by: count | round: 1
+    assign avg_int = sum | times: 1.0 | divided_by: count | round
+  endif
+-%}
+<section class="jd jd--{{ section.settings.bg }}" id="resenas">
+  <div class="jd__wrap">
+    <div class="jd-rev__head">
+      <div>
+        <p class="jd__eyebrow">{{ section.settings.eyebrow }}</p>
+        <h2 class="jd__h" style="margin:0">{{ section.settings.heading }}</h2>
+      </div>
+      {%- if count > 0 -%}
+      <div class="jd-rev__avg">
+        <span class="jd-stars" aria-label="{{ avg }} de 5">{%- for i in (1..5) -%}<span{% if i > avg_int %} class="off"{% endif %}>{% render 'jd-icon', icon: 'star', size: 20 %}</span>{%- endfor -%}</span>
+        <span>{{ avg }}/5 · {{ count }} {% if count == 1 %}reseña{% else %}reseñas{% endif %}</span>
+      </div>
+      {%- endif -%}
+    </div>
+
+    {%- if count > 0 -%}
+    <div class="jd-rev__grid">
+      {%- for r in reviews limit: 50 -%}
+        {%- if use_filter and r.producto.value.id != pid -%}{%- continue -%}{%- endif -%}
+        {%- assign v = r.valoracion.value | plus: 0 -%}
+        <article class="jd-card">
+          <span class="jd-stars" aria-label="{{ v }} de 5">{%- for i in (1..5) -%}<span{% if i > v %} class="off"{% endif %}>{% render 'jd-icon', icon: 'star', size: 16 %}</span>{%- endfor -%}</span>
+          <p>{{ r.texto.value | escape | newline_to_br }}</p>
+          <div class="jd-card__who">
+            {{ r.nombre.value | escape }}{% if r.ciudad.value != blank %}, {{ r.ciudad.value | escape }}{% endif %}
+            {%- if r.compra_verificada.value -%} <span class="jd-ver">{% render 'jd-icon', icon: 'check', size: 14 %}Compra verificada</span>{%- endif -%}
+            <div class="jd-card__meta">
+              {%- if r.producto.value != blank -%}<a href="{{ r.producto.value.url }}" style="color:inherit">{{ r.producto.value.title }}</a>{%- endif -%}
+              {%- if r.fecha.value != blank -%} · {{ r.fecha.value | date: '%d/%m/%Y' }}{%- endif -%}
+            </div>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+    {%- else -%}
+    <div class="jd-empty">
+      <p class="jd-ben__t">{{ section.settings.empty_title }}</p>
+      <p class="jd-ben__d">{{ section.settings.empty_text }}</p>
+    </div>
+    {%- endif -%}
+
+    <details class="jd-rev__toggle"{% if request.path contains 'contact' %} open{% endif %}>
+      <summary class="jd__btns" style="margin-top:22px"><span class="jd__btn jd__btn--ghost">{% render 'jd-icon', icon: 'star', size: 18 %} Escribir una reseña</span></summary>
+      {%- form 'contact', id: 'jd-review-form', class: 'jd-form' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="jd-msg">¡Gracias! Hemos recibido tu reseña. La publicaremos después de revisarla.</p>
+        {%- endif -%}
+        {%- if form.errors -%}<p class="jd-msg jd-msg--err">{{ form.errors | default_errors }}</p>{%- endif -%}
+        <input type="hidden" name="contact[Tipo]" value="Reseña">
+        <div class="jd-form__row">
+          <label>Nombre<input type="text" name="contact[name]" required autocomplete="given-name"></label>
+          <label>Email (no se publica)<input type="email" name="contact[email]" required autocomplete="email"></label>
+        </div>
+        <div class="jd-form__row">
+          <label>Ciudad (opcional)<input type="text" name="contact[Ciudad]" autocomplete="address-level2"></label>
+          <label>Producto
+            <select name="contact[Producto]">
+              {%- if product -%}<option>{{ product.title | escape }}</option>{%- endif -%}
+              {%- for p in collections.all.products limit: 30 -%}{%- unless product and p.id == product.id -%}<option>{{ p.title | escape }}</option>{%- endunless -%}{%- endfor -%}
+            </select>
+          </label>
+        </div>
+        <div>
+          <span style="font-size:.85rem;font-weight:700">Valoración</span>
+          <div class="jd-rate">
+            {%- for i in (1..5) reversed -%}
+              <input type="radio" id="jd-r{{ i }}-{{ section.id }}" name="contact[Valoración]" value="{{ i }}/5"{% if i == 5 %} checked{% endif %}>
+              <label for="jd-r{{ i }}-{{ section.id }}" title="{{ i }}">★</label>
+            {%- endfor -%}
+          </div>
+        </div>
+        <label>Tu opinión<textarea name="contact[body]" required placeholder="¿Qué tal te ha ido? ¿Dónde lo has puesto?"></textarea></label>
+        <button type="submit" class="jd__btn">Enviar reseña</button>
+        <p class="jd-card__meta" style="margin:0">Publicamos todas las reseñas reales, buenas y malas, tras comprobar que no contienen datos personales ni lenguaje ofensivo.</p>
+      {%- endform -%}
+    </details>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "jarandana · Reseñas",
+  "settings": [
+    {"type":"select","id":"bg","label":"Fondo","default":"white","options":[{"value":"cream","label":"Crema"},{"value":"sand","label":"Arena"},{"value":"white","label":"Blanco"}]},
+    {"type":"text","id":"eyebrow","label":"Antetítulo","default":"Opiniones"},
+    {"type":"text","id":"heading","label":"Título","default":"Lo que dicen en casa"},
+    {"type":"checkbox","id":"filter_product","label":"En fichas de producto, mostrar solo las de ese producto (si las hay)","default":true},
+    {"type":"text","id":"empty_title","label":"Título sin reseñas","default":"Aún no hay reseñas"},
+    {"type":"text","id":"empty_text","label":"Texto sin reseñas","default":"Somos una tienda nueva. Cuando recibas tu pedido, cuéntanos qué tal: publicamos todas las opiniones reales."},
+    {"type":"paragraph","content":"Las reseñas se gestionan en Contenido → Metaobjetos → Reseña. Solo se muestran las que están en estado Activo."}
+  ],
+  "presets": [{"name":"jarandana · Reseñas"}]
+}
+{% endschema %}

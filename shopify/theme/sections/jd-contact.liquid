@@ -1,0 +1,37 @@
+{{ 'jarandana.css' | asset_url | stylesheet_tag }}
+{%- assign email = section.settings.email | default: shop.email -%}
+<section class="jd jd--ink" id="contacto">
+  <div class="jd__wrap jd-contact">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}<p class="jd__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="jd__h">{{ section.settings.heading }}</h2>
+      <div class="jd__lead">{{ section.settings.text }}</div>
+    </div>
+    <div class="jd-contact__box">
+      <a class="jd-contact__item" href="mailto:{{ email }}">{% render 'jd-icon', icon: 'mail' %}<span>{{ email }}<small>Escríbenos por email</small></span></a>
+      {%- if section.settings.whatsapp != blank -%}
+      {%- assign wa = section.settings.whatsapp | remove: '+' | remove: ' ' -%}
+      <a class="jd-contact__item" href="https://wa.me/{{ wa }}" target="_blank" rel="noopener">{% render 'jd-icon', icon: 'chat' %}<span>WhatsApp<small>{{ section.settings.whatsapp }}</small></span></a>
+      {%- endif -%}
+      <a class="jd-contact__item" href="{{ section.settings.page_link | default: '/pages/contacto' }}">{% render 'jd-icon', icon: 'chat' %}<span>Formulario de contacto<small>Te respondemos por email</small></span></a>
+      {%- if section.settings.hours != blank -%}
+      <div class="jd-contact__item">{% render 'jd-icon', icon: 'clock' %}<span>{{ section.settings.hours }}</span></div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "jarandana · Contacto",
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Antetítulo","default":"Contacto"},
+    {"type":"text","id":"heading","label":"Título","default":"¿Dudas antes de comprar?"},
+    {"type":"richtext","id":"text","label":"Texto","default":"<p>Cuéntanos qué quieres colgar y dónde, y te decimos si te sirve. Somos personas, no un bot.</p>"},
+    {"type":"text","id":"email","label":"Email (vacío = email de la tienda)"},
+    {"type":"text","id":"whatsapp","label":"WhatsApp con prefijo, p. ej. +34 600 000 000 (vacío = no se muestra)"},
+    {"type":"text","id":"hours","label":"Horario de atención","default":"Lunes a viernes · Respondemos en 24-48 h laborables"},
+    {"type":"url","id":"page_link","label":"Página de contacto"}
+  ],
+  "presets": [{"name":"jarandana · Contacto"}]
+}
+{% endschema %}

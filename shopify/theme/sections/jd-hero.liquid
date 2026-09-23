@@ -1,0 +1,52 @@
+{{ 'jarandana.css' | asset_url | stylesheet_tag }}
+<section class="jd jd--{{ section.settings.bg }}">
+  <div class="jd__wrap jd-hero__grid">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}<p class="jd__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h1 class="jd__h jd__h--xl">{{ section.settings.heading }}</h1>
+      <div class="jd__lead">{{ section.settings.text }}</div>
+      <div class="jd__btns">
+        {%- if section.settings.btn1_label != blank -%}<a class="jd__btn" href="{{ section.settings.btn1_link | default: routes.all_products_collection_url }}">{{ section.settings.btn1_label }}</a>{%- endif -%}
+        {%- if section.settings.btn2_label != blank -%}<a class="jd__btn jd__btn--ghost" href="{{ section.settings.btn2_link | default: routes.all_products_collection_url }}">{{ section.settings.btn2_label }}</a>{%- endif -%}
+      </div>
+      {%- if section.blocks.size > 0 -%}
+      <ul class="jd-chips">
+        {%- for b in section.blocks -%}<li {{ b.shopify_attributes }}>{% render 'jd-icon', icon: b.settings.icon, size: 18 %}{{ b.settings.text }}</li>{%- endfor -%}
+      </ul>
+      {%- endif -%}
+    </div>
+    <div class="jd-hero__media">
+      {%- if section.settings.video != blank -%}
+        {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, class: 'jd__img', image_size: '1200x' }}
+      {%- elsif section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1400 | image_tag: class: 'jd__img', loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 750px) 50vw, 100vw', widths: '500,800,1100,1400' }}
+      {%- else -%}<div class="jd__ph" style="height:100%"></div>{%- endif -%}
+      {%- if section.settings.badge != blank -%}<span class="jd-hero__badge">{{ section.settings.badge }}</span>{%- endif -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "jarandana · Portada",
+  "settings": [
+    {"type":"select","id":"bg","label":"Fondo","default":"cream","options":[{"value":"cream","label":"Crema"},{"value":"sand","label":"Arena"},{"value":"white","label":"Blanco"}]},
+    {"type":"text","id":"eyebrow","label":"Antetítulo","default":"Baño y cocina sin taladrar"},
+    {"type":"text","id":"heading","label":"Título","default":"Tu casa, sin taladrar."},
+    {"type":"richtext","id":"text","label":"Texto","default":"<p>Baldas, rasquetas y ganchos que se pegan al azulejo, aguantan la ducha y se vienen contigo cuando te mudas.</p>"},
+    {"type":"text","id":"btn1_label","label":"Botón 1","default":"Ver el Kit Ducha"},
+    {"type":"url","id":"btn1_link","label":"Enlace botón 1"},
+    {"type":"text","id":"btn2_label","label":"Botón 2","default":"Ver todo"},
+    {"type":"url","id":"btn2_link","label":"Enlace botón 2"},
+    {"type":"image_picker","id":"image","label":"Imagen"},
+    {"type":"video","id":"video","label":"Vídeo (sustituye a la imagen)"},
+    {"type":"text","id":"badge","label":"Etiqueta sobre la imagen","default":"Sin agujeros · Sin obras"}
+  ],
+  "blocks": [
+    {"type":"chip","name":"Ventaja corta","settings":[
+      {"type":"select","id":"icon","label":"Icono","default":"check","options":[{"value":"check","label":"Check"},{"value":"drill","label":"Sin taladro"},{"value":"truck","label":"Envío"},{"value":"return","label":"Devolución"},{"value":"lock","label":"Pago seguro"},{"value":"shield","label":"Garantía"}]},
+      {"type":"text","id":"text","label":"Texto","default":"Sin taladro"}
+    ]}
+  ],
+  "presets": [{"name":"jarandana · Portada"}]
+}
+{% endschema %}

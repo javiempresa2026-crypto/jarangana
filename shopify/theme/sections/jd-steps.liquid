@@ -1,0 +1,33 @@
+{{ 'jarandana.css' | asset_url | stylesheet_tag }}
+<section class="jd jd--{{ section.settings.bg }}" id="como-se-instala">
+  <div class="jd__wrap jd__center">
+    {%- if section.settings.eyebrow != blank -%}<p class="jd__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    <h2 class="jd__h">{{ section.settings.heading }}</h2>
+    {%- if section.settings.text != blank -%}<div class="jd__lead">{{ section.settings.text }}</div>{%- endif -%}
+    <div class="jd-steps" style="text-align:left">
+      {%- for b in section.blocks -%}
+      <div class="jd-step" {{ b.shopify_attributes }}><h3>{{ b.settings.title }}</h3><p>{{ b.settings.text }}</p></div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.note != blank -%}<p class="jd-note">{{ section.settings.note }}</p>{%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "jarandana · Pasos",
+  "settings": [
+    {"type":"select","id":"bg","label":"Fondo","default":"cream","options":[{"value":"cream","label":"Crema"},{"value":"sand","label":"Arena"},{"value":"white","label":"Blanco"}]},
+    {"type":"text","id":"eyebrow","label":"Antetítulo","default":"Cómo se instala"},
+    {"type":"text","id":"heading","label":"Título","default":"Listo en 1 minuto. Sin herramientas."},
+    {"type":"richtext","id":"text","label":"Texto"},
+    {"type":"text","id":"note","label":"Nota final"}
+  ],
+  "blocks": [
+    {"type":"step","name":"Paso","settings":[
+      {"type":"text","id":"title","label":"Título","default":"Limpia"},
+      {"type":"textarea","id":"text","label":"Texto","default":"Pasa alcohol por el azulejo y sécalo bien."}
+    ]}
+  ],
+  "presets": [{"name":"jarandana · Pasos"}]
+}
+{% endschema %}

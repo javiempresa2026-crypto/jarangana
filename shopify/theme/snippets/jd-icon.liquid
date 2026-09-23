@@ -1,0 +1,17 @@
+{%- assign s = size | default: 22 -%}
+<svg width="{{ s }}" height="{{ s }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+{%- case icon -%}
+{%- when 'drill' -%}<circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/><path d="M9 12h6"/>
+{%- when 'truck' -%}<path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>
+{%- when 'return' -%}<path d="M9 14L4 9l5-5"/><path d="M4 9h11a5 5 0 010 10h-3"/>
+{%- when 'lock' -%}<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/>
+{%- when 'mail' -%}<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
+{%- when 'chat' -%}<path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/>
+{%- when 'clock' -%}<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+{%- when 'drop' -%}<path d="M12 3s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z"/>
+{%- when 'home' -%}<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/>
+{%- when 'shield' -%}<path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>
+{%- when 'star' -%}<path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z" fill="currentColor" stroke="none"/>
+{%- else -%}<path d="M5 12l5 5L20 7"/>
+{%- endcase -%}
+</svg>

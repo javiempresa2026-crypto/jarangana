@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 200" width="1520" height="400" role="img" aria-label="Farola logo monocromo">
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M78 160 V54 Q78 36 96 36 H124" stroke="#FFFFFF" stroke-width="16"/>
+    <path d="M78 98 H106" stroke="#FFFFFF" stroke-width="16"/>
+    <path d="M124 36 V46" stroke="#FFFFFF" stroke-width="6"/>
+    <path d="M111 47 H137 L131 61 H117 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4"/>
+    <path d="M124 88 C124 88 113 102 113 109 A11 11 0 0 0 135 109 C135 102 124 88 124 88 Z" fill="#FFFFFF" stroke="none"/>
+    <path d="M60 166 H96" stroke="#FFFFFF" stroke-width="10"/>
+  </g>
+  <text x="200" y="128" font-size="96" fill="#FFFFFF" font-family="Fraunces, &quot;DM Serif Display&quot;, Georgia, serif" font-weight="600" letter-spacing="6">FAROLA</text>
+  <text x="206" y="166" font-size="22" fill="#FFFFFF" font-family="&quot;DM Sans&quot;, Arial, sans-serif" font-weight="700" letter-spacing="9">WALK CLUB</text>
+</svg>

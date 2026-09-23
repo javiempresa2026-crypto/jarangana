@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 20 130 160" width="416" height="512" role="img" aria-label="Farola isotipo">
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M78 160 V54 Q78 36 96 36 H124" stroke="#1F2A33" stroke-width="16"/>
+    <path d="M78 98 H106" stroke="#1F2A33" stroke-width="16"/>
+    <path d="M124 36 V46" stroke="#1F2A33" stroke-width="6"/>
+    <path d="M111 47 H137 L131 61 H117 Z" fill="#F2B441" stroke="#F2B441" stroke-width="4"/>
+    <path d="M124 88 C124 88 113 102 113 109 A11 11 0 0 0 135 109 C135 102 124 88 124 88 Z" fill="#8FA58A" stroke="none"/>
+    <path d="M60 166 H96" stroke="#1F2A33" stroke-width="10"/>
+  </g>
+</svg>
