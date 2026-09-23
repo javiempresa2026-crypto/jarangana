@@ -1,0 +1,40 @@
+{%- liquid
+  assign src = section.settings.video_url
+  if product and product.metafields.custom.video_url != blank
+    assign src = product.metafields.custom.video_url.value
+  endif
+-%}
+{%- if src != blank -%}
+{{ 'jarandana.css' | asset_url | stylesheet_tag }}
+<section class="jd jd--{{ section.settings.bg }}">
+  <div class="jd__wrap jd-feat">
+    <div class="jd-feat__media" style="aspect-ratio:16/10">
+      <video class="jd__img" src="{{ src }}" autoplay muted loop playsinline preload="metadata"{% if product.featured_image %} poster="{{ product.featured_image | image_url: width: 1000 }}"{% endif %}></video>
+    </div>
+    <div>
+      {%- if section.settings.eyebrow != blank -%}<p class="jd__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="jd__h">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="jd__lead">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if product -%}
+      <div class="jd__btns"><a class="jd__btn" href="#MainContent" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Comprar · {{ product.price | money }}</a></div>
+      {%- endif -%}
+      {%- if section.settings.note != blank -%}<p class="jd-card__meta" style="margin-top:14px">{{ section.settings.note }}</p>{%- endif -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}
+{% schema %}
+{
+  "name": "jarandana · Vídeo",
+  "settings": [
+    {"type":"select","id":"bg","label":"Fondo","default":"white","options":[{"value":"cream","label":"Crema"},{"value":"sand","label":"Arena"},{"value":"white","label":"Blanco"}]},
+    {"type":"paragraph","content":"En fichas de producto usa el campo 'Vídeo del producto' (custom.video_url). Si el producto no tiene vídeo, la sección no se muestra."},
+    {"type":"text","id":"video_url","label":"Enlace de vídeo .mp4 (si no es ficha de producto)"},
+    {"type":"text","id":"eyebrow","label":"Antetítulo","default":"En casa"},
+    {"type":"text","id":"heading","label":"Título","default":"Así queda, sin un solo agujero"},
+    {"type":"richtext","id":"text","label":"Texto","default":"<p>Se instala en un minuto y se quita con un secador cuando te mudas.</p>"},
+    {"type":"text","id":"note","label":"Nota","default":"Vídeo ilustrativo generado con IA."}
+  ],
+  "presets": [{"name":"jarandana · Vídeo"}]
+}
+{% endschema %}

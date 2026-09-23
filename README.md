@@ -22,6 +22,7 @@ Marca de hogar (Shopify, España → UE) con **7 productos útiles para baño y 
 | 10 | [Presupuesto y checklist](docs/10-presupuesto-y-checklist.md) |
 | 11 | [Productos seleccionados con AutoDS (reseñas, precios, márgenes reales)](docs/11-productos-seleccionados-autods.md) · CSV: `shopify/productos-jarandana-import.csv` |
 | 12 | [Estado de la tienda Shopify y tareas manuales](docs/12-estado-tienda-shopify.md) |
+| 13 | [Proveedores de los productos de la tienda (enlaces, contacto, mensaje)](docs/13-proveedores-de-la-tienda.md) |
 
 **Convención:** [DATO VERIFICADO] con fuente · [SEÑAL] · [HIPÓTESIS] · NO VERIFICADO (con enlace para comprobarlo). Los costes de producto son estimaciones hasta tener los presupuestos reales.
 

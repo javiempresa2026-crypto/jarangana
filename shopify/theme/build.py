@@ -12,6 +12,7 @@ IMG = {
 VID = {  # vídeos Kling subidos a Shopify Archivos
  "hero": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-portada.mp4?v=1790201076",
  "mamp": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-mampara.mp4?v=1790201321",
+ "intro": "",
  "freg": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-fregadero.mp4?v=1790201505",
 }
 si = lambda k: "shopify://shop_images/" + IMG[k]
@@ -50,12 +51,18 @@ FAQ = [
 ]
 faq_blocks = [("qa", {"q": q, "a": a}) for q, a in FAQ]
 
+WORDS = ["Sin taladro.", "Sin obras.", "Sin cal.", "Sin agujeros.", "Te lo llevas.", "Listo en 1 minuto."]
 index = {"sections": {
+ "intro": sec("jd-intro", {"video_url": VID["intro"] or VID["hero"], "poster": si("hero"), "seconds": 2,
+   "pre": "Tu baño y tu cocina, por fin en orden",
+   "sub": "Baldas, rasquetas y ganchos que se pegan al azulejo. Sin herramientas, sin obras y sin pedir permiso al casero.",
+   "btn_label": "Comprar ahora", "btn_link": "shopify://collections/todo-jarandana", "btn2_label": "Cómo se instala"},
+   [("word", {"word": w}) for w in WORDS]),
  "hero": sec("jd-hero", {"bg": "cream", "eyebrow": "Baño y cocina sin taladrar", "heading": "Tu casa, sin taladrar.",
    "text": "<p>Baldas, rasquetas y ganchos que se pegan al azulejo, aguantan la ducha y se vienen contigo cuando te mudas.</p>",
    "btn1_label": "Ver el Kit Ducha", "btn1_link": "shopify://products/kit-ducha-sin-cal",
    "btn2_label": "Ver todos los productos", "btn2_link": "shopify://collections/todo-jarandana",
-   "image": si("hero"), "video_url": VID["hero"], "badge": "Sin agujeros · Sin obras"},
+   "image": si("hero"), "badge": "Sin agujeros · Sin obras"},
    [("chip", {"icon": "drill", "text": "Sin taladro"}), ("chip", {"icon": "truck", "text": "Envío con seguimiento"}),
     ("chip", {"icon": "return", "text": "14 días para devolver"}), ("chip", {"icon": "lock", "text": "Pago seguro"})]),
  "benefits": sec("jd-benefits", {"bg": "white", "eyebrow": "Por qué jarandana", "heading": "Orden en casa, sin pedir permiso al casero"}, BENEFITS),
@@ -73,7 +80,7 @@ index = {"sections": {
  "reviews": sec("jd-reviews", {"bg": "cream", "filter_product": True}),
  "faq": sec("jd-faq", {"bg": "white", "open_first": True, "link_label": "Ver todas las preguntas", "link": "shopify://pages/preguntas-frecuentes"}, faq_blocks),
  "contact": sec("jd-contact", {}),
-}, "order": ["hero", "benefits", "list_ducha", "feat_rasqueta", "feat_fregadero", "steps", "list_todo", "reviews", "faq", "contact"]}
+}, "order": ["intro", "hero", "benefits", "list_ducha", "feat_rasqueta", "feat_fregadero", "steps", "list_todo", "reviews", "faq", "contact"]}
 
 # --- producto: se parte del original de Horizon
 prod = json.load(open(os.path.join(D, "product.orig.json")))
@@ -87,16 +94,17 @@ rec = prod["sections"]["product_recommendations_qggXJq"]
 rec["blocks"]["text_cbcgyb"]["settings"]["text"] = "<h3>Combina con</h3>"
 rec["settings"]["background_color"] = "#FFFFFF"
 prod["sections"].update({
- "p_benefits": sec("jd-benefits", {"bg": "white"}, [
+ "p_benefits": sec("jd-benefits", {"bg": "sand"}, [
    ("item", {"icon": "drill", "title": "Sin taladro", "text": "Adhesivo para azulejo, cristal o metal."}),
    ("item", {"icon": "truck", "title": "Envío con seguimiento", "text": "Entrega estimada en 7-15 días laborables."}),
    ("item", {"icon": "return", "title": "14 días para devolver", "text": "Sin dar explicaciones, si no está instalado."}),
    ("item", {"icon": "lock", "title": "Pago seguro", "text": "Tarjeta y métodos protegidos por Shopify."})]),
+ "p_video": sec("jd-video", {"bg": "white", "eyebrow": "En casa", "heading": "Así queda, sin un solo agujero", "text": "<p>Se instala en un minuto y se quita con un secador cuando te mudas.</p>", "note": "Vídeo ilustrativo generado con IA."}),
  "p_steps": sec("jd-steps", {"bg": "cream", "eyebrow": "Cómo se instala", "heading": "3 pasos, 1 minuto", "note": STEPS_NOTE}, STEPS),
  "p_reviews": sec("jd-reviews", {"bg": "white", "filter_product": True}),
  "p_faq": sec("jd-faq", {"bg": "cream", "open_first": False, "link_label": "Ver todas las preguntas", "link": "shopify://pages/preguntas-frecuentes"}, faq_blocks),
 })
-prod["order"] = ["main", "p_benefits", "p_steps", "p_reviews", "p_faq", "product_recommendations_qggXJq"]
+prod["order"] = ["main", "p_video", "p_benefits", "p_steps", "p_reviews", "p_faq", "product_recommendations_qggXJq"]
 
 # --- cabecera
 hg = json.load(open(os.path.join(D, "header-group.orig.json")))

@@ -1,5 +1,64 @@
 {
   "sections": {
+    "intro": {
+      "type": "jd-intro",
+      "settings": {
+        "video_url": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-portada.mp4?v=1790201076",
+        "poster": "shopify://shop_images/EMXN1y8qngEKBnVwbG9hZBIOeWxhYi1zdHVudC1zZ3AagwFLbGluZ0FJX0tvbG9yc19EaVRfSDgwMF8xX0tvbG9ycy12Ml82LXQyaS1vbW5pLXJlZmluZXItdjNfU0dQX1BST0RfYWlfd2ViXzMyMjE3MDM4NTY2MDQwMl81OGQ0MjJiNDI3Yjd.png",
+        "seconds": 2,
+        "pre": "Tu baño y tu cocina, por fin en orden",
+        "sub": "Baldas, rasquetas y ganchos que se pegan al azulejo. Sin herramientas, sin obras y sin pedir permiso al casero.",
+        "btn_label": "Comprar ahora",
+        "btn_link": "shopify://collections/todo-jarandana",
+        "btn2_label": "Cómo se instala"
+      },
+      "blocks": {
+        "b1": {
+          "type": "word",
+          "settings": {
+            "word": "Sin taladro."
+          }
+        },
+        "b2": {
+          "type": "word",
+          "settings": {
+            "word": "Sin obras."
+          }
+        },
+        "b3": {
+          "type": "word",
+          "settings": {
+            "word": "Sin cal."
+          }
+        },
+        "b4": {
+          "type": "word",
+          "settings": {
+            "word": "Sin agujeros."
+          }
+        },
+        "b5": {
+          "type": "word",
+          "settings": {
+            "word": "Te lo llevas."
+          }
+        },
+        "b6": {
+          "type": "word",
+          "settings": {
+            "word": "Listo en 1 minuto."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ]
+    },
     "hero": {
       "type": "jd-hero",
       "settings": {
@@ -12,7 +71,6 @@
         "btn2_label": "Ver todos los productos",
         "btn2_link": "shopify://collections/todo-jarandana",
         "image": "shopify://shop_images/EMXN1y8qngEKBnVwbG9hZBIOeWxhYi1zdHVudC1zZ3AagwFLbGluZ0FJX0tvbG9yc19EaVRfSDgwMF8xX0tvbG9ycy12Ml82LXQyaS1vbW5pLXJlZmluZXItdjNfU0dQX1BST0RfYWlfd2ViXzMyMjE3MDM4NTY2MDQwMl81OGQ0MjJiNDI3Yjd.png",
-        "video_url": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-portada.mp4?v=1790201076",
         "badge": "Sin agujeros · Sin obras"
       },
       "blocks": {
@@ -657,6 +715,7 @@
     }
   },
   "order": [
+    "intro",
     "hero",
     "benefits",
     "list_ducha",

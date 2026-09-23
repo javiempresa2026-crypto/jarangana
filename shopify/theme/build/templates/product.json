@@ -440,7 +440,7 @@
     "p_benefits": {
       "type": "jd-benefits",
       "settings": {
-        "bg": "white"
+        "bg": "sand"
       },
       "blocks": {
         "b1": {
@@ -482,6 +482,18 @@
         "b3",
         "b4"
       ]
+    },
+    "p_video": {
+      "type": "jd-video",
+      "settings": {
+        "bg": "white",
+        "eyebrow": "En casa",
+        "heading": "Así queda, sin un solo agujero",
+        "text": "<p>Se instala en un minuto y se quita con un secador cuando te mudas.</p>",
+        "note": "Vídeo ilustrativo generado con IA."
+      },
+      "blocks": {},
+      "block_order": []
     },
     "p_steps": {
       "type": "jd-steps",
@@ -585,6 +597,7 @@
   },
   "order": [
     "main",
+    "p_video",
     "p_benefits",
     "p_steps",
     "p_reviews",

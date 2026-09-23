@@ -1,0 +1,72 @@
+{{ 'jarandana.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign n = section.blocks.size
+  assign step = section.settings.seconds
+  assign total = n | times: step
+-%}
+<section class="jd-intro" style="--jd-total: {{ total }}s;">
+  {%- if section.settings.video_url != blank -%}
+    <video class="jd-intro__bg" src="{{ section.settings.video_url }}" autoplay muted loop playsinline preload="auto"{% if section.settings.poster != blank %} poster="{{ section.settings.poster | image_url: width: 1600 }}"{% endif %}></video>
+  {%- elsif section.settings.poster != blank -%}
+    {{ section.settings.poster | image_url: width: 1800 | image_tag: class: 'jd-intro__bg', loading: 'eager', fetchpriority: 'high' }}
+  {%- endif -%}
+  <div class="jd-intro__shade"></div>
+  <div class="jd-intro__inner">
+    {%- if settings.logo_inverse != blank -%}
+      {{ settings.logo_inverse | image_url: width: 480 | image_tag: class: 'jd-intro__logo', alt: shop.name }}
+    {%- endif -%}
+    <p class="jd-intro__pre">{{ section.settings.pre }}</p>
+    <div class="jd-intro__words" aria-live="off">
+      {%- for b in section.blocks -%}
+        <span class="jd-intro__word" style="animation-delay: {{ forloop.index0 | times: step }}s;" {{ b.shopify_attributes }}>{{ b.settings.word }}</span>
+      {%- endfor -%}
+    </div>
+    <p class="jd-intro__sub">{{ section.settings.sub }}</p>
+    <div class="jd__btns" style="justify-content:center">
+      {%- if section.settings.btn_label != blank -%}<a class="jd__btn" href="{{ section.settings.btn_link | default: routes.all_products_collection_url }}">{{ section.settings.btn_label }}</a>{%- endif -%}
+      {%- if section.settings.btn2_label != blank -%}<a class="jd__btn jd__btn--ghost jd-intro__ghost" href="{{ section.settings.btn2_link | default: '#como-se-instala' }}">{{ section.settings.btn2_label }}</a>{%- endif -%}
+    </div>
+  </div>
+  <a class="jd-intro__down" href="#jd-after-intro" aria-label="Seguir bajando">↓</a>
+</section>
+<div id="jd-after-intro"></div>
+<style>
+.jd-intro{position:relative;min-height:min(88vh,820px);display:grid;place-items:center;overflow:hidden;background:#1E2B37;color:#fff;text-align:center}
+.jd-intro__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.jd-intro__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,43,55,.55) 0%,rgba(30,43,55,.35) 45%,rgba(30,43,55,.8) 100%)}
+.jd-intro__inner{position:relative;z-index:1;width:min(900px,100% - 32px);padding:72px 0 88px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.jd-intro__logo{width:clamp(150px,22vw,230px);height:auto;margin-bottom:10px;animation:jdUp .8s ease both}
+.jd-intro__pre{margin:0;font-size:clamp(1rem,2vw,1.25rem);font-weight:600;letter-spacing:.02em;opacity:.95;animation:jdUp .8s .15s ease both}
+.jd-intro__words{position:relative;height:clamp(3.4rem,10vw,6.6rem);width:100%}
+.jd-intro__word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(2.6rem,9vw,6rem);font-weight:900;line-height:1;letter-spacing:-.03em;color:#E4702E;text-shadow:0 6px 30px rgba(0,0,0,.35);opacity:0;animation:jdWord var(--jd-total) infinite}
+.jd-intro__sub{margin:0 0 10px;max-width:46ch;font-size:clamp(1rem,1.8vw,1.2rem);line-height:1.55;opacity:.92;animation:jdUp .8s .3s ease both}
+.jd-intro__ghost{color:#fff!important;border-color:#fff!important}
+.jd-intro__ghost:hover{background:#fff!important;color:#1E2B37!important}
+.jd-intro__down{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);color:#fff;text-decoration:none;font-size:1.6rem;animation:jdBounce 1.8s infinite}
+{% if n > 1 %}@keyframes jdWord{0%{opacity:0;transform:translateY(40%) scale(.96)}4%{opacity:1;transform:none}{{ 100 | divided_by: n | minus: 4 }}%{opacity:1;transform:none}{{ 100 | divided_by: n }}%{opacity:0;transform:translateY(-40%) scale(.96)}100%{opacity:0}}{% else %}.jd-intro__word{opacity:1;animation:none}{% endif %}
+@keyframes jdUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes jdBounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+@media (prefers-reduced-motion:reduce){.jd-intro__word{animation:none}.jd-intro__word:first-child{opacity:1}}
+@media (max-width:749px){.jd-intro{min-height:78vh}.jd-intro__inner{padding:56px 0 72px}.jd-intro .jd__btns .jd__btn{flex:1 1 100%}}
+</style>
+{% schema %}
+{
+  "name": "jarandana · Intro vídeo",
+  "settings": [
+    {"type":"text","id":"video_url","label":"Enlace del vídeo .mp4"},
+    {"type":"image_picker","id":"poster","label":"Imagen mientras carga"},
+    {"type":"text","id":"pre","label":"Frase de arriba","default":"Tu baño y tu cocina, por fin en orden"},
+    {"type":"range","id":"seconds","label":"Segundos por palabra","min":1,"max":5,"step":1,"default":2},
+    {"type":"text","id":"sub","label":"Texto de abajo","default":"Baldas, rasquetas y ganchos que se pegan al azulejo. Sin herramientas, sin obras y sin pedir permiso al casero."},
+    {"type":"text","id":"btn_label","label":"Botón principal","default":"Comprar ahora"},
+    {"type":"url","id":"btn_link","label":"Enlace botón principal"},
+    {"type":"text","id":"btn2_label","label":"Botón secundario","default":"Cómo se instala"},
+    {"type":"url","id":"btn2_link","label":"Enlace botón secundario"}
+  ],
+  "blocks": [
+    {"type":"word","name":"Palabra","settings":[{"type":"text","id":"word","label":"Palabra o frase corta","default":"Sin taladro"}]}
+  ],
+  "max_blocks": 8,
+  "presets": [{"name":"jarandana · Intro vídeo","blocks":[{"type":"word"}]}]
+}
+{% endschema %}
