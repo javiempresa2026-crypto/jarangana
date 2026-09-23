@@ -11,7 +11,9 @@ Tienda: **jarandana.myshopify.com** (EUR, plan Basic).
   - Pie: FAQ, Cómo se instala, Envíos, Devoluciones, Contacto, Recambios y Buscar.
 - **Descuento** `BIENVENIDA10`: 10 % a partir de 25 €.
 - **Imágenes de portada** generadas con Kling (baño con la Balda, mampara y fregadero), subidas a Archivos.
-- **Vídeo de portada** generado con Kling (5 s, 16:9). La URL caduca a las 24 h: descárgalo desde tu cuenta de Kling (Historial).
+- **3 vídeos Kling** (portada, mampara y fregadero) subidos a Archivos de Shopify y puestos en la portada.
+- **Tema en español** (textos del tema copiados de `es.json` sobre `en.default.json`, porque el idioma principal de la tienda es inglés) y plantillas de 404, carrito, colecciones y contacto traducidas.
+- **SEO**: título y descripción para Google en los 8 productos y las 4 colecciones; imágenes en las colecciones.
 - **Logo y favicon** subidos y puestos en el tema.
 - **Sistema de reseñas reales** (metaobjeto "Reseña" + formulario). Ver [`shopify/theme/README.md`](../shopify/theme/README.md).
 - **Tema "jarandana"** (copia de Horizon, **sin publicar**), rediseñado con secciones propias adaptadas a móvil:
@@ -22,6 +24,7 @@ Tienda: **jarandana.myshopify.com** (EUR, plan Basic).
 - **Kit Ducha:** ya no promete "envío gratis".
 
 ## Pendiente (lo haces tú en el admin)
+0. **Idioma**: Ajustes → Idiomas → cambia el idioma predeterminado a **Español** (el checkout y los emails salen en inglés hasta que lo hagas).
 1. **Envíos:** ve a Ajustes → Envíos, pon **3,95 €** y **gratis desde 35 €**, y desactiva las zonas UE e Internacional hasta lanzar allí.
 2. **Tema:** ve a Tienda online → Temas → "jarandana" → **Vista previa**, revísalo y pulsa **Publicar**. La API no permite publicar temas. Si quieres, cambia la imagen del banner principal por el vídeo de Kling en Personalizar.
 3. **Nombre de la tienda:** cambia "My Store" por **jarandana** en Ajustes → Detalles de la tienda.

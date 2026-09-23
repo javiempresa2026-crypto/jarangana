@@ -16,7 +16,9 @@
       {%- endif -%}
     </div>
     <div class="jd-hero__media">
-      {%- if section.settings.video != blank -%}
+      {%- if section.settings.video_url != blank -%}
+        <video class="jd__img" src="{{ section.settings.video_url }}" autoplay muted loop playsinline preload="metadata"{% if section.settings.image != blank %} poster="{{ section.settings.image | image_url: width: 1200 }}"{% endif %}></video>
+      {%- elsif section.settings.video != blank -%}
         {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, class: 'jd__img', image_size: '1200x' }}
       {%- elsif section.settings.image != blank -%}
         {{ section.settings.image | image_url: width: 1400 | image_tag: class: 'jd__img', loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 750px) 50vw, 100vw', widths: '500,800,1100,1400' }}
@@ -39,6 +41,7 @@
     {"type":"url","id":"btn2_link","label":"Enlace botón 2"},
     {"type":"image_picker","id":"image","label":"Imagen"},
     {"type":"video","id":"video","label":"Vídeo (sustituye a la imagen)"},
+    {"type":"text","id":"video_url","label":"Enlace de vídeo .mp4 (opcional)"},
     {"type":"text","id":"badge","label":"Etiqueta sobre la imagen","default":"Sin agujeros · Sin obras"}
   ],
   "blocks": [

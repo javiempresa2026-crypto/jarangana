@@ -9,6 +9,11 @@ IMG = {
  "logo_w": "jarandana-logo-blanco.png",
  "fav": "jarandana-favicon_a8793dc6-68eb-457d-a479-ac7dcfbd5a9e.png",
 }
+VID = {  # vídeos Kling subidos a Shopify Archivos
+ "hero": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-portada.mp4?v=1790201076",
+ "mamp": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-mampara.mp4?v=1790201321",
+ "freg": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-fregadero.mp4?v=1790201505",
+}
 si = lambda k: "shopify://shop_images/" + IMG[k]
 
 def sec(type_, settings, blocks=()):
@@ -50,16 +55,16 @@ index = {"sections": {
    "text": "<p>Baldas, rasquetas y ganchos que se pegan al azulejo, aguantan la ducha y se vienen contigo cuando te mudas.</p>",
    "btn1_label": "Ver el Kit Ducha", "btn1_link": "shopify://products/kit-ducha-sin-cal",
    "btn2_label": "Ver todos los productos", "btn2_link": "shopify://collections/todo-jarandana",
-   "image": si("hero"), "badge": "Sin agujeros · Sin obras"},
+   "image": si("hero"), "video_url": VID["hero"], "badge": "Sin agujeros · Sin obras"},
    [("chip", {"icon": "drill", "text": "Sin taladro"}), ("chip", {"icon": "truck", "text": "Envío con seguimiento"}),
     ("chip", {"icon": "return", "text": "14 días para devolver"}), ("chip", {"icon": "lock", "text": "Pago seguro"})]),
  "benefits": sec("jd-benefits", {"bg": "white", "eyebrow": "Por qué jarandana", "heading": "Orden en casa, sin pedir permiso al casero"}, BENEFITS),
  "list_ducha": plist("ducha", "#F5EFE4"),
- "feat_rasqueta": sec("jd-feature", {"bg": "white", "reverse": False, "image": si("mamp"), "eyebrow": "Adiós a las marcas de cal",
+ "feat_rasqueta": sec("jd-feature", {"bg": "white", "reverse": False, "image": si("mamp"), "video_url": VID["mamp"], "eyebrow": "Adiós a las marcas de cal",
    "heading": "Mampara limpia en 20 segundos", "text": "<p>La cal aparece cuando el agua se seca sobre el cristal. Pasa la rasqueta al salir de la ducha y listo.</p>",
    "product": "rasqueta-mampara-silicona", "btn_label": "Ver la Rasqueta"},
    [("point", {"text": "Hoja de silicona que no raya el cristal"}), ("point", {"text": "Con soporte adhesivo para colgarla en la ducha"}), ("point", {"text": "Sin productos químicos"})]),
- "feat_fregadero": sec("jd-feature", {"bg": "sand", "reverse": True, "image": si("freg"), "eyebrow": "Cocina",
+ "feat_fregadero": sec("jd-feature", {"bg": "sand", "reverse": True, "image": si("freg"), "video_url": VID["freg"], "eyebrow": "Cocina",
    "heading": "El fregadero, por fin en orden", "text": "<p>Dispensador de jabón de un toque y esponjero que deja escurrir el agua.</p>",
    "product": "kit-fregadero-dispensador-esponjero", "btn_label": "Ver el Kit Fregadero"},
    [("point", {"text": "Jabón con una sola mano"}), ("point", {"text": "La esponja se seca y no vive en un charco"}), ("point", {"text": "Ocupa muy poco espacio"})]),

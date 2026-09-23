@@ -12,6 +12,7 @@
         "btn2_label": "Ver todos los productos",
         "btn2_link": "shopify://collections/todo-jarandana",
         "image": "shopify://shop_images/EMXN1y8qngEKBnVwbG9hZBIOeWxhYi1zdHVudC1zZ3AagwFLbGluZ0FJX0tvbG9yc19EaVRfSDgwMF8xX0tvbG9ycy12Ml82LXQyaS1vbW5pLXJlZmluZXItdjNfU0dQX1BST0RfYWlfd2ViXzMyMjE3MDM4NTY2MDQwMl81OGQ0MjJiNDI3Yjd.png",
+        "video_url": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-portada.mp4?v=1790201076",
         "badge": "Sin agujeros · Sin obras"
       },
       "blocks": {
@@ -291,6 +292,7 @@
         "bg": "white",
         "reverse": false,
         "image": "shopify://shop_images/EMXN1y8qngEKBnVwbG9hZBIOeWxhYi1zdHVudC1zZ3AagwFLbGluZ0FJX0tvbG9yc19EaVRfSDgwMF8xX0tvbG9ycy12Ml82LXQyaS1vbW5pLXJlZmluZXItdjNfU0dQX1BST0RfYWlfd2ViXzMyMjE3MDM5MTMwNDcyNV80ZGMwMWI3MTVjNDg.png",
+        "video_url": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-mampara.mp4?v=1790201321",
         "eyebrow": "Adiós a las marcas de cal",
         "heading": "Mampara limpia en 20 segundos",
         "text": "<p>La cal aparece cuando el agua se seca sobre el cristal. Pasa la rasqueta al salir de la ducha y listo.</p>",
@@ -329,6 +331,7 @@
         "bg": "sand",
         "reverse": true,
         "image": "shopify://shop_images/EMXN1y8qngEKBnVwbG9hZBIOeWxhYi1zdHVudC1zZ3AagwFLbGluZ0FJX0tvbG9yc19EaVRfSDgwMF8xX0tvbG9ycy12Ml82LXQyaS1vbW5pLXJlZmluZXItdjNfU0dQX1BST0RfYWlfd2ViXzMyMjE3MDM4ODY1ODUxNF8yN2QxMzY5OWZlYWU.png",
+        "video_url": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-fregadero.mp4?v=1790201505",
         "eyebrow": "Cocina",
         "heading": "El fregadero, por fin en orden",
         "text": "<p>Dispensador de jabón de un toque y esponjero que deja escurrir el agua.</p>",
