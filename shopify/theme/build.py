@@ -12,7 +12,7 @@ IMG = {
 VID = {  # vídeos Kling subidos a Shopify Archivos
  "hero": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-portada.mp4?v=1790201076",
  "mamp": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-mampara.mp4?v=1790201321",
- "intro": "",
+ "intro": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-intro.mp4",
  "freg": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-fregadero.mp4?v=1790201505",
 }
 si = lambda k: "shopify://shop_images/" + IMG[k]
