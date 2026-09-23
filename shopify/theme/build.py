@@ -22,9 +22,9 @@ def sec(type_, settings, blocks=()):
     return {"type": type_, "settings": settings, "blocks": b, "block_order": list(b)}
 
 plist_base = json.load(open(os.path.join(D, "plist.json")))
-def plist(coll, bg="#F5EFE4"):
+def plist(coll, bg="#F5EFE4", n=8):
     s = copy.deepcopy(plist_base)
-    s["settings"].update({"collection": coll, "max_products": 8, "background_color": bg})
+    s["settings"].update({"collection": coll, "max_products": n, "background_color": bg})
     s["blocks"]["static-header"]["blocks"]["product_list_button_MWeP9V"]["settings"]["label"] = "Ver todo"
     s["blocks"]["static-product-card"]["settings"]["border_radius"] = 14
     s["blocks"]["static-product-card"]["blocks"]["product_card_gallery_677WP3"]["settings"].update({"image_ratio": "square", "border_radius": 14})
@@ -76,11 +76,12 @@ index = {"sections": {
    "product": "kit-fregadero-dispensador-esponjero", "btn_label": "Ver el Kit Fregadero"},
    [("point", {"text": "Jabón con una sola mano"}), ("point", {"text": "La esponja se seca y no vive en un charco"}), ("point", {"text": "Ocupa muy poco espacio"})]),
  "steps": sec("jd-steps", {"bg": "cream", "eyebrow": "Cómo se instala", "heading": "Listo en 1 minuto. Sin herramientas.", "note": STEPS_NOTE}, STEPS),
- "list_todo": plist("todo-jarandana", "#FFFFFF"),
+ "list_todo": plist("todo-jarandana", "#FFFFFF", 12),
+ "list_nov": plist("novedades", "#FFFFFF", 4),
  "reviews": sec("jd-reviews", {"bg": "cream", "filter_product": True}),
  "faq": sec("jd-faq", {"bg": "white", "open_first": True, "link_label": "Ver todas las preguntas", "link": "shopify://pages/preguntas-frecuentes"}, faq_blocks),
  "contact": sec("jd-contact", {}),
-}, "order": ["intro", "hero", "benefits", "list_ducha", "feat_rasqueta", "feat_fregadero", "steps", "list_todo", "reviews", "faq", "contact"]}
+}, "order": ["intro", "list_nov", "hero", "benefits", "list_ducha", "feat_rasqueta", "feat_fregadero", "steps", "list_todo", "reviews", "faq", "contact"]}
 
 # --- producto: se parte del original de Horizon
 prod = json.load(open(os.path.join(D, "product.orig.json")))
