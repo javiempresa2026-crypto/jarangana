@@ -60,92 +60,72 @@ def txt(x, y, text, size, width, color=INK, weight=700, anchor="start", lh=1.18)
     t = "".join(f'<tspan x="{x:.1f}" dy="{0 if i == 0 else size*lh:.1f}">{e(l)}</tspan>' for i, l in enumerate(lines))
     return f'<text x="{x:.1f}" y="{y:.1f}" font-family="DM Sans, Arial, sans-serif" font-size="{size:.1f}" font-weight="{weight}" fill="{color}" text-anchor="{anchor}">{t}</text>', y + size * lh * (len(lines) - 1)
 
+def pattern(x, y, W, H, k, op=".13"):
+    """Dibujo de azulejo muy suave, recortado al panel."""
+    cid = f"c{k}{int(x)}{int(y)}"
+    step = min(W, H) / 5
+    lines = "".join(f'<path d="M{x + i*step:.1f},{y} V{y+H}"/>' for i in range(1, int(W/step) + 1))
+    lines += "".join(f'<path d="M{x},{y + i*step:.1f} H{x+W}"/>' for i in range(1, int(H/step) + 1))
+    return (f'<clipPath id="{cid}"><rect x="{x}" y="{y}" width="{W}" height="{H}"/></clipPath>'
+            f'<g clip-path="url(#{cid})" stroke="#fff" stroke-width="{step*0.03:.2f}" opacity="{op}">{lines}</g>')
+
 def front(x, y, W, H, p):
-    k, name, line, claim, pts, cont, _ = p
+    """Cara frontal minimalista: color de la línea, logo grande, una frase y el nombre en una pastilla."""
+    k, name, line, claim, *_ = p
     c1, c2 = LINES[line]
-    wide, tall = W > H * 1.6, H > W * 1.3
-    band = H * (0.24 if wide else 0.2 if not tall else 0.16)
-    fh = H * 0.075 if not tall else W * 0.1  # franja inferior
-    pad = min(W, H) * 0.08
-    if wide: r = min(W * 0.12, H * 0.2)
-    elif tall: r = W * 0.2
-    else: r = band * 0.42
-    logo_w = min(W - 2 * pad - (2 * r + pad if not (wide or tall) else 0), band * 2.9)
-    s = [f'<rect x="{x}" y="{y}" width="{W}" height="{H}" fill="{CREAM}"/>',
-         f'<circle cx="{x + W - r*0.2:.1f}" cy="{y + band + (H-band)*0.35:.1f}" r="{min(W,H)*0.45:.1f}" fill="{c2}" opacity=".12"/>',
-         f'<rect x="{x}" y="{y}" width="{W}" height="{band:.1f}" fill="url(#g{k})"/>',
-         logo(x + pad, y + band / 2 - logo_w * 100 / 739 * 0.55, logo_w, white=True)]
-    tw = (W - 3 * pad - 2 * r) if wide else (W - 2 * pad)  # ancho de texto sin pisar el sello
-    fs = min(tw * (0.11 if wide else 0.15 if tall else 0.13), H * 0.12)
-    t, yy = txt(x + pad, y + band + pad * 0.8 + fs, name, fs, tw, INK, 800); s.append(t)
-    t, yy = txt(x + pad, yy + fs * 0.85, claim, fs * 0.5, tw, INK, 500); s.append(t)
-    cx = x + W - pad - r
-    if wide: cy = y + band + (H - band - fh) / 2
-    elif tall: cy = y + H - fh - pad * 0.7 - r
-    else: cy = y + band / 2
-    limit = (cy - r - pad * 0.3) if tall else (y + H - fh - pad * 0.4)
-    bs = fs * 0.44
-    yb = yy + fs * 0.85
-    for pt in pts:
-        lines = wrap(pt, tw - bs * 1.3, bs)
-        if yb + bs * 1.18 * (len(lines) - 1) > limit: break
-        t, yb2 = txt(x + pad + bs * 1.3, yb, pt, bs, tw - bs * 1.3, INK, 700)
-        s += [f'<circle cx="{x + pad + bs*0.4:.1f}" cy="{yb - bs*0.33:.1f}" r="{bs*0.32:.1f}" fill="{c1}"/>', t]
-        yb = yb2 + bs * 1.45
-    s += [f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r:.1f}" fill="{ORANGE}"/>',
-          f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r*0.86:.1f}" fill="none" stroke="#fff" stroke-width="{r*0.03:.2f}" stroke-dasharray="{r*0.08:.2f} {r*0.06:.2f}"/>',
-          f'<text x="{cx:.1f}" y="{cy - r*0.04:.1f}" font-family="DM Sans, Arial" font-size="{r*0.4:.1f}" font-weight="900" fill="#fff" text-anchor="middle">SIN</text>',
-          f'<text x="{cx:.1f}" y="{cy + r*0.34:.1f}" font-family="DM Sans, Arial" font-size="{r*0.25:.1f}" font-weight="900" fill="#fff" text-anchor="middle">TALADRAR</text>']
-    s.append(f'<rect x="{x}" y="{y + H - fh:.1f}" width="{W}" height="{fh:.1f}" fill="{INK}"/>')
-    ff = min(fh * 0.45, W * 0.045)
-    tag = f"{line.upper()} · TU CASA, SIN TALADRAR" if W > 120 else "SIN TALADRAR"
-    s.append(f'<text x="{x + W/2:.1f}" y="{y + H - fh/2 + ff*0.35:.1f}" font-family="DM Sans, Arial" font-size="{ff:.1f}" font-weight="700" fill="{CREAM}" text-anchor="middle">{e(tag)}</text>')
+    m = min(W, H)
+    cx, cy = x + W / 2, y + H / 2
+    s = [f'<rect x="{x}" y="{y}" width="{W}" height="{H}" fill="url(#g{k})"/>', pattern(x, y, W, H, k),
+         f'<circle cx="{x + W*0.88:.1f}" cy="{y + H*0.12:.1f}" r="{m*0.42:.1f}" fill="#fff" opacity=".12"/>',
+         f'<circle cx="{x + W*0.08:.1f}" cy="{y + H*0.95:.1f}" r="{m*0.3:.1f}" fill="#FFC845" opacity=".35"/>']
+    lw = min(W * 0.72, H * 2.2)
+    lh = lw * 200 / 739
+    fs = min(W * 0.075, H * 0.075)
+    total = lh + fs * 2.2
+    top = cy - total / 2 - fs * 0.4
+    s.append(logo(cx - lw / 2, top, lw, white=True))
+    t, _ = txt(cx, top + lh + fs * 1.5, claim, fs, W * 0.86, "#FFF8EE", 800, "middle"); s.append(t)
+    ps = min(W * 0.04, H * 0.045)
+    pw = min(W * 0.8, len(name) * ps * 0.62 + ps * 2)
+    py = y + H - ps * 3.2
+    s += [f'<rect x="{cx - pw/2:.1f}" y="{py:.1f}" width="{pw:.1f}" height="{ps*2:.1f}" rx="{ps:.1f}" fill="{INK}"/>',
+          f'<text x="{cx:.1f}" y="{py + ps*1.35:.1f}" font-family="DM Sans, Arial" font-size="{ps:.1f}" font-weight="800" fill="#fff" text-anchor="middle" letter-spacing="{ps*0.08:.2f}">{e(name.upper())}</text>']
     return "".join(s)
 
 def side(x, y, D_, H, p):
-    k = p[0]; c1, _ = LINES[p[2]]
-    s = [f'<rect x="{x}" y="{y}" width="{D_}" height="{H}" fill="url(#g{k})"/>']
-    h = D_ * 0.5
-    s.append(iso(x + D_ / 2 - h * 0.33, y + D_ * 0.2, h, "#FFFFFF"))
-    top = D_ * 0.8
-    fs = min(D_ * 0.2, (H - top - D_ * 0.2) / (len(p[1]) * 0.56))
-    s.append(f'<text transform="translate({x + D_/2 + fs*0.35:.1f},{y + (top + H)/2:.1f}) rotate(-90)" font-family="DM Sans, Arial" font-size="{fs:.1f}" font-weight="800" fill="#fff" text-anchor="middle">{e(p[1])}</text>')
+    s = [f'<rect x="{x}" y="{y}" width="{D_}" height="{H}" fill="{INK}"/>']
+    h = min(D_ * 0.55, H * 0.3)
+    s.append(iso(x + D_ / 2 - h * 0.33, y + H / 2 - h / 2, h, "#FF6B2C"))
     return "".join(s)
 
 def back(x, y, W, H, p):
-    k, name, line, claim, pts, cont, dims = p
+    """Trasera: logo, 3 pasos con icono y una sola palabra, y el bloque legal pequeño (obligatorio)."""
+    k, name, line, *_ = p
     c1, _ = LINES[line]
-    pad = min(W, H) * 0.07
-    fs = min(W * 0.055, H * 0.04)
-    s = [f'<rect x="{x}" y="{y}" width="{W}" height="{H}" fill="#fff"/>']
-    yy = y + pad + fs
-    t, yy = txt(x + pad, yy, "Cómo se instala", fs * 1.25, W - 2 * pad, INK, 800); s.append(t)
-    for i, st in enumerate(["Limpia el azulejo con alcohol y sécalo.", "Pega y presiona 30 segundos.", "Espera 24 horas antes de usarlo."], 1):
-        yy += fs * 1.5
-        s.append(f'<circle cx="{x + pad + fs*0.5:.1f}" cy="{yy - fs*0.35:.1f}" r="{fs*0.62:.1f}" fill="{c1}"/><text x="{x + pad + fs*0.5:.1f}" y="{yy:.1f}" font-family="DM Sans, Arial" font-size="{fs*0.9:.1f}" font-weight="800" fill="#fff" text-anchor="middle">{i}</text>')
-        t, yy = txt(x + pad + fs * 1.5, yy, st, fs, W - 2 * pad - fs * 1.5, INK, 500); s.append(t)
-    yy += fs * 1.6
-    t, yy = txt(x + pad, yy, "Solo superficies lisas: azulejo, cristal o metal. No apto para gotelé, pintura, madera sin lacar ni juntas.", fs * 0.78, W - 2 * pad, INK, 400); s.append(t)
-    yy += fs * 1.5
-    t, yy = txt(x + pad, yy, f"Contenido: {cont}", fs * 0.9, W - 2 * pad, INK, 700); s.append(t)
-    # bloque legal (Reglamento UE de Seguridad General de Productos): rellenar antes de imprimir
-    bh = H * 0.2; by = y + H - bh - pad
-    s.append(f'<rect x="{x + pad:.1f}" y="{by:.1f}" width="{W - 2*pad:.1f}" height="{bh:.1f}" rx="{fs*0.4:.1f}" fill="none" stroke="{INK}" stroke-width="{fs*0.06:.2f}" stroke-dasharray="{fs*0.3:.1f} {fs*0.2:.1f}"/>')
-    t, _ = txt(x + pad * 1.5, by + fs * 1.05, "Responsable en la UE: [NOMBRE O EMPRESA · DIRECCIÓN · EMAIL]. Fabricado en: [PAÍS, confirmar con proveedor]. Lote: [__]", fs * 0.7, W - 3 * pad, INK, 500); s.append(t)
-    s.append(logo(x + pad, by - fs * 2.4, min(W * 0.4, fs * 7)))
+    m = min(W, H); pad = m * 0.08
+    s = [f'<rect x="{x}" y="{y}" width="{W}" height="{H}" fill="{CREAM}"/>']
+    lw = min(W * 0.5, H * 1.2)
+    s.append(logo(x + W/2 - lw/2, y + pad, lw))
+    r = min(W / 9, H * 0.11)
+    cy = y + H * 0.5
+    for i, word in enumerate(["Limpia", "Pega", "24 h"]):
+        cx = x + W * (0.2 + 0.3 * i)
+        s += [f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r:.1f}" fill="{[ORANGE, c1, "#FFC845"][i]}"/>',
+              f'<text x="{cx:.1f}" y="{cy + r*0.36:.1f}" font-family="DM Sans, Arial" font-size="{r:.1f}" font-weight="900" fill="#fff" text-anchor="middle">{i+1}</text>',
+              f'<text x="{cx:.1f}" y="{cy + r*1.9:.1f}" font-family="DM Sans, Arial" font-size="{r*0.55:.1f}" font-weight="800" fill="{INK}" text-anchor="middle">{word}</text>']
+    fs = min(W * 0.028, H * 0.03)
+    t, _ = txt(x + W/2, y + H - pad - fs * 1.4, "[TITULAR] · [DIRECCIÓN] · javiempresa2026@gmail.com · Fabricado en [PAÍS] · Lote [__]", fs, W * 0.9, INK, 500, "middle"); s.append(t)
     return "".join(s)
 
 def lid(x, y, W, D_, top, p):
-    """Tapa (W x D) + lengüeta de cierre (TUCK). top=True: la lengüeta queda arriba."""
-    c1, _ = LINES[p[2]]
+    """Tapa con lengüeta. Arriba: «¡Hola!». Abajo: sin texto."""
     ly = y + TUCK if top else y
     ty = y if top else y + D_
     s = [f'<path d="M{x+3},{ty + (TUCK if top else 0)} L{x+3},{ty + (5 if top else TUCK-5)} Q{x+3},{ty if top else ty+TUCK} {x+10},{ty if top else ty+TUCK} L{x+W-10},{ty if top else ty+TUCK} Q{x+W-3},{ty if top else ty+TUCK} {x+W-3},{ty + (5 if top else TUCK-5)} L{x+W-3},{ty + (TUCK if top else 0)} Z" fill="{CREAM}" stroke="#E0245E" stroke-width="0.4"/>',
          f'<rect x="{x}" y="{ly}" width="{W}" height="{D_}" fill="{INK}"/>']
-    if D_ >= 25:
-        fs = min(D_ * 0.2, W * 0.06)
-        msg = "¡Hola! Tu casa te lo va a agradecer." if top else "Hecho para durar. Si llega roto, te enviamos otro."
-        t, _ = txt(x + W / 2, ly + D_ / 2 + fs * 0.35, msg, fs, W * 0.9, CREAM, 700, "middle"); s.append(t)
+    if top and D_ >= 20:
+        fs = min(D_ * 0.35, W * 0.12)
+        s.append(f'<text x="{x + W/2:.1f}" y="{ly + D_/2 + fs*0.35:.1f}" font-family="DM Sans, Arial" font-size="{fs:.1f}" font-weight="900" fill="#FFC845" text-anchor="middle">¡Hola! 👋</text>')
     return "".join(s)
 
 def dust(x, y, D_, up):
@@ -189,13 +169,13 @@ def pegatina():
 
 def tarjeta():
     W, H = 148, 105  # A6 apaisado
-    t1, y1 = txt(12, 46, "¡Gracias por tu pedido!", 10, W - 24, INK, 800)
-    t2, _ = txt(12, y1 + 10, "Instálalo con calma: limpia, pega, presiona 30 s y espera 24 h. Si algo no va bien, escríbenos y lo solucionamos.", 5, W - 24, INK, 500)
-    t3, _ = txt(12, 91, "¿Te gusta? Pásale a un amigo el código BIENVENIDA10: -10 % en su primer pedido desde 25\u00a0€.", 4.4, W - 24, "#fff", 700)
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W*S*2}" height="{H*S*2}">
-<rect width="{W}" height="{H}" fill="{CREAM}"/><rect width="{W}" height="30" fill="{INK}"/>{logo(12, 7, 60, white=True)}
-<circle cx="{W-18}" cy="15" r="9" fill="{ORANGE}"/>{iso(W-22.5, 8, 14, "#FFFFFF")}
-{t1}{t2}<rect x="0" y="{H-22}" width="{W}" height="22" fill="{ORANGE}"/>{t3}</svg>'''
+<defs><linearGradient id="gt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF9A3D"/><stop offset="1" stop-color="#FF4D6D"/></linearGradient></defs>
+<rect width="{W}" height="{H}" fill="url(#gt)"/>{pattern(0, 0, W, H, "t")}
+<circle cx="{W-10}" cy="12" r="34" fill="#fff" opacity=".12"/>
+{logo(W/2 - 45, 22, 90, white=True)}
+<text x="{W/2}" y="72" font-family="DM Sans, Arial" font-size="13" font-weight="900" fill="#fff" text-anchor="middle">¡Gracias! 🧡</text>
+<text x="{W/2}" y="86" font-family="DM Sans, Arial" font-size="6" font-weight="700" fill="#FFF3C4" text-anchor="middle">Tu casa, sin taladrar.</text></svg>'''
 
 if __name__ == "__main__":
     out = os.path.join(D, "cajas"); os.makedirs(out, exist_ok=True)
