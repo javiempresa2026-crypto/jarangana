@@ -1,0 +1,24 @@
+{%- comment -%}
+  Barra de envío gratis + recordatorio del código de bienvenida. Se re-renderiza con el carrito.
+{%- endcomment -%}
+{%- liquid
+  assign umbral = 3500
+  assign total = cart.total_price
+  assign falta = umbral | minus: total
+  assign pct = total | times: 100 | divided_by: umbral
+  if pct > 100
+    assign pct = 100
+  endif
+-%}
+<div class="jd-cb" role="status">
+  {%- if falta > 0 -%}
+    <p class="jd-cb__t">🚚 Te faltan <b>{{ falta | money }}</b> para el <b>envío GRATIS</b></p>
+  {%- else -%}
+    <p class="jd-cb__t jd-cb__t--ok">🎉 ¡Genial! Tienes <b>envío GRATIS</b></p>
+  {%- endif -%}
+  <div class="jd-cb__bar" aria-hidden="true"><span style="width: {{ pct }}%"></span><i style="left: calc({{ pct }}% - 14px)">🚚</i></div>
+  {%- assign codes = cart.cart_level_discount_applications | map: 'title' | join: ',' -%}
+  {%- unless codes contains 'BIENVENIDA10' -%}
+    <p class="jd-cb__code">🎁 ¿Primera compra? Usa <button type="button" class="jd-cb__copy" data-code="BIENVENIDA10" onclick="navigator.clipboard&&navigator.clipboard.writeText('BIENVENIDA10');this.classList.add('is-ok');this.textContent='¡Copiado!'">BIENVENIDA10</button> en el pago y ahorra un 10 %{% if total < 2500 %} (desde 25 €){% endif %}.</p>
+  {%- endunless -%}
+</div>

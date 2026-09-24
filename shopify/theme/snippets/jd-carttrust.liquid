@@ -1,0 +1,8 @@
+<div class="jd-ct">
+  <ul class="jd-ct__row">
+    <li>🔒 Pago seguro</li><li>🚚 Con seguimiento</li><li>↩️ 14 días para devolver</li>
+  </ul>
+  {%- if shop.enabled_payment_types.size > 0 -%}
+    <div class="jd-ct__pay">{%- for t in shop.enabled_payment_types -%}{{ t | payment_type_svg_tag: class: 'jd-ct__icon' }}{%- endfor -%}</div>
+  {%- endif -%}
+</div>
