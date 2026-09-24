@@ -510,9 +510,9 @@ body.jd-ck-open .jd-sticky{display:none}
 .jd-ce__promo{font-size:.8rem;background:#F5EFE4;border-radius:12px;padding:10px 12px;margin:0}
 @media (prefers-reduced-motion:reduce){.jd-ce__blob{animation:none}}
 /* Página "Próximamente" (contraseña) */
-.jd-pw{position:relative;isolation:isolate;min-height:88vh;display:grid;place-items:center;padding:40px 16px;background:radial-gradient(circle at 15% 10%,#FFC845 0,transparent 35%),radial-gradient(circle at 90% 85%,#FF4D8D 0,transparent 35%),var(--jd-orange);overflow:hidden}
+.jd-pw{position:relative;isolation:isolate;min-height:88vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:40px 16px;background:radial-gradient(circle at 15% 10%,#FFC845 0,transparent 35%),radial-gradient(circle at 90% 85%,#FF4D8D 0,transparent 35%),var(--jd-orange);overflow:hidden}
 .jd-pw .jd-pat--azulejo{background-image:linear-gradient(rgba(255,255,255,.14) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.14) 2px,transparent 2px)}
-.jd-pw__box{max-width:640px;width:100%;text-align:center;color:#fff}
+.jd-pw__box{max-width:640px;width:100%;min-width:0;text-align:center;color:#fff}
 .jd-pw__logo img{max-width:min(320px,70vw);height:auto;margin:0 auto 18px}
 .jd-pw__logo span{font-size:2.6rem;font-weight:900}
 .jd-pw .jd-sticker{background:var(--jd-ink);margin:0 0 10px}
@@ -544,3 +544,4 @@ body.jd-ck-open .jd-sticky{display:none}
 .quick-add__button,.product-card .add-to-cart-button{border-radius:99px!important;font-weight:900!important}
 /* Cantidad */
 .quantity-selector,cart-quantity-selector-component{border-radius:99px!important;border:2px solid var(--jd-ink)!important}
+@media (max-width:480px){.jd-pw__form button{flex:1 1 100%}}
