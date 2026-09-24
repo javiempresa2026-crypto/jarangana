@@ -416,3 +416,47 @@ body.jd-ck-open .jd-sticky{display:none}
 .menu-drawer__menu-item--mainlist[aria-current="page"]:after{color:#fff}
 .menu-drawer__navigation:after{content:"🎁 -10 % con BIENVENIDA10\A🚚 Envío GRATIS desde 35 €";white-space:pre-line;display:block;margin:14px 14px 18px;padding:16px 18px;border-radius:18px;background:linear-gradient(135deg,#19C2B0,#0E7490);color:#fff;font-weight:800;line-height:1.6;box-shadow:0 10px 24px rgba(14,116,144,.3)}
 .menu-drawer__utility-links{margin:0 14px;padding:14px 18px;border-radius:18px;background:#fff;border:2px dashed #EADFCB}
+/* ===== pie de página ===== */
+.jd-ft{color:#FFF8EE;background:radial-gradient(circle at 90% 10%,rgba(255,107,44,.28) 0,transparent 35%),radial-gradient(circle at 5% 90%,rgba(25,194,176,.25) 0,transparent 40%),var(--jd-ink);position:relative}
+.jd-ft *{box-sizing:border-box}
+.jd-ft a{color:inherit}
+.jd-ft__wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+.jd-ft__trust{background:linear-gradient(90deg,#FF9A3D,#FF4D6D);color:#fff;padding:18px 0}
+.jd-ft__trustgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.jd-ft__trustgrid>div{display:flex;align-items:center;gap:12px}
+.jd-ft__trustgrid svg{flex:none;width:44px;height:44px;padding:9px;border-radius:14px;background:rgba(255,255,255,.2)}
+.jd-ft__trustgrid span{display:flex;flex-direction:column;font-size:.85rem;line-height:1.3}.jd-ft__trustgrid b{font-size:1rem}
+.jd-ft__main{padding:clamp(36px,5vw,64px) 0 28px;background-image:linear-gradient(rgba(255,255,255,.035) 1.5px,transparent 1.5px),linear-gradient(90deg,rgba(255,255,255,.035) 1.5px,transparent 1.5px);background-size:46px 46px}
+.jd-ft__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.5fr;gap:28px;align-items:start}
+.jd-ft__logo img{width:170px;height:auto;display:block}.jd-ft__logo span{font-weight:900;font-size:1.8rem}
+.jd-ft__brand p{margin:14px 0;opacity:.85;line-height:1.55;font-size:.95rem}
+.jd-ft__mail{display:flex;align-items:center;gap:8px;margin-top:8px;font-weight:700;font-size:.9rem;text-decoration:none;word-break:break-all}
+.jd-ft__mail svg{flex:none;color:#FFC845}
+.jd-ft__col summary{list-style:none;font-weight:900;font-size:1.05rem;margin-bottom:12px;color:#FFC845;cursor:default}
+.jd-ft__col summary::-webkit-details-marker{display:none}
+.jd-ft__col ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.jd-ft__col a{text-decoration:none;opacity:.88;font-size:.95rem;transition:opacity .15s,transform .15s;display:inline-block}
+.jd-ft__col a:hover{opacity:1;transform:translateX(3px);color:#FFC845}
+.jd-ft__news{background:linear-gradient(135deg,#FF8A3D,#FF4D6D);border-radius:22px;padding:22px;box-shadow:0 16px 40px rgba(0,0,0,.25)}
+.jd-ft__newst{margin:0 0 6px;font-weight:900;font-size:1.2rem}
+.jd-ft__news p{margin:0 0 12px;line-height:1.5;font-size:.92rem}
+.jd-ft__form{display:grid;gap:8px}
+.jd-ft__form input[type=email]{width:100%;min-height:48px;border-radius:999px;border:0;padding:0 18px;font:inherit;color:var(--jd-ink)}
+.jd-ft__form button{min-height:48px;border-radius:999px;border:0;background:var(--jd-ink);color:#fff;font:inherit;font-weight:900;cursor:pointer}
+.jd-ft__form button:hover{background:#000}
+.jd-ft__ok{background:rgba(255,255,255,.2);padding:10px 12px;border-radius:12px}.jd-ft__err{color:#FFF3C4}
+.jd-ft__small{font-size:.75rem!important;opacity:.85;margin:10px 0 0!important}
+.jd-ft__bottom{border-top:1px solid rgba(255,255,255,.12);padding:16px 0}
+.jd-ft__bottomrow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;font-size:.85rem}
+.jd-ft__bottomrow p{margin:0;opacity:.8}.jd-ft__bottomrow a{text-decoration:none;font-weight:700}
+.jd-ft__pay{display:flex;flex-wrap:wrap;gap:6px}.jd-ft__payicon{width:38px;height:auto;background:#fff;border-radius:5px}
+@media (max-width:1100px){.jd-ft__grid{grid-template-columns:1fr 1fr 1fr}.jd-ft__brand,.jd-ft__news{grid-column:span 3}.jd-ft__news{max-width:560px}}
+@media (max-width:749px){
+.jd-ft__trustgrid{grid-template-columns:1fr 1fr}
+.jd-ft__grid{grid-template-columns:1fr;gap:10px}.jd-ft__brand,.jd-ft__news{grid-column:auto}
+.jd-ft__col{border-bottom:1px solid rgba(255,255,255,.12);padding:4px 0}
+.jd-ft__col summary{cursor:pointer;display:flex;justify-content:space-between;margin:10px 0}
+.jd-ft__col summary:after{content:"+";font-size:1.4rem;line-height:1;color:#FFC845}.jd-ft__col[open] summary:after{content:"−"}
+.jd-ft__col ul{padding-bottom:12px}
+.jd-ft__news{margin-top:10px}.jd-ft__bottomrow{flex-direction:column;text-align:center}
+}

@@ -1,0 +1,88 @@
+{{ 'jarandana.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign m1 = section.settings.menu_1
+  assign m2 = section.settings.menu_2
+  assign m3 = section.settings.menu_3
+-%}
+<div class="jd-ft">
+  <div class="jd-ft__trust">
+    <div class="jd-ft__wrap jd-ft__trustgrid">
+      <div>{% render 'jd-icon', icon: 'drill', size: 26 %}<span><b>Sin taladro</b>Se pega al azulejo</span></div>
+      <div>{% render 'jd-icon', icon: 'truck', size: 26 %}<span><b>Envío gratis desde 35 €</b>Con seguimiento</span></div>
+      <div>{% render 'jd-icon', icon: 'return', size: 26 %}<span><b>14 días</b>para devolver</span></div>
+      <div>{% render 'jd-icon', icon: 'lock', size: 26 %}<span><b>Pago seguro</b>Cifrado por Shopify</span></div>
+    </div>
+  </div>
+
+  <div class="jd-ft__main">
+    <div class="jd-ft__wrap jd-ft__grid">
+      <div class="jd-ft__brand">
+        <a href="{{ routes.root_url }}" class="jd-ft__logo" aria-label="{{ shop.name | strip }}">
+          {%- if settings.logo_inverse != blank -%}{{ settings.logo_inverse | image_url: width: 440 | image_tag: alt: shop.name, loading: 'lazy' }}{%- else -%}<span>jarandana</span>{%- endif -%}
+        </a>
+        <p>{{ section.settings.about }}</p>
+        <a class="jd-ft__mail" href="mailto:{{ shop.email }}">{% render 'jd-icon', icon: 'mail', size: 18 %} {{ shop.email }}</a>
+        <a class="jd-ft__mail" href="/pages/contacto">{% render 'jd-icon', icon: 'chat', size: 18 %} Formulario de contacto · respuesta en 24 h</a>
+      </div>
+
+      {%- for menu in (1..3) -%}
+        {%- case menu -%}
+          {%- when 1 -%}{%- assign ml = m1 -%}{%- assign mt = section.settings.title_1 -%}
+          {%- when 2 -%}{%- assign ml = m2 -%}{%- assign mt = section.settings.title_2 -%}
+          {%- else -%}{%- assign ml = m3 -%}{%- assign mt = section.settings.title_3 -%}
+        {%- endcase -%}
+        {%- if ml != blank and ml.links.size > 0 -%}
+        <details class="jd-ft__col" open>
+          <summary>{{ mt }}</summary>
+          <ul>
+            {%- for l in ml.links -%}<li><a href="{{ l.url }}"{% if l.current %} aria-current="page"{% endif %}>{{ l.title }}</a></li>{%- endfor -%}
+          </ul>
+        </details>
+        {%- endif -%}
+      {%- endfor -%}
+
+      <div class="jd-ft__news">
+        <p class="jd-ft__newst">🎁 -10 % en tu primer pedido</p>
+        <p>Apúntate y recibe ideas de orden, novedades y ofertas. Sin spam.</p>
+        {%- form 'customer', id: 'jd-ft-news', class: 'jd-ft__form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          {%- if form.posted_successfully? -%}
+            <p class="jd-ft__ok">¡Hecho! Tu código es <b>BIENVENIDA10</b> (desde 25 €).</p>
+          {%- else -%}
+            <label class="visually-hidden" for="jd-ft-email">Email</label>
+            <input id="jd-ft-email" type="email" name="contact[email]" placeholder="tu@email.com" required autocomplete="email">
+            <button type="submit">Quiero mi -10 %</button>
+            {%- if form.errors -%}<p class="jd-ft__err">{{ form.errors | default_errors }}</p>{%- endif -%}
+          {%- endif -%}
+        {%- endform -%}
+        <p class="jd-ft__small">Al apuntarte aceptas la <a href="/pages/politica-de-privacidad">Política de privacidad</a>. Puedes darte de baja cuando quieras.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="jd-ft__bottom">
+    <div class="jd-ft__wrap jd-ft__bottomrow">
+      <p>© {{ 'now' | date: '%Y' }} jarandana · Tu casa, sin taladrar.</p>
+      {%- if shop.enabled_payment_types.size > 0 -%}
+      <div class="jd-ft__pay">{%- for t in shop.enabled_payment_types -%}{{ t | payment_type_svg_tag: class: 'jd-ft__payicon' }}{%- endfor -%}</div>
+      {%- endif -%}
+      <p><a href="/pages/politica-de-cookies#cookies">🍪 Configurar cookies</a></p>
+    </div>
+  </div>
+</div>
+<script>if (window.matchMedia("(max-width: 749px)").matches) document.querySelectorAll(".jd-ft__col").forEach(function (d) { d.open = false; });</script>
+{% schema %}
+{
+  "name": "jarandana · Pie",
+  "settings": [
+    {"type":"textarea","id":"about","label":"Texto de la marca","default":"Accesorios de baño y cocina que se instalan sin taladrar, aguantan la ducha y se vienen contigo cuando te mudas."},
+    {"type":"text","id":"title_1","label":"Título menú 1","default":"Tienda"},
+    {"type":"link_list","id":"menu_1","label":"Menú 1","default":"main-menu"},
+    {"type":"text","id":"title_2","label":"Título menú 2","default":"Ayuda"},
+    {"type":"link_list","id":"menu_2","label":"Menú 2","default":"footer"},
+    {"type":"text","id":"title_3","label":"Título menú 3","default":"Legal"},
+    {"type":"link_list","id":"menu_3","label":"Menú 3"}
+  ],
+  "presets": [{"name":"jarandana · Pie"}]
+}
+{% endschema %}

@@ -246,6 +246,8 @@ page_resenas = {"sections": {
   "reviews": sec("jd-reviews", {"bg": "pop", "filter_product": False, "form_open": True, "heading": "Lo que dicen [en casa]", "sticker": "Opiniones reales", "empty_title": "Todavía no hay reseñas publicadas", "empty_text": "¡Estrena el muro! Si ya has probado algo de jarandana, cuéntanos qué tal con el formulario de abajo."}),
   "offers": sec("jd-offers", {"bg": "white", "eyebrow": "Ofertas especiales", "heading": "Ahorra en [tu pedido]", "sticker": "¡Ofertón!", "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti."}, OFFERS),
 }, "order": ["hero", "reviews", "offers"]}
+fg = {"type": "footer", "name": "Pie", "sections": {"jd_footer": {"type": "jd-footer", "settings": {"title_1": "Tienda", "menu_1": "main-menu", "title_2": "Ayuda", "menu_2": "footer", "title_3": "Legal", "menu_3": "legal"}}}, "order": ["jd_footer"]}
+
 out = {"templates/index.json": index, "templates/page.resenas.json": page_resenas, "templates/collection.json": collection_t, "templates/page.json": page_default, "templates/page.faq.json": page_faq, "templates/page.nosotros.json": page_nos, "templates/page.legal.json": page_legal, "templates/page.como-se-instala.json": page_inst, "templates/product.json": prod, "sections/header-group.json": hg,
        "sections/footer-group.json": fg, "config/settings_data.json": st}
 os.makedirs(os.path.join(D, "build"), exist_ok=True)
