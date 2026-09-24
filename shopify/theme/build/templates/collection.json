@@ -1,0 +1,463 @@
+{
+  "sections": {
+    "hero": {
+      "type": "jd-pagehero",
+      "settings": {
+        "bg": "auto",
+        "show_products": true
+      },
+      "blocks": {
+        "b1": {
+          "type": "chip",
+          "settings": {
+            "icon": "drill",
+            "text": "Sin taladro"
+          }
+        },
+        "b2": {
+          "type": "chip",
+          "settings": {
+            "icon": "truck",
+            "text": "Envío con seguimiento"
+          }
+        },
+        "b3": {
+          "type": "chip",
+          "settings": {
+            "icon": "return",
+            "text": "14 días para devolver"
+          }
+        },
+        "b4": {
+          "type": "chip",
+          "settings": {
+            "icon": "lock",
+            "text": "Pago seguro"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "horizontal",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": false,
+            "show_filter_label": false,
+            "enable_sorting": true,
+            "enable_grid_density": true,
+            "padding-block-start": 8,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 8,
+            "facets_margin_right": 20
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 6,
+            "background_color": "#FFFFFF",
+            "border": "solid",
+            "border_width": 2,
+            "border_opacity": 100,
+            "border_color": "#EADFCB",
+            "border_radius": 20,
+            "padding-block-start": 10,
+            "padding-block-end": 14,
+            "padding-inline-start": 10,
+            "padding-inline-end": 10
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "square",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 14,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_4nY4eT": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 6,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_EzJzMm": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h5",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card-gallery",
+            "product_title_4nY4eT",
+            "price_EzJzMm"
+          ]
+        }
+      },
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "medium",
+        "mobile_product_card_size": "small",
+        "product_grid_width": "centered",
+        "full_width_on_mobile": false,
+        "columns_gap_horizontal": 18,
+        "columns_gap_vertical": 22,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "background_color": "#FFF8EE",
+        "padding-block-start": 28,
+        "padding-block-end": 48
+      }
+    },
+    "marquee": {
+      "type": "jd-marquee",
+      "settings": {
+        "color": "ink",
+        "speed": 28
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "text": "Sin taladro"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "text": "Sin obras"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "text": "Envío con seguimiento"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "text": "14 días para devolver"
+          }
+        },
+        "b5": {
+          "type": "item",
+          "settings": {
+            "text": "Pago seguro"
+          }
+        },
+        "b6": {
+          "type": "item",
+          "settings": {
+            "text": "Listo en 1 minuto"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ]
+    },
+    "offers": {
+      "type": "jd-offers",
+      "settings": {
+        "bg": "pop",
+        "eyebrow": "Ofertas especiales",
+        "heading": "Ahorra en [tu pedido]",
+        "sticker": "¡Ofertón!",
+        "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti."
+      },
+      "blocks": {
+        "b1": {
+          "type": "offer",
+          "settings": {
+            "color": "orange",
+            "tag": "Automático",
+            "big": "-15 %",
+            "title": "En 5 favoritos de la casa",
+            "text": "<p>Balda, Kit Fregadero, Grifo 1080°, Alcachofa 5 chorros y Dispensador de pasta. Sin código.</p>",
+            "btn_label": "Ver las ofertas",
+            "btn_link": "shopify://collections/ofertas"
+          }
+        },
+        "b2": {
+          "type": "offer",
+          "settings": {
+            "color": "teal",
+            "tag": "Pack x2",
+            "big": "Ahorra 5,90 €",
+            "title": "2 Grifos 1080° por 19,90 €",
+            "text": "<p>En vez de 25,80 € comprando 2 sueltos. Uno para la cocina y otro para el baño.</p>",
+            "btn_label": "Elegir el pack",
+            "btn_link": "shopify://products/grifo-giratorio-1080"
+          }
+        },
+        "b3": {
+          "type": "offer",
+          "settings": {
+            "color": "pink",
+            "tag": "Pack x2",
+            "big": "Ahorra 4,90 €",
+            "title": "2 Luces LED por 44,90 €",
+            "text": "<p>En vez de 49,80 € sueltas. Se encienden solas al pasar: pasillo, armario o escalera.</p>",
+            "btn_label": "Elegir el pack",
+            "btn_link": "shopify://products/luz-led-sensor-movimiento"
+          }
+        },
+        "b4": {
+          "type": "offer",
+          "settings": {
+            "color": "sun",
+            "tag": "Primer pedido",
+            "big": "-10 %",
+            "title": "Bienvenida a jarandana",
+            "text": "<p>En pedidos desde 25 €. Copia el código y pégalo al pagar.</p>",
+            "code": "BIENVENIDA10",
+            "btn_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "benefits": {
+      "type": "jd-benefits",
+      "settings": {
+        "bg": "orange",
+        "eyebrow": "Por qué jarandana",
+        "heading": "Orden en casa, [sin pedir permiso] al casero",
+        "sticker": "Ideal alquiler"
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "icon": "drill",
+            "title": "Cero agujeros",
+            "text": "Se fija con adhesivo sobre azulejo, cristal o metal. Ni taladro ni tacos."
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "icon": "home",
+            "title": "Ideal si vives de alquiler",
+            "text": "Al mudarte, lo despegas con un secador y te lo llevas."
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "icon": "drop",
+            "title": "Hecho para la ducha",
+            "text": "Aluminio, acero inoxidable y silicona: materiales que no temen al agua."
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "title": "Si llega roto, lo cambiamos",
+            "text": "Mándanos una foto y te enviamos otro o te devolvemos el dinero."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "steps": {
+      "type": "jd-steps",
+      "settings": {
+        "bg": "teal",
+        "eyebrow": "Cómo se instala",
+        "heading": "Listo en [1 minuto]. Sin herramientas.",
+        "sticker": "Sin taladro",
+        "show_surfaces": true,
+        "btn2_label": "Ver la guía completa",
+        "btn2_link": "shopify://pages/como-se-instala"
+      },
+      "blocks": {
+        "b1": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyLzU2NjRmZGZmLTkyODgtNDM1OC04MjRiLWRjMzY4OGZiODNiYy5wbmc.png",
+            "icon": "drop",
+            "time": "1 min",
+            "title": "Limpia y seca",
+            "text": "Pasa alcohol por el azulejo y sécalo bien. Sin grasa ni restos de jabón: es el secreto del agarre."
+          }
+        },
+        "b2": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyL2RiM2VhNTk5LWQ2YzQtNDEwMi1iYjQwLWY5ODVmZDM3MjlhNC5wbmc.png",
+            "icon": "check",
+            "time": "30 s",
+            "title": "Pega y presiona",
+            "text": "Coloca el soporte donde quieras y presiona con fuerza durante 30 segundos. Ni taladro ni tacos."
+          }
+        },
+        "b3": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTE0LzJlMmRlNzhiLWYyZDctNGRiZS1hYmMxLTIwY2UyMzdkMDZmMy5wbmc.png",
+            "icon": "clock",
+            "time": "24 h",
+            "title": "Espera y disfruta",
+            "text": "Deja que el adhesivo agarre 24 horas antes de mojarlo o cargarlo. Después, a disfrutar de tu ducha en orden."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "reviews": {
+      "type": "jd-reviews",
+      "settings": {
+        "bg": "pop",
+        "filter_product": false,
+        "heading": "Lo que dicen [en casa]",
+        "sticker": "Opiniones reales"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "faq": {
+      "type": "jd-faq",
+      "settings": {
+        "bg": "white",
+        "heading": "Preguntas [frecuentes]",
+        "open_first": true,
+        "link_label": "Ver todas las preguntas",
+        "link": "shopify://pages/preguntas-frecuentes"
+      },
+      "blocks": {
+        "b1": {
+          "type": "qa",
+          "settings": {
+            "q": "¿De verdad no hay que taladrar?",
+            "a": "<p>No. Nuestras baldas y ganchos se fijan con adhesivo sobre superficies lisas: azulejo, cristal o metal.</p>"
+          }
+        },
+        "b2": {
+          "type": "qa",
+          "settings": {
+            "q": "¿En qué superficies NO funcionan?",
+            "a": "<p>Gotelé, pintura, madera sin lacar, papel pintado y juntas de azulejo. Necesitan una superficie lisa y no porosa.</p>"
+          }
+        },
+        "b3": {
+          "type": "qa",
+          "settings": {
+            "q": "¿Y si me mudo?",
+            "a": "<p>Calienta el adhesivo con un secador unos segundos y despega despacio. Para volver a colocarlo usa nuestro <a href=\"/products/recambio-adhesivos\">Recambio de Adhesivos</a>.</p>"
+          }
+        },
+        "b4": {
+          "type": "qa",
+          "settings": {
+            "q": "¿Cuánto tarda el envío?",
+            "a": "<p>El plazo estimado es de 7 a 15 días laborables. Te enviamos el número de seguimiento por email. Más info en <a href=\"/pages/envios\">Envíos</a>.</p>"
+          }
+        },
+        "b5": {
+          "type": "qa",
+          "settings": {
+            "q": "¿Puedo devolverlo?",
+            "a": "<p>Sí: tienes 14 días desde que lo recibes. Si llega roto o con un defecto, mándanos una foto y te enviamos otro o te devolvemos el dinero. Más info en <a href=\"/pages/devoluciones\">Devoluciones</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "main",
+    "marquee",
+    "offers",
+    "benefits",
+    "steps",
+    "reviews",
+    "faq"
+  ]
+}

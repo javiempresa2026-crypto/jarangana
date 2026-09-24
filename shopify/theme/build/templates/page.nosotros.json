@@ -1,0 +1,176 @@
+{
+  "sections": {
+    "hero": {
+      "type": "jd-pagehero",
+      "settings": {
+        "bg": "orange",
+        "image": "shopify://shop_images/EMXN1y8qngEKBnVwbG9hZBIOeWxhYi1zdHVudC1zZ3AagwFLbGluZ0FJX0tvbG9yc19EaVRfSDgwMF8xX0tvbG9ycy12Ml82LXQyaS1vbW5pLXJlZmluZXItdjNfU0dQX1BST0RfYWlfd2ViXzMyMjE3MDM4NTY2MDQwMl81OGQ0MjJiNDI3Yjd.png",
+        "sticker": "Hola 👋",
+        "heading": "Somos [jarandana]",
+        "eyebrow": "Nuestra historia",
+        "text": "<p>Una marca pequeña para casas de alquiler, pisos compartidos y gente que no quiere obras.</p>",
+        "btn_label": "Ver los productos",
+        "btn_link": "shopify://collections/todo-jarandana"
+      },
+      "blocks": {
+        "b1": {
+          "type": "chip",
+          "settings": {
+            "icon": "drill",
+            "text": "Sin taladro"
+          }
+        },
+        "b2": {
+          "type": "chip",
+          "settings": {
+            "icon": "truck",
+            "text": "Envío con seguimiento"
+          }
+        },
+        "b3": {
+          "type": "chip",
+          "settings": {
+            "icon": "return",
+            "text": "14 días para devolver"
+          }
+        },
+        "b4": {
+          "type": "chip",
+          "settings": {
+            "icon": "lock",
+            "text": "Pago seguro"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "content": {
+      "type": "jd-page",
+      "settings": {
+        "mode": "article",
+        "sidebar": true,
+        "bg": "pop"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "benefits": {
+      "type": "jd-benefits",
+      "settings": {
+        "bg": "teal",
+        "eyebrow": "Lo que nos importa",
+        "heading": "Orden en casa, [sin pedir permiso]",
+        "sticker": "Nuestros valores"
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "icon": "drill",
+            "title": "Cero agujeros",
+            "text": "Se fija con adhesivo sobre azulejo, cristal o metal. Ni taladro ni tacos."
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "icon": "home",
+            "title": "Ideal si vives de alquiler",
+            "text": "Al mudarte, lo despegas con un secador y te lo llevas."
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "icon": "drop",
+            "title": "Hecho para la ducha",
+            "text": "Aluminio, acero inoxidable y silicona: materiales que no temen al agua."
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "title": "Si llega roto, lo cambiamos",
+            "text": "Mándanos una foto y te enviamos otro o te devolvemos el dinero."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "marquee": {
+      "type": "jd-marquee",
+      "settings": {
+        "color": "orange",
+        "speed": 32
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "text": "-15 % en 5 favoritos"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "text": "Packs x2 con descuento"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "text": "BIENVENIDA10: -10 % en tu primer pedido"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "text": "Si llega roto, te enviamos otro"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "reviews": {
+      "type": "jd-reviews",
+      "settings": {
+        "bg": "pop",
+        "filter_product": false,
+        "heading": "Lo que dicen [en casa]",
+        "sticker": "Opiniones reales"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "contact": {
+      "type": "jd-contact",
+      "settings": {},
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": [
+    "hero",
+    "content",
+    "benefits",
+    "marquee",
+    "reviews",
+    "contact"
+  ]
+}

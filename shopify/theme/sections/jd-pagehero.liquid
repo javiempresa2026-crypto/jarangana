@@ -1,0 +1,114 @@
+{%- comment -%}
+  Cabecera llamativa para colecciones y páginas: fondo de color, ruta, título resaltado, fichas de ventajas
+  y, en colecciones, 3 fotos de productos. Todo automático: toma el título y la descripción de la colección o página.
+{%- endcomment -%}
+{%- liquid
+  assign bg = section.settings.bg
+  assign handle = collection.handle | default: page.handle
+  if bg == 'auto'
+    case handle
+      when 'ofertas'
+        assign bg = 'orange'
+      when 'novedades', 'devoluciones'
+        assign bg = 'pink'
+      when 'ducha', 'preguntas-frecuentes', 'envios', 'como-se-instala'
+        assign bg = 'teal'
+      when 'fregadero', 'contacto', 'contact'
+        assign bg = 'sun'
+      when 'aviso-legal', 'politica-de-privacidad', 'condiciones-de-venta', 'politica-de-cookies'
+        assign bg = 'ink'
+      when 'nosotros'
+        assign bg = 'orange'
+      else
+        assign bg = 'pop'
+    endcase
+  endif
+  assign title = section.settings.heading
+  if title == blank
+    if collection
+      assign title = '[' | append: collection.title | append: ']'
+    elsif page
+      assign title = '[' | append: page.title | append: ']'
+    else
+      assign title = '[' | append: page_title | append: ']'
+    endif
+  endif
+-%}
+{{ 'jarandana.css' | asset_url | stylesheet_tag }}
+<section class="jd jd--{{ bg }} jd-ph{% if collection and collection.products_count > 0 %} jd-ph--coll{% endif %}">
+  {%- render 'jd-bg', s: section -%}
+  <div class="jd__wrap jd-ph__grid">
+    <div class="jd-ph__txt">
+      <nav class="jd-ph__crumbs" aria-label="Ruta">
+        <a href="{{ routes.root_url }}">Inicio</a><span aria-hidden="true">›</span>
+        {%- if collection -%}<a href="{{ routes.collections_url }}">Tienda</a><span aria-hidden="true">›</span>{%- endif -%}
+        <span aria-current="page">{{ collection.title | default: page.title | default: page_title }}</span>
+      </nav>
+      <p class="jd__eyebrow">
+        {%- if section.settings.eyebrow != blank -%}{{ section.settings.eyebrow }}
+        {%- elsif collection -%}{{ collection.products_count }} {% if collection.products_count == 1 %}producto{% else %}productos{% endif %} sin taladrar
+        {%- else -%}jarandana · Tu casa, sin taladrar{%- endif -%}
+      </p>
+      {%- if section.settings.sticker != blank -%}<span class="jd-sticker">{{ section.settings.sticker | escape }}</span>{%- endif -%}
+      <h1 class="jd__h jd__h--xl jd-ph__h">{% render 'jd-hl', t: title %}</h1>
+      {%- if section.settings.text != blank -%}
+        <div class="jd__lead">{{ section.settings.text }}</div>
+      {%- elsif collection and collection.description != blank -%}
+        <div class="jd__lead">{{ collection.description }}</div>
+      {%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+      <ul class="jd-ph__chips">
+        {%- for b in section.blocks -%}<li {{ b.shopify_attributes }}>{% render 'jd-icon', icon: b.settings.icon, size: 18 %}<span>{{ b.settings.text }}</span></li>{%- endfor -%}
+      </ul>
+      {%- endif -%}
+      {%- if collection -%}
+      <div class="jd__btns"><a class="jd__btn" href="#jd-ph-end">Ver los productos ↓</a></div>
+      {%- elsif section.settings.btn_label != blank -%}
+      <div class="jd__btns"><a class="jd__btn" href="{{ section.settings.btn_link | default: routes.all_products_collection_url }}">{{ section.settings.btn_label }}</a></div>
+      {%- endif -%}
+    </div>
+    {%- if collection and collection.products_count > 0 and section.settings.show_products -%}
+    <div class="jd-ph__tiles" aria-hidden="true">
+      {%- for p in collection.products limit: 3 -%}
+        <a class="jd-ph__tile" href="{{ p.url }}" tabindex="-1">
+          {%- if p.featured_image -%}{{ p.featured_image | image_url: width: 500 | image_tag: loading: 'eager', alt: '', sizes: '(min-width: 990px) 15vw, 30vw', widths: '250,400,500' }}{%- endif -%}
+          <span class="jd-ph__price">{{ p.price | money }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+    {%- elsif section.settings.image != blank -%}
+    <div class="jd-ph__media">{{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'eager', class: 'jd__img', sizes: '(min-width: 990px) 45vw, 100vw', widths: '500,800,1200' }}</div>
+    {%- elsif section.settings.emoji != blank -%}
+    <div class="jd-ph__emoji" aria-hidden="true"><span>{{ section.settings.emoji }}</span></div>
+    {%- endif -%}
+  </div>
+</section>
+<div id="jd-ph-end"></div>
+{% schema %}
+{
+  "name": "jarandana · Cabecera página",
+  "settings": [
+    {"type":"select","id":"bg","label":"Fondo","default":"auto","options":[{"value":"auto","label":"Automático según la página"},{"value":"pop","label":"Pop"},{"value":"orange","label":"Naranja"},{"value":"teal","label":"Turquesa"},{"value":"sun","label":"Amarillo"},{"value":"pink","label":"Rosa"},{"value":"ink","label":"Tinta"},{"value":"cream","label":"Crema"}]},
+    {"type":"text","id":"eyebrow","label":"Antetítulo (vacío = automático)"},
+    {"type":"text","id":"heading","label":"Título (vacío = el de la página). Usa [corchetes] para resaltar"},
+    {"type":"richtext","id":"text","label":"Texto (vacío = descripción de la colección)"},
+    {"type":"text","id":"sticker","label":"Pegatina"},
+    {"type":"checkbox","id":"show_products","label":"En colecciones, mostrar 3 fotos de productos","default":true},
+    {"type":"image_picker","id":"image","label":"Imagen (páginas)"},
+    {"type":"text","id":"emoji","label":"Emoji grande si no hay imagen","default":"🏠"},
+    {"type":"text","id":"btn_label","label":"Botón (páginas)"},
+    {"type":"url","id":"btn_link","label":"Enlace del botón"},
+    {"type":"header","content":"Decoración"},
+    {"type":"image_picker","id":"bg_image","label":"Imagen de fondo (con velo de color)"},
+    {"type":"select","id":"pattern","label":"Dibujo de fondo","default":"auto","options":[{"value":"auto","label":"Automático"},{"value":"azulejo","label":"Azulejo"},{"value":"dots","label":"Lunares"},{"value":"bubbles","label":"Burbujas"},{"value":"stripes","label":"Rayas"},{"value":"none","label":"Ninguno"}]}
+  ],
+  "blocks": [
+    {"type":"chip","name":"Ficha","settings":[
+      {"type":"select","id":"icon","label":"Icono","default":"check","options":[{"value":"check","label":"Check"},{"value":"drill","label":"Sin taladro"},{"value":"truck","label":"Envío"},{"value":"return","label":"Devolución"},{"value":"lock","label":"Pago seguro"},{"value":"shield","label":"Garantía"},{"value":"mail","label":"Email"},{"value":"clock","label":"Reloj"}]},
+      {"type":"text","id":"text","label":"Texto","default":"Sin taladro"}
+    ]}
+  ],
+  "max_blocks": 5,
+  "presets": [{"name":"jarandana · Cabecera página"}]
+}
+{% endschema %}

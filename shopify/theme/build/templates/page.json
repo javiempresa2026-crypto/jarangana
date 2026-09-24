@@ -1,0 +1,110 @@
+{
+  "sections": {
+    "hero": {
+      "type": "jd-pagehero",
+      "settings": {
+        "bg": "auto",
+        "emoji": "📦",
+        "text": "<p>Todo lo que necesitas saber, claro y sin letra pequeña.</p>"
+      },
+      "blocks": {
+        "b1": {
+          "type": "chip",
+          "settings": {
+            "icon": "drill",
+            "text": "Sin taladro"
+          }
+        },
+        "b2": {
+          "type": "chip",
+          "settings": {
+            "icon": "truck",
+            "text": "Envío con seguimiento"
+          }
+        },
+        "b3": {
+          "type": "chip",
+          "settings": {
+            "icon": "return",
+            "text": "14 días para devolver"
+          }
+        },
+        "b4": {
+          "type": "chip",
+          "settings": {
+            "icon": "lock",
+            "text": "Pago seguro"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "content": {
+      "type": "jd-page",
+      "settings": {
+        "mode": "cards",
+        "columns": "2",
+        "sidebar": true,
+        "bg": "pop"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "marquee": {
+      "type": "jd-marquee",
+      "settings": {
+        "color": "orange",
+        "speed": 32
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "text": "-15 % en 5 favoritos"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "text": "Packs x2 con descuento"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "text": "BIENVENIDA10: -10 % en tu primer pedido"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "text": "Si llega roto, te enviamos otro"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "contact": {
+      "type": "jd-contact",
+      "settings": {},
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": [
+    "hero",
+    "content",
+    "marquee",
+    "contact"
+  ]
+}

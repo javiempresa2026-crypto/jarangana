@@ -1,0 +1,71 @@
+{
+  "sections": {
+    "hero": {
+      "type": "jd-pagehero",
+      "settings": {
+        "bg": "ink",
+        "emoji": "⚖️",
+        "eyebrow": "Información legal",
+        "text": "<p>Transparencia total: quiénes somos, cómo tratamos tus datos y cuáles son tus derechos.</p>"
+      },
+      "blocks": {
+        "b1": {
+          "type": "chip",
+          "settings": {
+            "icon": "drill",
+            "text": "Sin taladro"
+          }
+        },
+        "b2": {
+          "type": "chip",
+          "settings": {
+            "icon": "truck",
+            "text": "Envío con seguimiento"
+          }
+        },
+        "b3": {
+          "type": "chip",
+          "settings": {
+            "icon": "return",
+            "text": "14 días para devolver"
+          }
+        },
+        "b4": {
+          "type": "chip",
+          "settings": {
+            "icon": "lock",
+            "text": "Pago seguro"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "content": {
+      "type": "jd-page",
+      "settings": {
+        "mode": "cards",
+        "columns": "1",
+        "sidebar": true,
+        "bg": "cream"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "contact": {
+      "type": "jd-contact",
+      "settings": {},
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": [
+    "hero",
+    "content",
+    "contact"
+  ]
+}

@@ -172,7 +172,7 @@ u["settings"]["background_color"] = "#EADFCB"
 
 # --- ajustes globales
 st = json.load(open(os.path.join(D, "settings_data.json")))
-st["current"].update({"palette_primary_button_background": "#FF6B2C", "palette_primary_button_border": "#FF6B2C", "badge_sale_background_color": "#FF4D6D", "logo": si("logo"), "logo_inverse": si("logo_w"), "favicon": si("fav"), "logo_height": 44, "logo_height_mobile": 34})
+st["current"].update({"palette_primary_button_background": "#FF6B2C", "palette_primary_button_border": "#FF6B2C", "badge_sale_background_color": "#FF4D6D", "logo": si("logo"), "logo_inverse": si("logo_w"), "favicon": si("fav"), "logo_height": 44, "logo_height_mobile": 34, "quick_add": True, "mobile_quick_add": True, "quick_add_background": "#FF6B2C", "quick_add_text": "#FFFFFF", "card_corner_radius": 20})
 
 # --- página "Cómo se instala"
 FAQ_INST = [
@@ -191,7 +191,54 @@ page_inst = {"sections": {
  "contact": sec("jd-contact", {}),
 }, "order": ["banner", "steps", "video", "faq", "offers", "contact"]}
 
-out = {"templates/index.json": index, "templates/page.como-se-instala.json": page_inst, "templates/product.json": prod, "sections/header-group.json": hg,
+# --- páginas interiores (v7)
+CHIPS = [("chip", {"icon": "drill", "text": "Sin taladro"}), ("chip", {"icon": "truck", "text": "Envío con seguimiento"}),
+         ("chip", {"icon": "return", "text": "14 días para devolver"}), ("chip", {"icon": "lock", "text": "Pago seguro"})]
+Zp = {"padding-block-start": 0, "padding-block-end": 0, "padding-inline-start": 0, "padding-inline-end": 0}
+def txtb(text, preset, fs="1rem", **kw):
+    d = {"width": "100%", "max_width": "normal", "alignment": "left", "type_preset": preset, "font": "var(--font-body--family)", "font_size": fs,
+         "line_height": "normal", "letter_spacing": "normal", "case": "none", "wrap": "pretty", "background": False, "background_color": "#00000026", "corner_radius": 0, **Zp}
+    d.update(kw); return d
+main_coll = {"type": "main-collection", "blocks": {
+  "filters": {"type": "filters", "static": True, "settings": {"enable_filtering": True, "filter_style": "horizontal", "filter_width": "centered", "text_label_case": "default", "show_swatch_label": False, "show_filter_label": False, "enable_sorting": True, "enable_grid_density": True, "padding-block-start": 8, "padding-block-end": 8, "padding-inline-start": 0, "padding-inline-end": 0, "facets_margin_bottom": 8, "facets_margin_right": 20}, "blocks": {}},
+  "product-card": {"type": "_product-card", "static": True, "settings": {"product_card_gap": 6, "background_color": "#FFFFFF", "border": "solid", "border_width": 2, "border_opacity": 100, "border_color": "#EADFCB", "border_radius": 20, "padding-block-start": 10, "padding-block-end": 14, "padding-inline-start": 10, "padding-inline-end": 10},
+    "blocks": {
+      "card-gallery": {"type": "_product-card-gallery", "settings": {"image_ratio": "square", "border": "none", "border_width": 1, "border_opacity": 100, "border_radius": 14, **Zp}, "blocks": {}},
+      "product_title_4nY4eT": {"type": "product-title", "name": "t:names.product_title", "settings": txtb("", "rte", padding_fix=None) , "blocks": {}},
+      "price_EzJzMm": {"type": "price", "settings": {"show_sale_price_first": True, "show_installments": False, "show_tax_info": False, "type_preset": "h5", "width": "100%", "alignment": "left", "font": "var(--font-body--family)", "font_size": "1rem", "line_height": "normal", "letter_spacing": "normal", "case": "none", **Zp}, "blocks": {}}},
+    "block_order": ["card-gallery", "product_title_4nY4eT", "price_EzJzMm"]}},
+  "settings": {"layout_type": "grid", "product_card_size": "medium", "mobile_product_card_size": "small", "product_grid_width": "centered", "full_width_on_mobile": False, "columns_gap_horizontal": 18, "columns_gap_vertical": 22, "padding-inline-start": 0, "padding-inline-end": 0, "background_color": "#FFF8EE", "padding-block-start": 28, "padding-block-end": 48}}
+pt = main_coll["blocks"]["product-card"]["blocks"]["product_title_4nY4eT"]["settings"]
+pt.pop("padding_fix", None); pt.pop("text", None); pt.update({"padding-block-start": 6})
+collection_t = {"sections": {
+  "hero": sec("jd-pagehero", {"bg": "auto", "show_products": True}, CHIPS),
+  "main": main_coll,
+  "marquee": sec("jd-marquee", {"color": "ink", "speed": 28}, [("item", {"text": t}) for t in ["Sin taladro", "Sin obras", "Envío con seguimiento", "14 días para devolver", "Pago seguro", "Listo en 1 minuto"]]),
+  "offers": sec("jd-offers", {"bg": "pop", "eyebrow": "Ofertas especiales", "heading": "Ahorra en [tu pedido]", "sticker": "¡Ofertón!", "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti."}, OFFERS),
+  "benefits": sec("jd-benefits", {"bg": "orange", "eyebrow": "Por qué jarandana", "heading": "Orden en casa, [sin pedir permiso] al casero", "sticker": "Ideal alquiler"}, BENEFITS),
+  "steps": sec("jd-steps", {"bg": "teal", "eyebrow": "Cómo se instala", "heading": "Listo en [1 minuto]. Sin herramientas.", "sticker": "Sin taladro", "show_surfaces": True, "btn2_label": "Ver la guía completa", "btn2_link": "shopify://pages/como-se-instala"}, STEPS),
+  "reviews": sec("jd-reviews", {"bg": "pop", "filter_product": False, "heading": "Lo que dicen [en casa]", "sticker": "Opiniones reales"}),
+  "faq": sec("jd-faq", {"bg": "white", "heading": "Preguntas [frecuentes]", "open_first": True, "link_label": "Ver todas las preguntas", "link": "shopify://pages/preguntas-frecuentes"}, faq_blocks),
+}, "order": ["hero", "main", "marquee", "offers", "benefits", "steps", "reviews", "faq"]}
+
+def page_t(hero, content, extra=(), order_extra=()):
+    secs = {"hero": sec("jd-pagehero", hero, CHIPS), "content": sec("jd-page", content)}
+    for k, v in extra: secs[k] = v
+    return {"sections": secs, "order": ["hero", "content"] + [k for k, _ in extra]}
+MQ = ("marquee", sec("jd-marquee", {"color": "orange", "speed": 32}, [("item", {"text": t}) for t in ["-15 % en 5 favoritos", "Packs x2 con descuento", "BIENVENIDA10: -10 % en tu primer pedido", "Si llega roto, te enviamos otro"]]))
+CONTACT = ("contact", sec("jd-contact", {}))
+page_default = page_t({"bg": "auto", "emoji": "📦", "text": "<p>Todo lo que necesitas saber, claro y sin letra pequeña.</p>"}, {"mode": "cards", "columns": "2", "sidebar": True, "bg": "pop"}, [MQ, CONTACT])
+page_faq = page_t({"bg": "auto", "emoji": "🙋", "sticker": "Respuestas claras", "heading": "Preguntas [frecuentes]", "text": "<p>Lo que más nos preguntáis sobre instalación, envíos y devoluciones. ¿No está tu duda? Escríbenos.</p>"},
+                  {"mode": "faq", "sidebar": True, "bg": "pop"},
+                  [("steps", sec("jd-steps", {"bg": "teal", "eyebrow": "Cómo se instala", "heading": "Listo en [1 minuto]. Sin herramientas.", "sticker": "Sin taladro", "show_surfaces": True}, STEPS)), CONTACT])
+page_nos = page_t({"bg": "orange", "image": si("hero"), "sticker": "Hola 👋", "heading": "Somos [jarandana]", "eyebrow": "Nuestra historia", "text": "<p>Una marca pequeña para casas de alquiler, pisos compartidos y gente que no quiere obras.</p>", "btn_label": "Ver los productos", "btn_link": "shopify://collections/todo-jarandana"},
+                  {"mode": "article", "sidebar": True, "bg": "pop"},
+                  [("benefits", sec("jd-benefits", {"bg": "teal", "eyebrow": "Lo que nos importa", "heading": "Orden en casa, [sin pedir permiso]", "sticker": "Nuestros valores"}, BENEFITS)), MQ,
+                   ("reviews", sec("jd-reviews", {"bg": "pop", "filter_product": False, "heading": "Lo que dicen [en casa]", "sticker": "Opiniones reales"})), CONTACT])
+page_legal = page_t({"bg": "ink", "emoji": "⚖️", "eyebrow": "Información legal", "text": "<p>Transparencia total: quiénes somos, cómo tratamos tus datos y cuáles son tus derechos.</p>"},
+                    {"mode": "cards", "columns": "1", "sidebar": True, "bg": "cream"}, [CONTACT])
+
+out = {"templates/index.json": index, "templates/collection.json": collection_t, "templates/page.json": page_default, "templates/page.faq.json": page_faq, "templates/page.nosotros.json": page_nos, "templates/page.legal.json": page_legal, "templates/page.como-se-instala.json": page_inst, "templates/product.json": prod, "sections/header-group.json": hg,
        "sections/footer-group.json": fg, "config/settings_data.json": st}
 os.makedirs(os.path.join(D, "build"), exist_ok=True)
 for k, v in out.items():

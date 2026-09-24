@@ -1,0 +1,86 @@
+{%- comment -%}
+  Contenido de página en recuadros. Parte el texto de la página por sus subtítulos (h3):
+  - "cards": cada subtítulo es una tarjeta de color numerada.
+  - "faq": cada subtítulo es una pregunta desplegable.
+  - "article": texto corrido con estilo.
+  Con barra lateral opcional de ayuda, oferta y garantías.
+{%- endcomment -%}
+{%- liquid
+  assign content = page.content
+  assign parts = content | split: '<h3>'
+  assign intro = parts | first
+  assign mode = section.settings.mode
+-%}
+{{ 'jarandana.css' | asset_url | stylesheet_tag }}
+<section class="jd jd--{{ section.settings.bg }} jd-pg">
+  {%- render 'jd-bg', s: section -%}
+  <div class="jd__wrap jd-pg__grid{% unless section.settings.sidebar %} jd-pg__grid--full{% endunless %}">
+    <div class="jd-pg__main">
+      {%- if mode == 'article' or parts.size < 2 -%}
+        <div class="jd-pg__article jd-rte">{{ content }}</div>
+      {%- else -%}
+        {%- assign intro_text = intro | strip_html | strip -%}
+        {%- if intro_text != blank -%}<div class="jd-pg__intro jd-rte">{{ intro }}</div>{%- endif -%}
+        {%- if mode == 'faq' -%}
+          <div class="jd-faq jd-pg__faq">
+            {%- for part in parts offset: 1 -%}
+              {%- assign q = part | split: '</h3>' | first -%}
+              {%- assign a = part | remove_first: q | remove_first: '</h3>' -%}
+              <details{% if forloop.first %} open{% endif %}><summary>{{ q }}</summary><div class="jd-faq__a jd-rte">{{ a }}</div></details>
+            {%- endfor -%}
+          </div>
+        {%- else -%}
+          <div class="jd-cards jd-cards--{{ section.settings.columns }}">
+            {%- for part in parts offset: 1 -%}
+              {%- assign q = part | split: '</h3>' | first -%}
+              {%- assign a = part | remove_first: q | remove_first: '</h3>' -%}
+              {%- assign c = forloop.index0 | modulo: 4 -%}
+              <article class="jd-card2 jd-card2--{{ c }}">
+                <div class="jd-card2__head"><span class="jd-card2__n">{{ forloop.index }}</span><h3 class="jd-card2__t">{{ q }}</h3></div>
+                <div class="jd-card2__b jd-rte">{{ a }}</div>
+              </article>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+    {%- if section.settings.sidebar -%}
+    <aside class="jd-pg__side">
+      <div class="jd-side jd-side--help">
+        <p class="jd-side__t">{% render 'jd-icon', icon: 'chat', size: 22 %} ¿Te ayudamos?</p>
+        <p>Respondemos en 24 horas laborables. Cuéntanos qué necesitas.</p>
+        <a class="jd__btn" href="/pages/contacto">Escríbenos</a>
+        <a class="jd-side__mail" href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+      </div>
+      <div class="jd-side jd-side--offer">
+        <p class="jd-side__t">🎁 -10 % en tu primer pedido</p>
+        <p>En pedidos desde 25 €. Copia el código y pégalo al pagar.</p>
+        <button type="button" class="jd-offer__code" onclick="navigator.clipboard&&navigator.clipboard.writeText('BIENVENIDA10');this.classList.add('is-ok');this.querySelector('span').textContent='¡Copiado!';"><strong>BIENVENIDA10</strong><span>Copiar</span></button>
+      </div>
+      <ul class="jd-side jd-side--trust">
+        <li>{% render 'jd-icon', icon: 'drill', size: 20 %} Sin taladro ni obras</li>
+        <li>{% render 'jd-icon', icon: 'truck', size: 20 %} Envío con seguimiento</li>
+        <li>{% render 'jd-icon', icon: 'return', size: 20 %} 14 días para devolver</li>
+        <li>{% render 'jd-icon', icon: 'shield', size: 20 %} Garantía legal de 3 años</li>
+        <li>{% render 'jd-icon', icon: 'lock', size: 20 %} Pago 100 % seguro</li>
+      </ul>
+    </aside>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "jarandana · Contenido página",
+  "settings": [
+    {"type":"select","id":"mode","label":"Estilo","default":"cards","options":[{"value":"cards","label":"Recuadros (un recuadro por subtítulo)"},{"value":"faq","label":"Preguntas desplegables"},{"value":"article","label":"Texto corrido"}]},
+    {"type":"select","id":"columns","label":"Recuadros por fila","default":"2","options":[{"value":"1","label":"1"},{"value":"2","label":"2"}]},
+    {"type":"checkbox","id":"sidebar","label":"Barra lateral de ayuda y oferta","default":true},
+    {"type":"select","id":"bg","label":"Fondo","default":"pop","options":[{"value":"cream","label":"Crema"},{"value":"white","label":"Blanco"},{"value":"pop","label":"Pop"},{"value":"sand","label":"Arena"}]},
+    {"type":"paragraph","content":"Escribe la página en Tienda online → Páginas usando subtítulos «Encabezado 3»: cada uno se convierte en un recuadro o en una pregunta."},
+    {"type":"header","content":"Decoración"},
+    {"type":"image_picker","id":"bg_image","label":"Imagen de fondo (con velo de color)"},
+    {"type":"select","id":"pattern","label":"Dibujo de fondo","default":"auto","options":[{"value":"auto","label":"Automático"},{"value":"azulejo","label":"Azulejo"},{"value":"none","label":"Ninguno"}]}
+  ],
+  "presets": [{"name":"jarandana · Contenido página"}]
+}
+{% endschema %}

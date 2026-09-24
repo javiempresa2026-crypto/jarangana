@@ -1,0 +1,119 @@
+{
+  "sections": {
+    "hero": {
+      "type": "jd-pagehero",
+      "settings": {
+        "bg": "auto",
+        "emoji": "🙋",
+        "sticker": "Respuestas claras",
+        "heading": "Preguntas [frecuentes]",
+        "text": "<p>Lo que más nos preguntáis sobre instalación, envíos y devoluciones. ¿No está tu duda? Escríbenos.</p>"
+      },
+      "blocks": {
+        "b1": {
+          "type": "chip",
+          "settings": {
+            "icon": "drill",
+            "text": "Sin taladro"
+          }
+        },
+        "b2": {
+          "type": "chip",
+          "settings": {
+            "icon": "truck",
+            "text": "Envío con seguimiento"
+          }
+        },
+        "b3": {
+          "type": "chip",
+          "settings": {
+            "icon": "return",
+            "text": "14 días para devolver"
+          }
+        },
+        "b4": {
+          "type": "chip",
+          "settings": {
+            "icon": "lock",
+            "text": "Pago seguro"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "content": {
+      "type": "jd-page",
+      "settings": {
+        "mode": "faq",
+        "sidebar": true,
+        "bg": "pop"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "steps": {
+      "type": "jd-steps",
+      "settings": {
+        "bg": "teal",
+        "eyebrow": "Cómo se instala",
+        "heading": "Listo en [1 minuto]. Sin herramientas.",
+        "sticker": "Sin taladro",
+        "show_surfaces": true
+      },
+      "blocks": {
+        "b1": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyLzU2NjRmZGZmLTkyODgtNDM1OC04MjRiLWRjMzY4OGZiODNiYy5wbmc.png",
+            "icon": "drop",
+            "time": "1 min",
+            "title": "Limpia y seca",
+            "text": "Pasa alcohol por el azulejo y sécalo bien. Sin grasa ni restos de jabón: es el secreto del agarre."
+          }
+        },
+        "b2": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyL2RiM2VhNTk5LWQ2YzQtNDEwMi1iYjQwLWY5ODVmZDM3MjlhNC5wbmc.png",
+            "icon": "check",
+            "time": "30 s",
+            "title": "Pega y presiona",
+            "text": "Coloca el soporte donde quieras y presiona con fuerza durante 30 segundos. Ni taladro ni tacos."
+          }
+        },
+        "b3": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTE0LzJlMmRlNzhiLWYyZDctNGRiZS1hYmMxLTIwY2UyMzdkMDZmMy5wbmc.png",
+            "icon": "clock",
+            "time": "24 h",
+            "title": "Espera y disfruta",
+            "text": "Deja que el adhesivo agarre 24 horas antes de mojarlo o cargarlo. Después, a disfrutar de tu ducha en orden."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "contact": {
+      "type": "jd-contact",
+      "settings": {},
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": [
+    "hero",
+    "content",
+    "steps",
+    "contact"
+  ]
+}
