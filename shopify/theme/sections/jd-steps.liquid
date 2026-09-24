@@ -6,12 +6,39 @@
     {%- if section.settings.sticker != blank -%}<span class="jd-sticker">{{ section.settings.sticker | escape }}</span>{%- endif -%}
     <h2 class="jd__h">{% render 'jd-hl', t: section.settings.heading %}</h2>
     {%- if section.settings.text != blank -%}<div class="jd__lead">{{ section.settings.text }}</div>{%- endif -%}
-    <div class="jd-steps" style="text-align:left">
+    <ol class="jd-steps2" role="list">
       {%- for b in section.blocks -%}
-      <div class="jd-step" {{ b.shopify_attributes }}><h3>{{ b.settings.title }}</h3><p>{{ b.settings.text }}</p></div>
+      <li class="jd-s jd-s--{{ forloop.index }}" {{ b.shopify_attributes }}>
+        <div class="jd-s__media">
+          {%- if b.settings.image != blank -%}
+            {{ b.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', class: 'jd-s__img', sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw', widths: '400,600,800' }}
+          {%- else -%}
+            <span class="jd-s__ico">{% render 'jd-icon', icon: b.settings.icon, size: 56 %}</span>
+          {%- endif -%}
+        </div>
+        <div class="jd-s__body">
+          <div class="jd-s__top">
+            <span class="jd-s__num" aria-label="Paso {{ forloop.index }}">{{ forloop.index }}</span>
+            {%- if b.settings.time != blank -%}<span class="jd-s__time">⏱ {{ b.settings.time }}</span>{%- endif -%}
+          </div>
+          <h3 class="jd-s__t">{{ b.settings.title }}</h3>
+          <p class="jd-s__d">{{ b.settings.text }}</p>
+        </div>
+      </li>
       {%- endfor -%}
+    </ol>
+    {%- if section.settings.show_surfaces -%}
+    <div class="jd-surf">
+      <div class="jd-surf__c jd-surf__c--yes"><p class="jd-surf__h">✅ Sí funciona en</p><p>{{ section.settings.yes_text }}</p></div>
+      <div class="jd-surf__c jd-surf__c--no"><p class="jd-surf__h">🚫 No funciona en</p><p>{{ section.settings.no_text }}</p></div>
     </div>
-    {%- if section.settings.note != blank -%}<p class="jd-note">{{ section.settings.note }}</p>{%- endif -%}
+    {%- elsif section.settings.note != blank -%}<p class="jd-note">{{ section.settings.note }}</p>{%- endif -%}
+    {%- if section.settings.btn_label != blank or section.settings.btn2_label != blank -%}
+    <div class="jd__btns" style="justify-content:center;margin-top:28px">
+      {%- if section.settings.btn_label != blank -%}<a class="jd__btn" href="{{ section.settings.btn_link | default: routes.all_products_collection_url }}">{{ section.settings.btn_label }}</a>{%- endif -%}
+      {%- if section.settings.btn2_label != blank -%}<a class="jd__btn jd__btn--ghost" href="{{ section.settings.btn2_link | default: '/pages/como-se-instala' }}">{{ section.settings.btn2_label }}</a>{%- endif -%}
+    </div>
+    {%- endif -%}
   </div>
 </section>
 {% schema %}
@@ -77,6 +104,44 @@
    "label": "Nota final"
   },
   {
+   "type": "checkbox",
+   "id": "show_surfaces",
+   "label": "Mostrar superficies sí/no",
+   "default": true
+  },
+  {
+   "type": "text",
+   "id": "yes_text",
+   "label": "Superficies en las que sí",
+   "default": "Azulejo, cristal y metal. Lisos, limpios y secos."
+  },
+  {
+   "type": "text",
+   "id": "no_text",
+   "label": "Superficies en las que no",
+   "default": "Gotelé, pintura, madera sin lacar, papel pintado y juntas de azulejo."
+  },
+  {
+   "type": "text",
+   "id": "btn_label",
+   "label": "Botón principal"
+  },
+  {
+   "type": "url",
+   "id": "btn_link",
+   "label": "Enlace botón principal"
+  },
+  {
+   "type": "text",
+   "id": "btn2_label",
+   "label": "Botón secundario"
+  },
+  {
+   "type": "url",
+   "id": "btn2_link",
+   "label": "Enlace botón secundario"
+  },
+  {
    "type": "header",
    "content": "Decoración"
   },
@@ -133,6 +198,52 @@
    "name": "Paso",
    "settings": [
     {
+     "type": "image_picker",
+     "id": "image",
+     "label": "Imagen del paso"
+    },
+    {
+     "type": "select",
+     "id": "icon",
+     "label": "Icono (si no hay imagen)",
+     "default": "check",
+     "options": [
+      {
+       "value": "check",
+       "label": "check"
+      },
+      {
+       "value": "drop",
+       "label": "drop"
+      },
+      {
+       "value": "drill",
+       "label": "drill"
+      },
+      {
+       "value": "clock",
+       "label": "clock"
+      },
+      {
+       "value": "home",
+       "label": "home"
+      },
+      {
+       "value": "shield",
+       "label": "shield"
+      },
+      {
+       "value": "star",
+       "label": "star"
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "id": "time",
+     "label": "Tiempo (ej. 30 s)"
+    },
+    {
      "type": "text",
      "id": "title",
      "label": "Título",
@@ -151,6 +262,7 @@
   {
    "name": "jarandana · Pasos"
   }
- ]
+ ],
+ "max_blocks": 4
 }
 {% endschema %}

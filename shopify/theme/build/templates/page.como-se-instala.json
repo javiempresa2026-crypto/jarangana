@@ -1,0 +1,217 @@
+{
+  "sections": {
+    "banner": {
+      "type": "jd-banner",
+      "settings": {
+        "bg": "teal",
+        "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyL2JhNjgyOWZmLTQxYTMtNDk3Yy04OWJjLTE2YTkyNzQ2YzZlNy5wbmc.png",
+        "align": "right",
+        "eyebrow": "Guía de instalación",
+        "heading": "3 pasos, [1 minuto], cero agujeros",
+        "sticker": "Sin taladro",
+        "text": "<p>Así se instalan las baldas, esquineras, ganchos y soportes jarandana. Sin herramientas y sin llamar al casero.</p>",
+        "btn_label": "Ver los pasos",
+        "btn_link": "/pages/como-se-instala#como-se-instala"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "steps": {
+      "type": "jd-steps",
+      "settings": {
+        "bg": "pop",
+        "eyebrow": "Paso a paso",
+        "heading": "Así de [fácil]",
+        "sticker": "Apto para torpes",
+        "btn_label": "Ver todos los productos",
+        "btn_link": "shopify://collections/todo-jarandana"
+      },
+      "blocks": {
+        "b1": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyLzU2NjRmZGZmLTkyODgtNDM1OC04MjRiLWRjMzY4OGZiODNiYy5wbmc.png",
+            "icon": "drop",
+            "time": "1 min",
+            "title": "Limpia y seca",
+            "text": "Pasa alcohol por el azulejo y sécalo bien. Sin grasa ni restos de jabón: es el secreto del agarre."
+          }
+        },
+        "b2": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyL2RiM2VhNTk5LWQ2YzQtNDEwMi1iYjQwLWY5ODVmZDM3MjlhNC5wbmc.png",
+            "icon": "check",
+            "time": "30 s",
+            "title": "Pega y presiona",
+            "text": "Coloca el soporte donde quieras y presiona con fuerza durante 30 segundos. Ni taladro ni tacos."
+          }
+        },
+        "b3": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTE0LzJlMmRlNzhiLWYyZDctNGRiZS1hYmMxLTIwY2UyMzdkMDZmMy5wbmc.png",
+            "icon": "clock",
+            "time": "24 h",
+            "title": "Espera y disfruta",
+            "text": "Deja que el adhesivo agarre 24 horas antes de mojarlo o cargarlo. Después, a disfrutar de tu ducha en orden."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "video": {
+      "type": "jd-video",
+      "settings": {
+        "bg": "sun",
+        "video_url": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-portada.mp4?v=1790201076",
+        "eyebrow": "Míralo en acción",
+        "heading": "Así queda, [sin un solo agujero]",
+        "text": "<p>Se instala en un minuto y se quita con un secador cuando te mudas.</p>",
+        "note": "Vídeo ilustrativo generado con IA.",
+        "sticker": "Play ▶"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "faq": {
+      "type": "jd-faq",
+      "settings": {
+        "bg": "white",
+        "eyebrow": "Dudas de instalación",
+        "heading": "Preguntas [rápidas]",
+        "open_first": true,
+        "link_label": "Ver todas las preguntas",
+        "link": "shopify://pages/preguntas-frecuentes"
+      },
+      "blocks": {
+        "b1": {
+          "type": "qa",
+          "settings": {
+            "q": "¿En qué superficies funciona?",
+            "a": "<p>En superficies <strong>lisas y no porosas</strong>: azulejo, cristal y metal. No funciona en gotelé, pintura, madera sin lacar, papel pintado ni sobre las juntas del azulejo.</p>"
+          }
+        },
+        "b2": {
+          "type": "qa",
+          "settings": {
+            "q": "¿Por qué hay que esperar 24 horas?",
+            "a": "<p>El adhesivo va ganando agarre con las horas. Si lo mojas o lo cargas antes, puede no agarrar del todo. Paciencia: es el paso más importante.</p>"
+          }
+        },
+        "b3": {
+          "type": "qa",
+          "settings": {
+            "q": "¿Qué hago si se ha movido o no ha agarrado?",
+            "a": "<p>Despégalo, limpia bien la superficie con alcohol y vuelve a colocarlo con un <a href=\"/products/recambio-adhesivos\">Recambio de Adhesivos</a>. Y si llega defectuoso, escríbenos y lo solucionamos.</p>"
+          }
+        },
+        "b4": {
+          "type": "qa",
+          "settings": {
+            "q": "¿Cómo lo quito cuando me mude?",
+            "a": "<p>Calienta el adhesivo con un secador unos segundos y despega despacio, desde una esquina. Los restos salen frotando con el dedo o con un poco de alcohol.</p>"
+          }
+        },
+        "b5": {
+          "type": "qa",
+          "settings": {
+            "q": "¿Necesito alguna herramienta?",
+            "a": "<p>No. Solo un paño, un poco de alcohol y tus manos.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5"
+      ]
+    },
+    "offers": {
+      "type": "jd-offers",
+      "settings": {
+        "bg": "pop",
+        "eyebrow": "Ofertas especiales",
+        "heading": "Ahorra en [tu pedido]",
+        "sticker": "¡Ofertón!",
+        "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti."
+      },
+      "blocks": {
+        "b1": {
+          "type": "offer",
+          "settings": {
+            "color": "orange",
+            "tag": "Automático",
+            "big": "-15 %",
+            "title": "En 5 favoritos de la casa",
+            "text": "<p>Balda, Kit Fregadero, Grifo 1080°, Alcachofa 5 chorros y Dispensador de pasta. Sin código.</p>",
+            "btn_label": "Ver las ofertas",
+            "btn_link": "shopify://collections/ofertas"
+          }
+        },
+        "b2": {
+          "type": "offer",
+          "settings": {
+            "color": "teal",
+            "tag": "Pack x2",
+            "big": "Ahorra 5,90 €",
+            "title": "2 Grifos 1080° por 19,90 €",
+            "text": "<p>En vez de 25,80 € comprando 2 sueltos. Uno para la cocina y otro para el baño.</p>",
+            "btn_label": "Elegir el pack",
+            "btn_link": "shopify://products/grifo-giratorio-1080"
+          }
+        },
+        "b3": {
+          "type": "offer",
+          "settings": {
+            "color": "pink",
+            "tag": "Pack x2",
+            "big": "Ahorra 4,90 €",
+            "title": "2 Luces LED por 44,90 €",
+            "text": "<p>En vez de 49,80 € sueltas. Se encienden solas al pasar: pasillo, armario o escalera.</p>",
+            "btn_label": "Elegir el pack",
+            "btn_link": "shopify://products/luz-led-sensor-movimiento"
+          }
+        },
+        "b4": {
+          "type": "offer",
+          "settings": {
+            "color": "sun",
+            "tag": "Primer pedido",
+            "big": "-10 %",
+            "title": "Bienvenida a jarandana",
+            "text": "<p>En pedidos desde 25 €. Copia el código y pégalo al pagar.</p>",
+            "code": "BIENVENIDA10",
+            "btn_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "contact": {
+      "type": "jd-contact",
+      "settings": {},
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": [
+    "banner",
+    "steps",
+    "video",
+    "faq",
+    "offers",
+    "contact"
+  ]
+}

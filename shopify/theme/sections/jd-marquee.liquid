@@ -1,0 +1,22 @@
+{{ 'jarandana.css' | asset_url | stylesheet_tag }}
+{%- capture items -%}
+  {%- for b in section.blocks -%}<span class="jd-mq__i" {{ b.shopify_attributes }}>{{ b.settings.text | escape }}</span><span class="jd-mq__dot" aria-hidden="true">✦</span>{%- endfor -%}
+{%- endcapture -%}
+<div class="jd-mq-wrap"><div class="jd-mq jd-mq--{{ section.settings.color }}" style="--jd-mq-speed: {{ section.settings.speed }}s;" role="marquee" aria-label="Ventajas de jarandana">
+  <div class="jd-mq__track">
+    <div class="jd-mq__row">{{ items }}</div>
+    <div class="jd-mq__row" aria-hidden="true">{{ items }}</div>
+  </div>
+</div></div>
+{% schema %}
+{
+  "name": "jarandana · Cinta",
+  "settings": [
+    {"type":"select","id":"color","label":"Color","default":"ink","options":[{"value":"ink","label":"Tinta"},{"value":"orange","label":"Naranja"},{"value":"teal","label":"Turquesa"},{"value":"sun","label":"Amarillo"}]},
+    {"type":"range","id":"speed","label":"Duración de una vuelta (s)","min":10,"max":60,"step":2,"default":28}
+  ],
+  "blocks": [{"type":"item","name":"Frase","settings":[{"type":"text","id":"text","label":"Texto","default":"Sin taladro"}]}],
+  "max_blocks": 10,
+  "presets": [{"name":"jarandana · Cinta","blocks":[{"type":"item"},{"type":"item"}]}]
+}
+{% endschema %}

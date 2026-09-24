@@ -1,0 +1,4 @@
+Rellena en Shopify (Ajustes → Políticas) y en la página "Política de cookies" los huecos entre [CORCHETES]:
+[TITULAR]  = tu nombre y apellidos (autónomo) o razón social (empresa)
+[NIF]      = tu NIF/CIF
+[DIRECCIÓN] = calle, número, piso (la ciudad ya está: 18600 Motril, Granada)

@@ -9,6 +9,9 @@ IMG = {
  "logo_w": "jarandana-logo-blanco.png",
  "ban_bano": "EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyL2JhNjgyOWZmLTQxYTMtNDk3Yy04OWJjLTE2YTkyNzQ2YzZlNy5wbmc.png",
  "ban_nov": "EMXN1y8qUAoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo2c3RhcmdhdGUvMTE0LzUwOTU4ODdiLTY0MzQtNGI2OS1iNDA4LWY5OWQyMGYyNDYwNS5qcGVn.jpg",
+ "paso1": "EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyLzU2NjRmZGZmLTkyODgtNDM1OC04MjRiLWRjMzY4OGZiODNiYy5wbmc.png",
+ "paso2": "EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyL2RiM2VhNTk5LWQ2YzQtNDEwMi1iYjQwLWY5ODVmZDM3MjlhNC5wbmc.png",
+ "paso3": "EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTE0LzJlMmRlNzhiLWYyZDctNGRiZS1hYmMxLTIwY2UyMzdkMDZmMy5wbmc.png",
  "fav": "jarandana-favicon_a8793dc6-68eb-457d-a479-ac7dcfbd5a9e.png",
 }
 VID = {  # vídeos Kling subidos a Shopify Archivos
@@ -39,9 +42,9 @@ BENEFITS = [
  ("item", {"icon": "shield", "title": "Si llega roto, lo cambiamos", "text": "Mándanos una foto y te enviamos otro o te devolvemos el dinero."}),
 ]
 STEPS = [
- ("step", {"title": "Limpia", "text": "Pasa alcohol por el azulejo y sécalo bien. Sin grasa ni restos de jabón."}),
- ("step", {"title": "Pega y presiona", "text": "Coloca el soporte y presiona con fuerza durante 30 segundos."}),
- ("step", {"title": "Espera 24 horas", "text": "Deja que el adhesivo agarre antes de mojarlo o cargarlo. Es el paso más importante."}),
+ ("step", {"image": "shopify://shop_images/" + IMG["paso1"], "icon": "drop", "time": "1 min", "title": "Limpia y seca", "text": "Pasa alcohol por el azulejo y sécalo bien. Sin grasa ni restos de jabón: es el secreto del agarre."}),
+ ("step", {"image": "shopify://shop_images/" + IMG["paso2"], "icon": "check", "time": "30 s", "title": "Pega y presiona", "text": "Coloca el soporte donde quieras y presiona con fuerza durante 30 segundos. Ni taladro ni tacos."}),
+ ("step", {"image": "shopify://shop_images/" + IMG["paso3"], "icon": "clock", "time": "24 h", "title": "Espera y disfruta", "text": "Deja que el adhesivo agarre 24 horas antes de mojarlo o cargarlo. Después, a disfrutar de tu ducha en orden."}),
 ]
 STEPS_NOTE = "Solo superficies lisas: azulejo, cristal o metal. No apto para gotelé, pintura, madera sin lacar ni juntas."
 FAQ = [
@@ -90,7 +93,7 @@ index = {"sections": {
    "heading": "El fregadero, [por fin] en orden", "sticker": "Con 1 mano", "text": "<p>Dispensador de jabón de un toque y esponjero que deja escurrir el agua.</p>",
    "product": "kit-fregadero-dispensador-esponjero", "btn_label": "Ver el Kit Fregadero"},
    [("point", {"text": "Jabón con una sola mano"}), ("point", {"text": "La esponja se seca y no vive en un charco"}), ("point", {"text": "Ocupa muy poco espacio"})]),
- "steps": sec("jd-steps", {"bg": "teal", "eyebrow": "Cómo se instala", "heading": "Listo en [1 minuto]. Sin herramientas.", "sticker": "Sin taladro", "bg_image": si("ban_bano"), "note": STEPS_NOTE}, STEPS),
+ "steps": sec("jd-steps", {"bg": "teal", "eyebrow": "Cómo se instala", "heading": "Listo en [1 minuto]. Sin herramientas.", "sticker": "Sin taladro", "bg_image": si("ban_bano"), "note": STEPS_NOTE, "btn_label": "Quiero mi ducha en orden", "btn_link": "shopify://products/kit-ducha-sin-cal", "btn2_label": "Ver la guía completa", "btn2_link": "shopify://pages/como-se-instala"}, STEPS),
  "list_todo": plist("todo-jarandana", "#FFFFFF", 12),
  "list_nov": plist("novedades", "#FFE9D6", 4),
  "reviews": sec("jd-reviews", {"bg": "pop", "filter_product": True, "heading": "Lo que dicen [en casa]", "sticker": "Opiniones reales"}),
@@ -99,11 +102,13 @@ index = {"sections": {
    "text": "<p>Descuentos reales sobre nuestros precios de siempre. Se aplican solos en el carrito.</p>",
    "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti. Packs calculados sobre el precio de 1 unidad."}, OFFERS),
  "list_ofertas": plist("ofertas", "#FFFFFF", 5),
+ "marquee": sec("jd-marquee", {"color": "ink", "speed": 28}, [("item", {"text": t}) for t in ["Sin taladro", "Sin obras", "Envío con seguimiento", "14 días para devolver", "Pago seguro", "Ideal si vives de alquiler", "Listo en 1 minuto"]]),
+ "marquee2": sec("jd-marquee", {"color": "orange", "speed": 32}, [("item", {"text": t}) for t in ["-15 % en 5 favoritos", "Packs x2 con descuento", "BIENVENIDA10: -10 % en tu primer pedido", "Si llega roto, te enviamos otro"]]),
  "banner_nov": sec("jd-banner", {"bg": "orange", "image": si("ban_nov"), "align": "left", "eyebrow": "Novedades", "heading": "Ideas que te hacen la vida [más fácil]", "sticker": "Nuevo", "text": "<p>Grifo giratorio 1080°, luz que se enciende sola, ducha de 5 chorros y dispensador de pasta. Todo sin obras.</p>", "btn_label": "Descubrir novedades", "btn_link": "shopify://collections/novedades"}),
  "banner_bano": sec("jd-banner", {"bg": "teal", "image": si("ban_bano"), "align": "right", "eyebrow": "Baño sin agujeros", "heading": "Tu ducha, ordenada en [1 minuto]", "sticker": "Sin obras", "text": "<p>Balda, esquinera, rasqueta y ganchos que se pegan al azulejo. Sin taladro, sin obras.</p>", "btn_label": "Ver todo para el baño", "btn_link": "shopify://collections/ducha"}),
  "faq": sec("jd-faq", {"bg": "white", "heading": "Preguntas [frecuentes]", "open_first": True, "link_label": "Ver todas las preguntas", "link": "shopify://pages/preguntas-frecuentes"}, faq_blocks),
  "contact": sec("jd-contact", {}),
-}, "order": ["intro", "offers", "list_ofertas", "banner_nov", "list_nov", "hero", "benefits", "banner_bano", "list_ducha", "feat_rasqueta", "feat_fregadero", "steps", "list_todo", "reviews", "payments", "faq", "contact"]}
+}, "order": ["intro", "marquee", "offers", "list_ofertas", "banner_nov", "list_nov", "hero", "benefits", "marquee2", "banner_bano", "list_ducha", "feat_rasqueta", "feat_fregadero", "steps", "list_todo", "reviews", "payments", "faq", "contact"]}
 
 # --- producto: se parte del original de Horizon
 prod = json.load(open(os.path.join(D, "product.orig.json")))
@@ -123,7 +128,7 @@ prod["sections"].update({
    ("item", {"icon": "return", "title": "14 días para devolver", "text": "Sin dar explicaciones, si no está instalado."}),
    ("item", {"icon": "lock", "title": "Pago seguro", "text": "Tarjeta y métodos protegidos por Shopify."})]),
  "p_video": sec("jd-video", {"bg": "white", "eyebrow": "En casa", "heading": "Así queda, [sin un solo agujero]", "text": "<p>Se instala en un minuto y se quita con un secador cuando te mudas.</p>", "note": "Vídeo ilustrativo generado con IA."}),
- "p_steps": sec("jd-steps", {"bg": "teal", "eyebrow": "Cómo se instala", "heading": "3 pasos, [1 minuto]", "sticker": "Sin herramientas", "bg_image": si("ban_bano"), "note": STEPS_NOTE}, STEPS),
+ "p_steps": sec("jd-steps", {"bg": "teal", "eyebrow": "Cómo se instala", "heading": "3 pasos, [1 minuto]", "sticker": "Sin herramientas", "bg_image": si("ban_bano"), "btn2_label": "Ver la guía completa", "btn2_link": "shopify://pages/como-se-instala", "note": STEPS_NOTE}, STEPS),
  "p_reviews": sec("jd-reviews", {"bg": "pop", "filter_product": True, "heading": "Lo que dicen [en casa]", "sticker": "Opiniones reales"}),
  "p_pay": sec("jd-payments", {"bg": "white", "heading": "Pago 100 % seguro y cifrado", "text": "Envío con seguimiento · 14 días para devolver · Si llega roto, te enviamos otro."}),
  "p_offers": sec("jd-offers", {"bg": "pop", "eyebrow": "Ofertas especiales", "heading": "Ahorra en [tu pedido]", "sticker": "¡Ofertón!", "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti."}, OFFERS),
@@ -142,6 +147,10 @@ ann["block_order"] = ["announcement_ofertas", "announcement_BxgCk9"]
 ann["settings"].update({"background_color": "#1E2B37", "divider_width": 0, "padding-block-start": 10, "padding-block-end": 10})
 hs = hg["sections"]["header_section"]["settings"]
 hs.update({"show_country": False, "show_language": False, "background_color_top": "#F5EFE4"})
+hm = hg["sections"]["header_section"]["blocks"]["header-menu"]["settings"]
+hm.update({"navigation_bar": True, "background_color_navigation_bar": "#FFF8EE", "menu_style": "text", "type_font_primary_size": "0.875rem"})
+hg["sections"]["jd_global"] = {"type": "jd-global", "settings": {"cookies": True, "ck_link": "shopify://pages/politica-de-cookies"}}
+hg["order"] = ["jd_global"] + [o for o in hg["order"] if o != "jd_global"]
 
 # --- pie
 fg = json.load(open(os.path.join(D, "footer-group.orig.json")))
@@ -152,7 +161,8 @@ g["text_f9CFLH"]["settings"]["text"] = "<p>Trucos de orden y limpieza, y novedad
 f["blocks"]["email_signup_crihX7"]["settings"]["label"] = "Suscribirme"
 f["blocks"]["menu_shop"] = {"type": "menu", "settings": {"menu": "main-menu", "heading": "Tienda", "menu_spacing": 10, "heading_preset": "h5", "link_preset": "paragraph"}}
 f["blocks"]["menu_help"] = {"type": "menu", "settings": {"menu": "footer", "heading": "Ayuda", "menu_spacing": 10, "heading_preset": "h5", "link_preset": "paragraph"}}
-f["block_order"] = ["group_H6VpwJ", "menu_shop", "menu_help", "email_signup_crihX7"]
+f["blocks"]["menu_legal"] = {"type": "menu", "settings": {"menu": "legal", "heading": "Legal", "menu_spacing": 10, "heading_preset": "h5", "link_preset": "paragraph"}}
+f["block_order"] = ["group_H6VpwJ", "menu_shop", "menu_help", "menu_legal", "email_signup_crihX7"]
 f["settings"].update({"background_color": "#EADFCB", "padding-block-start": 48, "padding-block-end": 36})
 u = fg["sections"]["footer_utilities_jLGE8U"]
 u["blocks"].pop("social_links_Ew63Kq", None)
@@ -164,7 +174,24 @@ u["settings"]["background_color"] = "#EADFCB"
 st = json.load(open(os.path.join(D, "settings_data.json")))
 st["current"].update({"palette_primary_button_background": "#FF6B2C", "palette_primary_button_border": "#FF6B2C", "badge_sale_background_color": "#FF4D6D", "logo": si("logo"), "logo_inverse": si("logo_w"), "favicon": si("fav"), "logo_height": 44, "logo_height_mobile": 34})
 
-out = {"templates/index.json": index, "templates/product.json": prod, "sections/header-group.json": hg,
+# --- página "Cómo se instala"
+FAQ_INST = [
+ ("¿En qué superficies funciona?", "<p>En superficies <strong>lisas y no porosas</strong>: azulejo, cristal y metal. No funciona en gotelé, pintura, madera sin lacar, papel pintado ni sobre las juntas del azulejo.</p>"),
+ ("¿Por qué hay que esperar 24 horas?", "<p>El adhesivo va ganando agarre con las horas. Si lo mojas o lo cargas antes, puede no agarrar del todo. Paciencia: es el paso más importante.</p>"),
+ ("¿Qué hago si se ha movido o no ha agarrado?", "<p>Despégalo, limpia bien la superficie con alcohol y vuelve a colocarlo con un <a href=\"/products/recambio-adhesivos\">Recambio de Adhesivos</a>. Y si llega defectuoso, escríbenos y lo solucionamos.</p>"),
+ ("¿Cómo lo quito cuando me mude?", "<p>Calienta el adhesivo con un secador unos segundos y despega despacio, desde una esquina. Los restos salen frotando con el dedo o con un poco de alcohol.</p>"),
+ ("¿Necesito alguna herramienta?", "<p>No. Solo un paño, un poco de alcohol y tus manos.</p>"),
+]
+page_inst = {"sections": {
+ "banner": sec("jd-banner", {"bg": "teal", "image": si("ban_bano"), "align": "right", "eyebrow": "Guía de instalación", "heading": "3 pasos, [1 minuto], cero agujeros", "sticker": "Sin taladro", "text": "<p>Así se instalan las baldas, esquineras, ganchos y soportes jarandana. Sin herramientas y sin llamar al casero.</p>", "btn_label": "Ver los pasos", "btn_link": "/pages/como-se-instala#como-se-instala"}),
+ "steps": sec("jd-steps", {"bg": "pop", "eyebrow": "Paso a paso", "heading": "Así de [fácil]", "sticker": "Apto para torpes", "btn_label": "Ver todos los productos", "btn_link": "shopify://collections/todo-jarandana"}, STEPS),
+ "video": sec("jd-video", {"bg": "sun", "video_url": VID["hero"], "eyebrow": "Míralo en acción", "heading": "Así queda, [sin un solo agujero]", "text": "<p>Se instala en un minuto y se quita con un secador cuando te mudas.</p>", "note": "Vídeo ilustrativo generado con IA.", "sticker": "Play ▶"}),
+ "faq": sec("jd-faq", {"bg": "white", "eyebrow": "Dudas de instalación", "heading": "Preguntas [rápidas]", "open_first": True, "link_label": "Ver todas las preguntas", "link": "shopify://pages/preguntas-frecuentes"}, [("qa", {"q": q, "a": a}) for q, a in FAQ_INST]),
+ "offers": sec("jd-offers", {"bg": "pop", "eyebrow": "Ofertas especiales", "heading": "Ahorra en [tu pedido]", "sticker": "¡Ofertón!", "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti."}, OFFERS),
+ "contact": sec("jd-contact", {}),
+}, "order": ["banner", "steps", "video", "faq", "offers", "contact"]}
+
+out = {"templates/index.json": index, "templates/page.como-se-instala.json": page_inst, "templates/product.json": prod, "sections/header-group.json": hg,
        "sections/footer-group.json": fg, "config/settings_data.json": st}
 os.makedirs(os.path.join(D, "build"), exist_ok=True)
 for k, v in out.items():

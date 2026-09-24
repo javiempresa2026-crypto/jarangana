@@ -435,28 +435,41 @@
         "heading": "Listo en [1 minuto]. Sin herramientas.",
         "sticker": "Sin taladro",
         "bg_image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyL2JhNjgyOWZmLTQxYTMtNDk3Yy04OWJjLTE2YTkyNzQ2YzZlNy5wbmc.png",
-        "note": "Solo superficies lisas: azulejo, cristal o metal. No apto para gotelé, pintura, madera sin lacar ni juntas."
+        "note": "Solo superficies lisas: azulejo, cristal o metal. No apto para gotelé, pintura, madera sin lacar ni juntas.",
+        "btn_label": "Quiero mi ducha en orden",
+        "btn_link": "shopify://products/kit-ducha-sin-cal",
+        "btn2_label": "Ver la guía completa",
+        "btn2_link": "shopify://pages/como-se-instala"
       },
       "blocks": {
         "b1": {
           "type": "step",
           "settings": {
-            "title": "Limpia",
-            "text": "Pasa alcohol por el azulejo y sécalo bien. Sin grasa ni restos de jabón."
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyLzU2NjRmZGZmLTkyODgtNDM1OC04MjRiLWRjMzY4OGZiODNiYy5wbmc.png",
+            "icon": "drop",
+            "time": "1 min",
+            "title": "Limpia y seca",
+            "text": "Pasa alcohol por el azulejo y sécalo bien. Sin grasa ni restos de jabón: es el secreto del agarre."
           }
         },
         "b2": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyL2RiM2VhNTk5LWQ2YzQtNDEwMi1iYjQwLWY5ODVmZDM3MjlhNC5wbmc.png",
+            "icon": "check",
+            "time": "30 s",
             "title": "Pega y presiona",
-            "text": "Coloca el soporte y presiona con fuerza durante 30 segundos."
+            "text": "Coloca el soporte donde quieras y presiona con fuerza durante 30 segundos. Ni taladro ni tacos."
           }
         },
         "b3": {
           "type": "step",
           "settings": {
-            "title": "Espera 24 horas",
-            "text": "Deja que el adhesivo agarre antes de mojarlo o cargarlo. Es el paso más importante."
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTE0LzJlMmRlNzhiLWYyZDctNGRiZS1hYmMxLTIwY2UyMzdkMDZmMy5wbmc.png",
+            "icon": "clock",
+            "time": "24 h",
+            "title": "Espera y disfruta",
+            "text": "Deja que el adhesivo agarre 24 horas antes de mojarlo o cargarlo. Después, a disfrutar de tu ducha en orden."
           }
         }
       },
@@ -1112,6 +1125,105 @@
         "padding-block-end": 48
       }
     },
+    "marquee": {
+      "type": "jd-marquee",
+      "settings": {
+        "color": "ink",
+        "speed": 28
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "text": "Sin taladro"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "text": "Sin obras"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "text": "Envío con seguimiento"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "text": "14 días para devolver"
+          }
+        },
+        "b5": {
+          "type": "item",
+          "settings": {
+            "text": "Pago seguro"
+          }
+        },
+        "b6": {
+          "type": "item",
+          "settings": {
+            "text": "Ideal si vives de alquiler"
+          }
+        },
+        "b7": {
+          "type": "item",
+          "settings": {
+            "text": "Listo en 1 minuto"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7"
+      ]
+    },
+    "marquee2": {
+      "type": "jd-marquee",
+      "settings": {
+        "color": "orange",
+        "speed": 32
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "text": "-15 % en 5 favoritos"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "text": "Packs x2 con descuento"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "text": "BIENVENIDA10: -10 % en tu primer pedido"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "text": "Si llega roto, te enviamos otro"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
     "banner_nov": {
       "type": "jd-banner",
       "settings": {
@@ -1207,12 +1319,14 @@
   },
   "order": [
     "intro",
+    "marquee",
     "offers",
     "list_ofertas",
     "banner_nov",
     "list_nov",
     "hero",
     "benefits",
+    "marquee2",
     "banner_bano",
     "list_ducha",
     "feat_rasqueta",

@@ -1,0 +1,86 @@
+{%- comment -%}
+  Sección global de jarandana (va en la cabecera, se carga en todas las páginas):
+  estilos de marca, aviso de cookies con la API de privacidad de Shopify y botón "volver arriba".
+{%- endcomment -%}
+{{ 'jarandana.css' | asset_url | stylesheet_tag }}
+{%- if section.settings.cookies -%}
+<div id="jd-ck" class="jd-ck" role="dialog" aria-modal="false" aria-labelledby="jd-ck-t" hidden>
+  <div class="jd-ck__box">
+    <p class="jd-ck__t" id="jd-ck-t">🍪 {{ section.settings.ck_title }}</p>
+    <p class="jd-ck__d">{{ section.settings.ck_text }} <a href="{{ section.settings.ck_link | default: '/pages/politica-de-cookies' }}">Política de cookies</a>.</p>
+    <form class="jd-ck__prefs" hidden>
+      <label><input type="checkbox" checked disabled> <span><b>Necesarias</b> · carrito, pago y seguridad. Siempre activas.</span></label>
+      <label><input type="checkbox" name="preferences"> <span><b>Preferencias</b> · recordar tus elecciones.</span></label>
+      <label><input type="checkbox" name="analytics"> <span><b>Analítica</b> · saber qué funciona en la tienda.</span></label>
+      <label><input type="checkbox" name="marketing"> <span><b>Publicidad</b> · anuncios personalizados.</span></label>
+    </form>
+    <div class="jd-ck__btns">
+      <button type="button" class="jd-ck__b jd-ck__b--ok" data-ck="all">Aceptar todas</button>
+      <button type="button" class="jd-ck__b" data-ck="none">Rechazar</button>
+      <button type="button" class="jd-ck__b jd-ck__b--ghost" data-ck="config">Configurar</button>
+      <button type="button" class="jd-ck__b jd-ck__b--ok" data-ck="save" hidden>Guardar mi elección</button>
+    </div>
+  </div>
+</div>
+{%- endif -%}
+<a href="#MainContent" class="jd-top" aria-label="Volver arriba" hidden>↑</a>
+<script>
+(function () {
+  var KEY = 'jd-cookies-v1', box = document.getElementById('jd-ck'), top = document.querySelector('.jd-top');
+  function get() { try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; } }
+  function put(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
+  function apply(v) {
+    var send = function () {
+      var cp = window.Shopify && window.Shopify.customerPrivacy;
+      if (cp && cp.setTrackingConsent) cp.setTrackingConsent({ analytics: v.analytics, marketing: v.marketing, preferences: v.preferences, sale_of_data: v.marketing }, function () {});
+    };
+    if (window.Shopify && window.Shopify.loadFeatures) window.Shopify.loadFeatures([{ name: 'consent-tracking-api', version: '0.1' }], send); else send();
+  }
+  function hide() { if (box) { box.hidden = true; document.body.classList.remove('jd-ck-open'); } }
+  function show() {
+    if (!box) return;
+    box.hidden = false; document.body.classList.add('jd-ck-open');
+    var v = get() || {};
+    ['preferences', 'analytics', 'marketing'].forEach(function (k) { var i = box.querySelector('[name=' + k + ']'); if (i) i.checked = !!v[k]; });
+  }
+  function decide(v) { put(v); apply(v); hide(); }
+  if (box) {
+    box.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-ck]'); if (!b) return;
+      var a = b.getAttribute('data-ck');
+      if (a === 'all') decide({ preferences: true, analytics: true, marketing: true });
+      if (a === 'none') decide({ preferences: false, analytics: false, marketing: false });
+      if (a === 'config') { box.querySelector('.jd-ck__prefs').hidden = false; b.hidden = true; box.querySelector('[data-ck=save]').hidden = false; }
+      if (a === 'save') {
+        var f = box.querySelector('.jd-ck__prefs');
+        decide({ preferences: f.preferences.checked, analytics: f.analytics.checked, marketing: f.marketing.checked });
+      }
+    });
+    document.addEventListener('click', function (e) {
+      var l = e.target.closest('a[href$="#cookies"]'); if (!l) return;
+      e.preventDefault(); show();
+    });
+    // Si está activo el banner propio de Shopify, no mostramos el nuestro para no duplicar.
+    setTimeout(function () {
+      if (document.getElementById('shopify-pc__banner')) return;
+      if (!get()) show();
+    }, 900);
+  }
+  if (top) {
+    var onScroll = function () { top.hidden = window.scrollY < 700; };
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+    top.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+})();
+</script>
+{% schema %}
+{
+  "name": "jarandana · Global",
+  "settings": [
+    {"type":"checkbox","id":"cookies","label":"Mostrar aviso de cookies","default":true,"info":"Si activas el banner de cookies de Shopify (Ajustes → Privacidad del cliente), este se oculta solo."},
+    {"type":"text","id":"ck_title","label":"Título del aviso","default":"Cookies, pero de las buenas"},
+    {"type":"textarea","id":"ck_text","label":"Texto del aviso","default":"Usamos cookies necesarias para que la tienda funcione y, solo si nos dejas, cookies de preferencias, analítica y publicidad. Puedes aceptarlas, rechazarlas o elegir cuáles."},
+    {"type":"url","id":"ck_link","label":"Enlace a la política de cookies"}
+  ]
+}
+{% endschema %}

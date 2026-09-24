@@ -503,28 +503,39 @@
         "heading": "3 pasos, [1 minuto]",
         "sticker": "Sin herramientas",
         "bg_image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyL2JhNjgyOWZmLTQxYTMtNDk3Yy04OWJjLTE2YTkyNzQ2YzZlNy5wbmc.png",
+        "btn2_label": "Ver la guía completa",
+        "btn2_link": "shopify://pages/como-se-instala",
         "note": "Solo superficies lisas: azulejo, cristal o metal. No apto para gotelé, pintura, madera sin lacar ni juntas."
       },
       "blocks": {
         "b1": {
           "type": "step",
           "settings": {
-            "title": "Limpia",
-            "text": "Pasa alcohol por el azulejo y sécalo bien. Sin grasa ni restos de jabón."
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyLzU2NjRmZGZmLTkyODgtNDM1OC04MjRiLWRjMzY4OGZiODNiYy5wbmc.png",
+            "icon": "drop",
+            "time": "1 min",
+            "title": "Limpia y seca",
+            "text": "Pasa alcohol por el azulejo y sécalo bien. Sin grasa ni restos de jabón: es el secreto del agarre."
           }
         },
         "b2": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyL2RiM2VhNTk5LWQ2YzQtNDEwMi1iYjQwLWY5ODVmZDM3MjlhNC5wbmc.png",
+            "icon": "check",
+            "time": "30 s",
             "title": "Pega y presiona",
-            "text": "Coloca el soporte y presiona con fuerza durante 30 segundos."
+            "text": "Coloca el soporte donde quieras y presiona con fuerza durante 30 segundos. Ni taladro ni tacos."
           }
         },
         "b3": {
           "type": "step",
           "settings": {
-            "title": "Espera 24 horas",
-            "text": "Deja que el adhesivo agarre antes de mojarlo o cargarlo. Es el paso más importante."
+            "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTE0LzJlMmRlNzhiLWYyZDctNGRiZS1hYmMxLTIwY2UyMzdkMDZmMy5wbmc.png",
+            "icon": "clock",
+            "time": "24 h",
+            "title": "Espera y disfruta",
+            "text": "Deja que el adhesivo agarre 24 horas antes de mojarlo o cargarlo. Después, a disfrutar de tu ducha en orden."
           }
         }
       },

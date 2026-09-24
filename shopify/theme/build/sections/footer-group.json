@@ -139,12 +139,23 @@
             "heading_preset": "h5",
             "link_preset": "paragraph"
           }
+        },
+        "menu_legal": {
+          "type": "menu",
+          "settings": {
+            "menu": "legal",
+            "heading": "Legal",
+            "menu_spacing": 10,
+            "heading_preset": "h5",
+            "link_preset": "paragraph"
+          }
         }
       },
       "block_order": [
         "group_H6VpwJ",
         "menu_shop",
         "menu_help",
+        "menu_legal",
         "email_signup_crihX7"
       ],
       "name": "t:names.footer",
