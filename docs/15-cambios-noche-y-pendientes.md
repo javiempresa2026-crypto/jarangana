@@ -53,3 +53,17 @@ Ahora mismo la de privacidad está en inglés y a nombre de «My Store».
 9. **Permisos para que haga más cosas yo:**
    - **Gmail:** dale permiso de enviar en claude.ai → Conectores, y así escribo a los proveedores.
    - **Políticas de Shopify:** con el permiso `write_legal_policies` las relleno yo.
+
+## 5. Páginas interiores (v7): ya no son sosas
+Todo está en el tema **«jarandana v6 (publicar este)»**.
+
+| Página | Cómo queda |
+|---|---|
+| **Colecciones** (Ofertas, Novedades, Baño, Cocina, Todo, Recambios) | Cabecera de color según la colección: Ofertas naranja, Novedades rosa, Baño turquesa, Cocina amarillo. Lleva ruta de navegación, nº de productos, título resaltado, descripción, fichas de ventajas y **3 fotos de productos con su precio**. Las tarjetas de producto van en recuadro blanco redondeado con botón de **añadir rápido**. Debajo: cinta, ofertas, ventajas, cómo se instala, reseñas y preguntas. |
+| **Envíos y Devoluciones** (plantilla por defecto) | Cabecera de color, cada subtítulo en un **recuadro numerado de color** y una **barra lateral** con 3 cajas: ayuda (botón de escribir), código BIENVENIDA10 y garantías. Debajo, cinta de ofertas y contacto. |
+| **Preguntas frecuentes** (`page.faq`) | Cabecera turquesa y las preguntas **desplegables** con borde de color. Barra lateral, pasos de instalación y contacto. |
+| **Nosotros** (`page.nosotros`) | Cabecera naranja con foto, historia en tarjeta, valores, cinta, reseñas y contacto. |
+| **Páginas legales** (`page.legal`) | Cabecera oscura con ⚖️ y cada apartado en su recuadro, más la barra lateral. |
+| **Contacto** | Cabecera amarilla con 💬, formulario en tarjeta blanca con botón naranja y datos de contacto. |
+
+**Consejo para escribir páginas nuevas:** en Tienda online → Páginas, usa «Encabezado 3» para cada apartado. Cada uno se convierte automáticamente en un recuadro de color o, en la plantilla `faq`, en una pregunta desplegable.
