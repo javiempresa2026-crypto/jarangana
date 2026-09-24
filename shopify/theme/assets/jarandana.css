@@ -180,3 +180,32 @@ img,video{max-width:100%}
 .jd-intro__word{font-size:clamp(2rem,10vw,2.8rem)}
 .jd__h{font-size:clamp(1.6rem,7vw,2.1rem)}.jd__h--xl{font-size:clamp(2rem,9vw,2.6rem)}
 }
+/* ===== v5: fondos con dibujo, imagen con velo, resaltados y pegatinas ===== */
+.jd{position:relative;isolation:isolate;overflow:hidden}
+.jd>.jd__wrap{position:relative;z-index:1}
+.jd-bgimg{position:absolute;inset:0;z-index:-2}
+.jd-bgimg img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.1)}
+.jd-bgimg:after{content:"";position:absolute;inset:0;background:rgba(245,239,228,.9)}
+.jd--white .jd-bgimg:after{background:rgba(255,255,255,.92)}
+.jd--pop .jd-bgimg:after{background:rgba(255,248,238,.9)}
+.jd--orange .jd-bgimg:after{background:linear-gradient(135deg,rgba(255,154,61,.95),rgba(255,90,44,.97))}
+.jd--teal .jd-bgimg:after{background:linear-gradient(135deg,rgba(25,194,176,.95),rgba(14,116,144,.97))}
+.jd--sun .jd-bgimg:after{background:linear-gradient(135deg,rgba(255,233,160,.93),rgba(255,200,69,.95))}
+.jd-pat{position:absolute;inset:0;z-index:-1;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 85%);mask-image:radial-gradient(ellipse at center,#000 30%,transparent 85%)}
+.jd-pat--azulejo,.jd--cream .jd-pat--auto,.jd--white .jd-pat--auto,.jd--sand .jd-pat--auto,.jd--pop .jd-pat--auto{background-image:linear-gradient(rgba(30,43,55,.07) 1.5px,transparent 1.5px),linear-gradient(90deg,rgba(30,43,55,.07) 1.5px,transparent 1.5px);background-size:46px 46px;background-position:center}
+.jd-pat--dots,.jd--orange .jd-pat--auto{background-image:radial-gradient(rgba(255,255,255,.28) 2.2px,transparent 2.8px);background-size:24px 24px;-webkit-mask-image:linear-gradient(115deg,#000 0%,transparent 55%);mask-image:linear-gradient(115deg,#000 0%,transparent 55%)}
+.jd-pat--bubbles,.jd--teal .jd-pat--auto{-webkit-mask-image:none;mask-image:none;background:radial-gradient(circle at 6% 18%,rgba(255,255,255,.16) 0 46px,transparent 47px),radial-gradient(circle at 14% 30%,rgba(255,255,255,.12) 0 16px,transparent 17px),radial-gradient(circle at 92% 22%,rgba(255,255,255,.14) 0 70px,transparent 71px),radial-gradient(circle at 84% 78%,rgba(255,255,255,.1) 0 28px,transparent 29px),radial-gradient(circle at 50% 104%,rgba(255,255,255,.1) 0 90px,transparent 91px)}
+.jd-pat--stripes,.jd--sun .jd-pat--auto{background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.35) 0 14px,transparent 14px 32px)}
+/* rotulador */
+.jd-hl{position:relative;white-space:nowrap;padding:0 .12em;margin:0 -.04em;background:linear-gradient(100deg,transparent 2%,#FFC845 4%,#FFB020 96%,transparent 98%) 0 88%/100% .42em no-repeat;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.jd--sun .jd-hl,.jd-banner.jd--sun .jd-hl{background-image:linear-gradient(100deg,transparent 2%,#FF7A9A 4%,#FF4D6D 96%,transparent 98%);color:inherit}
+.jd--orange .jd-hl,.jd--teal .jd-hl{background-image:linear-gradient(100deg,transparent 2%,rgba(30,43,55,.45) 4%,rgba(30,43,55,.45) 96%,transparent 98%);color:#FFF3C4}
+.jd-intro .jd-hl{color:inherit}
+@media (max-width:749px){.jd-hl{white-space:normal}}
+/* pegatina */
+.jd-sticker{display:inline-block;vertical-align:middle;margin:0 0 12px 8px;padding:6px 12px;border-radius:10px;background:#FF4D6D;color:#fff;font-weight:900;font-size:.82rem;letter-spacing:.02em;line-height:1.2;transform:rotate(-4deg);box-shadow:0 6px 16px rgba(224,36,94,.3);transition:transform .2s}
+.jd-sticker:hover{transform:rotate(3deg) scale(1.06)}
+.jd__center .jd-sticker{margin-left:0}
+.jd--orange .jd-sticker,.jd--teal .jd-sticker{background:var(--jd-ink);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+.jd--sun .jd-sticker{background:var(--jd-ink)}
+.jd__center>.jd__eyebrow+.jd-sticker{margin-left:8px}

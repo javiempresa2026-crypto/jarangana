@@ -1,0 +1,2 @@
+{%- comment -%}Título con palabras resaltadas: lo que va entre [corchetes] sale con efecto rotulador.{%- endcomment -%}
+{{- t | escape | replace: '[', '<span class="jd-hl">' | replace: ']', '</span>' -}}

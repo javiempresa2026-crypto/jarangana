@@ -488,7 +488,7 @@
       "settings": {
         "bg": "white",
         "eyebrow": "En casa",
-        "heading": "Así queda, sin un solo agujero",
+        "heading": "Así queda, [sin un solo agujero]",
         "text": "<p>Se instala en un minuto y se quita con un secador cuando te mudas.</p>",
         "note": "Vídeo ilustrativo generado con IA."
       },
@@ -500,7 +500,9 @@
       "settings": {
         "bg": "teal",
         "eyebrow": "Cómo se instala",
-        "heading": "3 pasos, 1 minuto",
+        "heading": "3 pasos, [1 minuto]",
+        "sticker": "Sin herramientas",
+        "bg_image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyL2JhNjgyOWZmLTQxYTMtNDk3Yy04OWJjLTE2YTkyNzQ2YzZlNy5wbmc.png",
         "note": "Solo superficies lisas: azulejo, cristal o metal. No apto para gotelé, pintura, madera sin lacar ni juntas."
       },
       "blocks": {
@@ -536,7 +538,9 @@
       "type": "jd-reviews",
       "settings": {
         "bg": "pop",
-        "filter_product": true
+        "filter_product": true,
+        "heading": "Lo que dicen [en casa]",
+        "sticker": "Opiniones reales"
       },
       "blocks": {},
       "block_order": []
@@ -556,7 +560,8 @@
       "settings": {
         "bg": "pop",
         "eyebrow": "Ofertas especiales",
-        "heading": "Ahorra en tu pedido",
+        "heading": "Ahorra en [tu pedido]",
+        "sticker": "¡Ofertón!",
         "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti."
       },
       "blocks": {

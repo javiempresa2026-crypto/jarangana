@@ -1,0 +1,6 @@
+{%- comment -%}Fondo decorativo de las secciones jarandana: imagen opcional con velo de color + patrón.{%- endcomment -%}
+{%- if s.settings.bg_image != blank -%}
+  <div class="jd-bgimg" aria-hidden="true">{{ s.settings.bg_image | image_url: width: 1600 | image_tag: loading: 'lazy', alt: '', sizes: '100vw', widths: '600,1000,1600' }}</div>
+{%- endif -%}
+{%- assign pat = s.settings.pattern | default: 'auto' -%}
+{%- if pat != 'none' -%}<div class="jd-pat jd-pat--{{ pat }}" aria-hidden="true"></div>{%- endif -%}

@@ -1,5 +1,6 @@
 {{ 'jarandana.css' | asset_url | stylesheet_tag }}
 <section class="jd jd--{{ section.settings.bg }} jd-banner jd-banner--{{ section.settings.align }}">
+  {%- render 'jd-bg', s: section -%}
   <div class="jd__wrap jd-banner__grid">
     <div class="jd-banner__media">
       {%- if section.settings.image != blank -%}
@@ -8,7 +9,8 @@
     </div>
     <div class="jd-banner__box">
       {%- if section.settings.eyebrow != blank -%}<p class="jd__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
-      <h2 class="jd__h">{{ section.settings.heading }}</h2>
+      {%- if section.settings.sticker != blank -%}<span class="jd-sticker">{{ section.settings.sticker | escape }}</span>{%- endif -%}
+      <h2 class="jd__h">{% render 'jd-hl', t: section.settings.heading %}</h2>
       {%- if section.settings.text != blank -%}<div class="jd__lead">{{ section.settings.text }}</div>{%- endif -%}
       {%- if section.settings.btn_label != blank -%}
       <div class="jd__btns"><a class="jd__btn" href="{{ section.settings.btn_link | default: routes.all_products_collection_url }}">{{ section.settings.btn_label }}</a></div>
@@ -18,17 +20,148 @@
 </section>
 {% schema %}
 {
-  "name": "jarandana · Banner",
-  "settings": [
-    {"type":"select","id":"bg","label":"Fondo","default":"orange","options":[{"value":"cream","label":"Crema"},{"value":"sand","label":"Arena"},{"value":"white","label":"Blanco"},{"value":"pop","label":"Pop (manchas de color)"},{"value":"orange","label":"Naranja intenso"},{"value":"teal","label":"Turquesa"},{"value":"sun","label":"Amarillo sol"}]},
-    {"type":"image_picker","id":"image","label":"Imagen"},
-    {"type":"select","id":"align","label":"Imagen a la","default":"left","options":[{"value":"left","label":"Izquierda"},{"value":"right","label":"Derecha"}]},
-    {"type":"text","id":"eyebrow","label":"Etiqueta","default":"Novedad"},
-    {"type":"text","id":"heading","label":"Título","default":"Ideas que cambian tu casa"},
-    {"type":"richtext","id":"text","label":"Texto"},
-    {"type":"text","id":"btn_label","label":"Botón","default":"Ver ahora"},
-    {"type":"url","id":"btn_link","label":"Enlace"}
-  ],
-  "presets": [{"name":"jarandana · Banner"}]
+ "name": "jarandana · Banner",
+ "settings": [
+  {
+   "type": "select",
+   "id": "bg",
+   "label": "Fondo",
+   "default": "orange",
+   "options": [
+    {
+     "value": "cream",
+     "label": "Crema"
+    },
+    {
+     "value": "sand",
+     "label": "Arena"
+    },
+    {
+     "value": "white",
+     "label": "Blanco"
+    },
+    {
+     "value": "pop",
+     "label": "Pop (manchas de color)"
+    },
+    {
+     "value": "orange",
+     "label": "Naranja intenso"
+    },
+    {
+     "value": "teal",
+     "label": "Turquesa"
+    },
+    {
+     "value": "sun",
+     "label": "Amarillo sol"
+    }
+   ]
+  },
+  {
+   "type": "image_picker",
+   "id": "image",
+   "label": "Imagen"
+  },
+  {
+   "type": "select",
+   "id": "align",
+   "label": "Imagen a la",
+   "default": "left",
+   "options": [
+    {
+     "value": "left",
+     "label": "Izquierda"
+    },
+    {
+     "value": "right",
+     "label": "Derecha"
+    }
+   ]
+  },
+  {
+   "type": "text",
+   "id": "eyebrow",
+   "label": "Etiqueta",
+   "default": "Novedad"
+  },
+  {
+   "type": "text",
+   "id": "heading",
+   "label": "Título",
+   "default": "Ideas que cambian tu casa"
+  },
+  {
+   "type": "richtext",
+   "id": "text",
+   "label": "Texto"
+  },
+  {
+   "type": "text",
+   "id": "btn_label",
+   "label": "Botón",
+   "default": "Ver ahora"
+  },
+  {
+   "type": "url",
+   "id": "btn_link",
+   "label": "Enlace"
+  },
+  {
+   "type": "header",
+   "content": "Decoración"
+  },
+  {
+   "type": "image_picker",
+   "id": "bg_image",
+   "label": "Imagen de fondo (con velo de color)"
+  },
+  {
+   "type": "select",
+   "id": "pattern",
+   "label": "Dibujo de fondo",
+   "default": "auto",
+   "options": [
+    {
+     "value": "auto",
+     "label": "Automático según el color"
+    },
+    {
+     "value": "azulejo",
+     "label": "Azulejo"
+    },
+    {
+     "value": "dots",
+     "label": "Lunares"
+    },
+    {
+     "value": "bubbles",
+     "label": "Burbujas"
+    },
+    {
+     "value": "stripes",
+     "label": "Rayas"
+    },
+    {
+     "value": "none",
+     "label": "Ninguno"
+    }
+   ]
+  },
+  {
+   "type": "text",
+   "id": "sticker",
+   "label": "Pegatina sobre el título (opcional)"
+  },
+  {
+   "type": "paragraph",
+   "content": "Pon palabras del título entre [corchetes] para resaltarlas."
+  }
+ ],
+ "presets": [
+  {
+   "name": "jarandana · Banner"
+  }
+ ]
 }
 {% endschema %}

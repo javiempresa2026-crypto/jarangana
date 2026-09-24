@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="640" height="640">
+<circle cx="40" cy="40" r="39.5" fill="#FF6B2C"/><circle cx="40" cy="40" r="34" fill="none" stroke="#fff" stroke-width="0.8" stroke-dasharray="2 1.6"/>
+<svg x="31.0" y="12.0" width="20.0" height="30.0" viewBox="44 26 100 150">
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="97" y="36" width="32" height="20" rx="7" fill="#FFFFFF" stroke="none"/><path d="M113 80 V138 Q113 166 86 166 Q70 166 64 150" stroke="#FFFFFF" stroke-width="20"/></g>
+</svg>
+<text x="40" y="56" font-family="DM Sans, Arial" font-size="7.5" font-weight="900" fill="#fff" text-anchor="middle">jarandana</text>
+<text x="40" y="64" font-family="DM Sans, Arial" font-size="4.2" font-weight="700" fill="#fff" text-anchor="middle">Tu casa, sin taladrar.</text></svg>

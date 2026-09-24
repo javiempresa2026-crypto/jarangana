@@ -1,5 +1,6 @@
 {{ 'jarandana.css' | asset_url | stylesheet_tag }}
 <section class="jd jd--{{ section.settings.bg }}">
+  {%- render 'jd-bg', s: section -%}
   <div class="jd__wrap jd-feat{% if section.settings.reverse %} jd-feat--rev{% endif %}">
     <div class="jd-feat__media">
       {%- if section.settings.video_url != blank -%}
@@ -10,7 +11,8 @@
     </div>
     <div>
       {%- if section.settings.eyebrow != blank -%}<p class="jd__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
-      <h2 class="jd__h">{{ section.settings.heading }}</h2>
+      {%- if section.settings.sticker != blank -%}<span class="jd-sticker">{{ section.settings.sticker | escape }}</span>{%- endif -%}
+      <h2 class="jd__h">{% render 'jd-hl', t: section.settings.heading %}</h2>
       {%- if section.settings.text != blank -%}<div class="jd__lead">{{ section.settings.text }}</div>{%- endif -%}
       {%- if section.blocks.size > 0 -%}
       <ul class="jd-list">{%- for b in section.blocks -%}<li {{ b.shopify_attributes }}>{{ b.settings.text }}</li>{%- endfor -%}</ul>
@@ -28,22 +30,161 @@
 </section>
 {% schema %}
 {
-  "name": "jarandana · Destacado",
-  "settings": [
-    {"type":"select","id":"bg","label":"Fondo","default":"white","options":[{"value":"cream","label":"Crema"},{"value":"sand","label":"Arena"},{"value":"white","label":"Blanco"},{"value":"pop","label":"Pop (manchas de color)"},{"value":"orange","label":"Naranja intenso"},{"value":"teal","label":"Turquesa"},{"value":"sun","label":"Amarillo sol"}]},
-    {"type":"checkbox","id":"reverse","label":"Imagen a la derecha","default":false},
-    {"type":"image_picker","id":"image","label":"Imagen"},
-    {"type":"text","id":"video_url","label":"Enlace de vídeo .mp4 (opcional)"},
-    {"type":"text","id":"eyebrow","label":"Antetítulo"},
-    {"type":"text","id":"heading","label":"Título","default":"Título"},
-    {"type":"richtext","id":"text","label":"Texto"},
-    {"type":"product","id":"product","label":"Producto (muestra precio y enlace)"},
-    {"type":"text","id":"btn_label","label":"Texto del botón","default":"Ver producto"},
-    {"type":"url","id":"btn_link","label":"Enlace (opcional)"}
-  ],
-  "blocks": [
-    {"type":"point","name":"Punto","settings":[{"type":"text","id":"text","label":"Texto","default":"Ventaja"}]}
-  ],
-  "presets": [{"name":"jarandana · Destacado"}]
+ "name": "jarandana · Destacado",
+ "settings": [
+  {
+   "type": "select",
+   "id": "bg",
+   "label": "Fondo",
+   "default": "white",
+   "options": [
+    {
+     "value": "cream",
+     "label": "Crema"
+    },
+    {
+     "value": "sand",
+     "label": "Arena"
+    },
+    {
+     "value": "white",
+     "label": "Blanco"
+    },
+    {
+     "value": "pop",
+     "label": "Pop (manchas de color)"
+    },
+    {
+     "value": "orange",
+     "label": "Naranja intenso"
+    },
+    {
+     "value": "teal",
+     "label": "Turquesa"
+    },
+    {
+     "value": "sun",
+     "label": "Amarillo sol"
+    }
+   ]
+  },
+  {
+   "type": "checkbox",
+   "id": "reverse",
+   "label": "Imagen a la derecha",
+   "default": false
+  },
+  {
+   "type": "image_picker",
+   "id": "image",
+   "label": "Imagen"
+  },
+  {
+   "type": "text",
+   "id": "video_url",
+   "label": "Enlace de vídeo .mp4 (opcional)"
+  },
+  {
+   "type": "text",
+   "id": "eyebrow",
+   "label": "Antetítulo"
+  },
+  {
+   "type": "text",
+   "id": "heading",
+   "label": "Título",
+   "default": "Título"
+  },
+  {
+   "type": "richtext",
+   "id": "text",
+   "label": "Texto"
+  },
+  {
+   "type": "product",
+   "id": "product",
+   "label": "Producto (muestra precio y enlace)"
+  },
+  {
+   "type": "text",
+   "id": "btn_label",
+   "label": "Texto del botón",
+   "default": "Ver producto"
+  },
+  {
+   "type": "url",
+   "id": "btn_link",
+   "label": "Enlace (opcional)"
+  },
+  {
+   "type": "header",
+   "content": "Decoración"
+  },
+  {
+   "type": "image_picker",
+   "id": "bg_image",
+   "label": "Imagen de fondo (con velo de color)"
+  },
+  {
+   "type": "select",
+   "id": "pattern",
+   "label": "Dibujo de fondo",
+   "default": "auto",
+   "options": [
+    {
+     "value": "auto",
+     "label": "Automático según el color"
+    },
+    {
+     "value": "azulejo",
+     "label": "Azulejo"
+    },
+    {
+     "value": "dots",
+     "label": "Lunares"
+    },
+    {
+     "value": "bubbles",
+     "label": "Burbujas"
+    },
+    {
+     "value": "stripes",
+     "label": "Rayas"
+    },
+    {
+     "value": "none",
+     "label": "Ninguno"
+    }
+   ]
+  },
+  {
+   "type": "text",
+   "id": "sticker",
+   "label": "Pegatina sobre el título (opcional)"
+  },
+  {
+   "type": "paragraph",
+   "content": "Pon palabras del título entre [corchetes] para resaltarlas."
+  }
+ ],
+ "blocks": [
+  {
+   "type": "point",
+   "name": "Punto",
+   "settings": [
+    {
+     "type": "text",
+     "id": "text",
+     "label": "Texto",
+     "default": "Ventaja"
+    }
+   ]
+  }
+ ],
+ "presets": [
+  {
+   "name": "jarandana · Destacado"
+  }
+ ]
 }
 {% endschema %}

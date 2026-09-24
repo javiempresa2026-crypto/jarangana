@@ -64,7 +64,8 @@
       "settings": {
         "bg": "pop",
         "eyebrow": "Baño y cocina sin taladrar",
-        "heading": "Tu casa, sin taladrar.",
+        "heading": "Tu casa, [sin taladrar].",
+        "sticker": "¡0 agujeros!",
         "text": "<p>Baldas, rasquetas y ganchos que se pegan al azulejo, aguantan la ducha y se vienen contigo cuando te mudas.</p>",
         "btn1_label": "Ver el Kit Ducha",
         "btn1_link": "shopify://products/kit-ducha-sin-cal",
@@ -115,7 +116,9 @@
       "settings": {
         "bg": "orange",
         "eyebrow": "Por qué jarandana",
-        "heading": "Orden en casa, sin pedir permiso al casero"
+        "heading": "Orden en casa, [sin pedir permiso] al casero",
+        "sticker": "Ideal alquiler",
+        "bg_image": "shopify://shop_images/EMXN1y8qngEKBnVwbG9hZBIOeWxhYi1zdHVudC1zZ3AagwFLbGluZ0FJX0tvbG9yc19EaVRfSDgwMF8xX0tvbG9ycy12Ml82LXQyaS1vbW5pLXJlZmluZXItdjNfU0dQX1BST0RfYWlfd2ViXzMyMjE3MDM4NTY2MDQwMl81OGQ0MjJiNDI3Yjd.png"
       },
       "blocks": {
         "b1": {
@@ -352,7 +355,8 @@
         "image": "shopify://shop_images/EMXN1y8qngEKBnVwbG9hZBIOeWxhYi1zdHVudC1zZ3AagwFLbGluZ0FJX0tvbG9yc19EaVRfSDgwMF8xX0tvbG9ycy12Ml82LXQyaS1vbW5pLXJlZmluZXItdjNfU0dQX1BST0RfYWlfd2ViXzMyMjE3MDM5MTMwNDcyNV80ZGMwMWI3MTVjNDg.png",
         "video_url": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-mampara.mp4?v=1790201321",
         "eyebrow": "Adiós a las marcas de cal",
-        "heading": "Mampara limpia en 20 segundos",
+        "heading": "Mampara limpia en [20 segundos]",
+        "sticker": "Adiós cal",
         "text": "<p>La cal aparece cuando el agua se seca sobre el cristal. Pasa la rasqueta al salir de la ducha y listo.</p>",
         "product": "rasqueta-mampara-silicona",
         "btn_label": "Ver la Rasqueta"
@@ -391,7 +395,8 @@
         "image": "shopify://shop_images/EMXN1y8qngEKBnVwbG9hZBIOeWxhYi1zdHVudC1zZ3AagwFLbGluZ0FJX0tvbG9yc19EaVRfSDgwMF8xX0tvbG9ycy12Ml82LXQyaS1vbW5pLXJlZmluZXItdjNfU0dQX1BST0RfYWlfd2ViXzMyMjE3MDM4ODY1ODUxNF8yN2QxMzY5OWZlYWU.png",
         "video_url": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-fregadero.mp4?v=1790201505",
         "eyebrow": "Cocina",
-        "heading": "El fregadero, por fin en orden",
+        "heading": "El fregadero, [por fin] en orden",
+        "sticker": "Con 1 mano",
         "text": "<p>Dispensador de jabón de un toque y esponjero que deja escurrir el agua.</p>",
         "product": "kit-fregadero-dispensador-esponjero",
         "btn_label": "Ver el Kit Fregadero"
@@ -427,7 +432,9 @@
       "settings": {
         "bg": "teal",
         "eyebrow": "Cómo se instala",
-        "heading": "Listo en 1 minuto. Sin herramientas.",
+        "heading": "Listo en [1 minuto]. Sin herramientas.",
+        "sticker": "Sin taladro",
+        "bg_image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyL2JhNjgyOWZmLTQxYTMtNDk3Yy04OWJjLTE2YTkyNzQ2YzZlNy5wbmc.png",
         "note": "Solo superficies lisas: azulejo, cristal o metal. No apto para gotelé, pintura, madera sin lacar ni juntas."
       },
       "blocks": {
@@ -835,7 +842,9 @@
       "type": "jd-reviews",
       "settings": {
         "bg": "pop",
-        "filter_product": true
+        "filter_product": true,
+        "heading": "Lo que dicen [en casa]",
+        "sticker": "Opiniones reales"
       },
       "blocks": {},
       "block_order": []
@@ -855,7 +864,8 @@
       "settings": {
         "bg": "pop",
         "eyebrow": "Ofertas especiales",
-        "heading": "Ahorra hoy en baño y cocina",
+        "heading": "Ahorra hoy en [baño y cocina]",
+        "sticker": "¡Ofertón!",
         "text": "<p>Descuentos reales sobre nuestros precios de siempre. Se aplican solos en el carrito.</p>",
         "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti. Packs calculados sobre el precio de 1 unidad."
       },
@@ -1109,7 +1119,8 @@
         "image": "shopify://shop_images/EMXN1y8qUAoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo2c3RhcmdhdGUvMTE0LzUwOTU4ODdiLTY0MzQtNGI2OS1iNDA4LWY5OWQyMGYyNDYwNS5qcGVn.jpg",
         "align": "left",
         "eyebrow": "Novedades",
-        "heading": "Ideas que te hacen la vida más fácil",
+        "heading": "Ideas que te hacen la vida [más fácil]",
+        "sticker": "Nuevo",
         "text": "<p>Grifo giratorio 1080°, luz que se enciende sola, ducha de 5 chorros y dispensador de pasta. Todo sin obras.</p>",
         "btn_label": "Descubrir novedades",
         "btn_link": "shopify://collections/novedades"
@@ -1124,7 +1135,8 @@
         "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyL2JhNjgyOWZmLTQxYTMtNDk3Yy04OWJjLTE2YTkyNzQ2YzZlNy5wbmc.png",
         "align": "right",
         "eyebrow": "Baño sin agujeros",
-        "heading": "Tu ducha, ordenada en 1 minuto",
+        "heading": "Tu ducha, ordenada en [1 minuto]",
+        "sticker": "Sin obras",
         "text": "<p>Balda, esquinera, rasqueta y ganchos que se pegan al azulejo. Sin taladro, sin obras.</p>",
         "btn_label": "Ver todo para el baño",
         "btn_link": "shopify://collections/ducha"
@@ -1136,6 +1148,7 @@
       "type": "jd-faq",
       "settings": {
         "bg": "white",
+        "heading": "Preguntas [frecuentes]",
         "open_first": true,
         "link_label": "Ver todas las preguntas",
         "link": "shopify://pages/preguntas-frecuentes"
