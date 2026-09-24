@@ -48,3 +48,17 @@ Mensaje para pedírselo: `docs/14-packaging-y-mensajes-proveedores.md`.
 - Páginas legales (con 3 huecos por rellenar), aviso de cookies con aceptar/rechazar y formulario de desistimiento.
 - Sistema de reseñas reales con página «Opiniones», fotos y aviso de muestra gratis.
 - Packaging con tu logo para cada producto, y mensajes para los proveedores.
+
+## E. Hecho hoy por API (24-09-2026)
+- **Español** activado y puesto como idioma por defecto en los dos dominios (web, carrito, pago y correos).
+- **Envíos:** España península y Baleares a **3,95 €** o **GRATIS desde 35 €** (plazo 7-15 días laborables). He quitado las zonas UE e Internacional y Canarias, Ceuta y Melilla.
+- El nombre de la tienda ya lo cambiaste tú a «Jarandana »: quita el espacio del final en Ajustes → Detalles de la tienda.
+
+## F. ¿El proveedor envía solo cuando alguien compra? Hoy NO
+- **AutoDS no tiene ninguna tienda conectada** ni plan activo. Tiene 5 créditos de pedido automático y 400 de búsqueda.
+- **Sin app,** cada pedido lo haces a mano: abres el enlace de AliExpress (doc 13), eliges la variante, pones la dirección del cliente, pagas y copias el seguimiento en Shopify. Son unos 3-5 minutos por pedido.
+- **Para que sea automático,** tienes 2 opciones:
+  1. **DSers** (app gratis de Shopify, socio oficial de AliExpress). Enlazas cada producto con su artículo de AliExpress y, cuando entra un pedido, pulsas «Realizar pedido» y pagas. El seguimiento vuelve solo a Shopify. Es semiautomático: un clic por pedido o por lote.
+  2. **AutoDS** con plan de pago y «Auto-order» activado, con un método de pago o fondos en AutoDS. Compra solo en AliExpress y actualiza el seguimiento.
+- En los dos casos **no tienes que hablar antes con el proveedor**: AliExpress funciona como una tienda. Aun así, conviene mandarle el mensaje del doc 14 para pedir paquete neutro, plazo real y carga máxima.
+- **Recuerda:** el cliente te paga a ti y tú pagas al proveedor. Necesitas saldo o tarjeta para pagar cada pedido en AliExpress.
