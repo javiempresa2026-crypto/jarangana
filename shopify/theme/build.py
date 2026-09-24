@@ -102,7 +102,7 @@ index = {"sections": {
    "text": "<p>Descuentos reales sobre nuestros precios de siempre. Se aplican solos en el carrito.</p>",
    "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti. Packs calculados sobre el precio de 1 unidad."}, OFFERS),
  "list_ofertas": plist("ofertas", "#FFFFFF", 5),
- "marquee": sec("jd-marquee", {"color": "ink", "speed": 28}, [("item", {"text": t}) for t in ["Sin taladro", "Sin obras", "Envío con seguimiento", "14 días para devolver", "Pago seguro", "Ideal si vives de alquiler", "Listo en 1 minuto"]]),
+ "marquee": sec("jd-marquee", {"color": "ink", "speed": 28}, [("item", {"text": t}) for t in ["Envío GRATIS desde 35 €", "Sin taladro", "Sin obras", "Envío con seguimiento", "14 días para devolver", "Pago seguro", "Ideal si vives de alquiler", "Listo en 1 minuto"]]),
  "marquee2": sec("jd-marquee", {"color": "orange", "speed": 32}, [("item", {"text": t}) for t in ["-15 % en 5 favoritos", "Packs x2 con descuento", "BIENVENIDA10: -10 % en tu primer pedido", "Si llega roto, te enviamos otro"]]),
  "banner_nov": sec("jd-banner", {"bg": "orange", "image": si("ban_nov"), "align": "left", "eyebrow": "Novedades", "heading": "Ideas que te hacen la vida [más fácil]", "sticker": "Nuevo", "text": "<p>Grifo giratorio 1080°, luz que se enciende sola, ducha de 5 chorros y dispensador de pasta. Todo sin obras.</p>", "btn_label": "Descubrir novedades", "btn_link": "shopify://collections/novedades"}),
  "banner_bano": sec("jd-banner", {"bg": "teal", "image": si("ban_bano"), "align": "right", "eyebrow": "Baño sin agujeros", "heading": "Tu ducha, ordenada en [1 minuto]", "sticker": "Sin obras", "text": "<p>Balda, esquinera, rasqueta y ganchos que se pegan al azulejo. Sin taladro, sin obras.</p>", "btn_label": "Ver todo para el baño", "btn_link": "shopify://collections/ducha"}),
@@ -142,7 +142,7 @@ prod["order"] = ["main", "p_pay", "p_video", "p_benefits", "p_steps", "p_reviews
 # --- cabecera
 hg = json.load(open(os.path.join(D, "header-group.orig.json")))
 ann = hg["sections"]["header_announcements_9jGBFp"]
-ann["blocks"]["announcement_BxgCk9"]["settings"]["text"] = "Sin taladro, sin obras · Envío con seguimiento a península y Baleares"
+ann["blocks"]["announcement_BxgCk9"]["settings"]["text"] = "🚚 Envío GRATIS desde 35 € · Sin taladro, sin obras"
 ann["blocks"]["announcement_BxgCk9"]["settings"]["font_size"] = "0.8125rem"
 ann["blocks"]["announcement_ofertas"] = copy.deepcopy(ann["blocks"]["announcement_BxgCk9"])
 ann["blocks"]["announcement_ofertas"]["settings"]["text"] = "Ofertas especiales: -15 % en 5 favoritos, se aplica solo en el carrito"
@@ -216,7 +216,7 @@ pt.pop("padding_fix", None); pt.pop("text", None); pt.update({"padding-block-sta
 collection_t = {"sections": {
   "hero": sec("jd-pagehero", {"bg": "auto", "show_products": True}, CHIPS),
   "main": main_coll,
-  "marquee": sec("jd-marquee", {"color": "ink", "speed": 28}, [("item", {"text": t}) for t in ["Sin taladro", "Sin obras", "Envío con seguimiento", "14 días para devolver", "Pago seguro", "Listo en 1 minuto"]]),
+  "marquee": sec("jd-marquee", {"color": "ink", "speed": 28}, [("item", {"text": t}) for t in ["Envío GRATIS desde 35 €", "Sin taladro", "Sin obras", "Envío con seguimiento", "14 días para devolver", "Pago seguro", "Listo en 1 minuto"]]),
   "offers": sec("jd-offers", {"bg": "pop", "eyebrow": "Ofertas especiales", "heading": "Ahorra en [tu pedido]", "sticker": "¡Ofertón!", "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti."}, OFFERS),
   "benefits": sec("jd-benefits", {"bg": "orange", "eyebrow": "Por qué jarandana", "heading": "Orden en casa, [sin pedir permiso] al casero", "sticker": "Ideal alquiler"}, BENEFITS),
   "steps": sec("jd-steps", {"bg": "teal", "eyebrow": "Cómo se instala", "heading": "Listo en [1 minuto]. Sin herramientas.", "sticker": "Sin taladro", "show_surfaces": True, "btn2_label": "Ver la guía completa", "btn2_link": "shopify://pages/como-se-instala"}, STEPS),

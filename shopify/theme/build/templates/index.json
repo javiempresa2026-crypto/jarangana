@@ -1135,40 +1135,46 @@
         "b1": {
           "type": "item",
           "settings": {
-            "text": "Sin taladro"
+            "text": "Envío GRATIS desde 35 €"
           }
         },
         "b2": {
           "type": "item",
           "settings": {
-            "text": "Sin obras"
+            "text": "Sin taladro"
           }
         },
         "b3": {
           "type": "item",
           "settings": {
-            "text": "Envío con seguimiento"
+            "text": "Sin obras"
           }
         },
         "b4": {
           "type": "item",
           "settings": {
-            "text": "14 días para devolver"
+            "text": "Envío con seguimiento"
           }
         },
         "b5": {
           "type": "item",
           "settings": {
-            "text": "Pago seguro"
+            "text": "14 días para devolver"
           }
         },
         "b6": {
           "type": "item",
           "settings": {
-            "text": "Ideal si vives de alquiler"
+            "text": "Pago seguro"
           }
         },
         "b7": {
+          "type": "item",
+          "settings": {
+            "text": "Ideal si vives de alquiler"
+          }
+        },
+        "b8": {
           "type": "item",
           "settings": {
             "text": "Listo en 1 minuto"
@@ -1182,7 +1188,8 @@
         "b4",
         "b5",
         "b6",
-        "b7"
+        "b7",
+        "b8"
       ]
     },
     "marquee2": {
