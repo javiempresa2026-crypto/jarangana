@@ -5,9 +5,9 @@ Ordenado por prioridad. ✅ = hecho por mí · 🟠 = solo lo puedes hacer tú.
 ## A. Imprescindible antes de abrir
 | # | Qué | Dónde | Por qué |
 |---|---|---|---|
-| 1 | 🟠 **Tu nombre o empresa, NIF y dirección** | Tienda online → Páginas: Aviso legal, Privacidad, Condiciones de venta, Cookies y Devoluciones. Cambia `[TITULAR]`, `[NIF]` y `[DIRECCIÓN]` | Obligatorio por la LSSI y el RGPD |
+| 1 | ✅ / 🟠 **Titular y dirección:** ya pone «jarandana · Granada, España · jarandanainfo@gmail.com». **Al darte de alta** añade tu nombre, NIF y dirección completa | Páginas legales | La LSSI pide nombre, NIF y dirección de quien vende |
 | 2 | 🟠 **Políticas de Shopify** | Ajustes → Políticas. Copia los textos de `shopify/legal/politicas.json` | Son las que salen en el pago. Ahora la de privacidad está en inglés y a nombre de «My Store» |
-| 3 | 🟠 **Nombre de la tienda: jarandana** | Ajustes → Detalles de la tienda | Sale en correos, facturas y pestaña del navegador |
+| 3 | 🟠 **Nombre de la tienda «jarandana» (sin espacio al final) y email jarandanainfo@gmail.com** | Ajustes → Detalles de la tienda: email de la tienda y email del remitente | Sale en correos, facturas y pestaña del navegador. Por API no se puede cambiar |
 | 4 | 🟠 **Idioma principal: español** | Ajustes → Idiomas | La tienda está en inglés por defecto: botones del carrito, pago y correos |
 | 5 | 🟠 **Tarifas de envío** | Ajustes → Envíos y entregas → España: **3,95 €** y **gratis desde 35 €**. Quita UE e Internacional | Sin tarifas, el pago no deja terminar la compra fuera de las zonas activas |
 | 6 | 🟠 **Pagos** | Ajustes → Pagos → Shopify Payments (necesita DNI/NIF, IBAN y teléfono) + PayPal | Sin pagos activos nadie puede comprar |
