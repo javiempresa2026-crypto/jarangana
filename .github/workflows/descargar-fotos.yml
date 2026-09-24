@@ -12,13 +12,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: Descargar y convertir a JPG
         run: |
-          sudo apt-get -qq install -y webp >/dev/null
           mkdir -p ads/img
           while read -r name url; do
             [ -z "$name" ] && continue
-            curl -sSfL "$url" -o "/tmp/$name.src" || { echo "fallo $name"; continue; }
-            if file "/tmp/$name.src" | grep -qi webp; then dwebp -quiet "/tmp/$name.src" -o "/tmp/$name.png"; else cp "/tmp/$name.src" "/tmp/$name.png"; fi
-            python3 -c "from PIL import Image;Image.open('/tmp/$name.png').convert('RGB').save('ads/img/$name.jpg',quality=92)" 2>/dev/null || convert "/tmp/$name.png" -quality 92 "ads/img/$name.jpg"
+            ext="${url##*.}"
+            curl -sSfL "$url" -o "ads/img/$name.$ext" || echo "fallo $name"
           done < ads/fuentes.txt
           ls -la ads/img
       - name: Guardar en el repositorio
