@@ -238,7 +238,12 @@ page_nos = page_t({"bg": "orange", "image": si("hero"), "sticker": "Hola 👋", 
 page_legal = page_t({"bg": "ink", "emoji": "⚖️", "eyebrow": "Información legal", "text": "<p>Transparencia total: quiénes somos, cómo tratamos tus datos y cuáles son tus derechos.</p>"},
                     {"mode": "cards", "columns": "1", "sidebar": True, "bg": "cream"}, [CONTACT])
 
-out = {"templates/index.json": index, "templates/collection.json": collection_t, "templates/page.json": page_default, "templates/page.faq.json": page_faq, "templates/page.nosotros.json": page_nos, "templates/page.legal.json": page_legal, "templates/page.como-se-instala.json": page_inst, "templates/product.json": prod, "sections/header-group.json": hg,
+page_resenas = {"sections": {
+  "hero": sec("jd-pagehero", {"bg": "sun", "emoji": "⭐", "eyebrow": "Opiniones reales", "sticker": "Tu opinión cuenta", "heading": "¿Qué tal en [tu casa]?", "text": "<p>Cuéntanos cómo te ha ido: dónde lo has puesto, si ha agarrado bien y qué mejorarías. Publicamos todas las reseñas reales, buenas y malas.</p>", "btn_label": "Escribir mi reseña", "btn_link": "/pages/opiniones#escribir-resena"}, [("chip", {"icon": "check", "text": "Solo reseñas reales"}), ("chip", {"icon": "star", "text": "Buenas y malas"}), ("chip", {"icon": "mail", "text": "Tu email no se publica"})]),
+  "reviews": sec("jd-reviews", {"bg": "pop", "filter_product": False, "form_open": True, "heading": "Lo que dicen [en casa]", "sticker": "Opiniones reales", "empty_title": "Todavía no hay reseñas publicadas", "empty_text": "¡Estrena el muro! Si ya has probado algo de jarandana, cuéntanos qué tal con el formulario de abajo."}),
+  "offers": sec("jd-offers", {"bg": "white", "eyebrow": "Ofertas especiales", "heading": "Ahorra en [tu pedido]", "sticker": "¡Ofertón!", "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti."}, OFFERS),
+}, "order": ["hero", "reviews", "offers"]}
+out = {"templates/index.json": index, "templates/page.resenas.json": page_resenas, "templates/collection.json": collection_t, "templates/page.json": page_default, "templates/page.faq.json": page_faq, "templates/page.nosotros.json": page_nos, "templates/page.legal.json": page_legal, "templates/page.como-se-instala.json": page_inst, "templates/product.json": prod, "sections/header-group.json": hg,
        "sections/footer-group.json": fg, "config/settings_data.json": st}
 os.makedirs(os.path.join(D, "build"), exist_ok=True)
 for k, v in out.items():

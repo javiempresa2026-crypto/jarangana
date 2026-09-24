@@ -1,0 +1,130 @@
+{
+  "sections": {
+    "hero": {
+      "type": "jd-pagehero",
+      "settings": {
+        "bg": "sun",
+        "emoji": "⭐",
+        "eyebrow": "Opiniones reales",
+        "sticker": "Tu opinión cuenta",
+        "heading": "¿Qué tal en [tu casa]?",
+        "text": "<p>Cuéntanos cómo te ha ido: dónde lo has puesto, si ha agarrado bien y qué mejorarías. Publicamos todas las reseñas reales, buenas y malas.</p>",
+        "btn_label": "Escribir mi reseña",
+        "btn_link": "/pages/opiniones#escribir-resena"
+      },
+      "blocks": {
+        "b1": {
+          "type": "chip",
+          "settings": {
+            "icon": "check",
+            "text": "Solo reseñas reales"
+          }
+        },
+        "b2": {
+          "type": "chip",
+          "settings": {
+            "icon": "star",
+            "text": "Buenas y malas"
+          }
+        },
+        "b3": {
+          "type": "chip",
+          "settings": {
+            "icon": "mail",
+            "text": "Tu email no se publica"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "reviews": {
+      "type": "jd-reviews",
+      "settings": {
+        "bg": "pop",
+        "filter_product": false,
+        "form_open": true,
+        "heading": "Lo que dicen [en casa]",
+        "sticker": "Opiniones reales",
+        "empty_title": "Todavía no hay reseñas publicadas",
+        "empty_text": "¡Estrena el muro! Si ya has probado algo de jarandana, cuéntanos qué tal con el formulario de abajo."
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "offers": {
+      "type": "jd-offers",
+      "settings": {
+        "bg": "white",
+        "eyebrow": "Ofertas especiales",
+        "heading": "Ahorra en [tu pedido]",
+        "sticker": "¡Ofertón!",
+        "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti."
+      },
+      "blocks": {
+        "b1": {
+          "type": "offer",
+          "settings": {
+            "color": "orange",
+            "tag": "Automático",
+            "big": "-15 %",
+            "title": "En 5 favoritos de la casa",
+            "text": "<p>Balda, Kit Fregadero, Grifo 1080°, Alcachofa 5 chorros y Dispensador de pasta. Sin código.</p>",
+            "btn_label": "Ver las ofertas",
+            "btn_link": "shopify://collections/ofertas"
+          }
+        },
+        "b2": {
+          "type": "offer",
+          "settings": {
+            "color": "teal",
+            "tag": "Pack x2",
+            "big": "Ahorra 5,90 €",
+            "title": "2 Grifos 1080° por 19,90 €",
+            "text": "<p>En vez de 25,80 € comprando 2 sueltos. Uno para la cocina y otro para el baño.</p>",
+            "btn_label": "Elegir el pack",
+            "btn_link": "shopify://products/grifo-giratorio-1080"
+          }
+        },
+        "b3": {
+          "type": "offer",
+          "settings": {
+            "color": "pink",
+            "tag": "Pack x2",
+            "big": "Ahorra 4,90 €",
+            "title": "2 Luces LED por 44,90 €",
+            "text": "<p>En vez de 49,80 € sueltas. Se encienden solas al pasar: pasillo, armario o escalera.</p>",
+            "btn_label": "Elegir el pack",
+            "btn_link": "shopify://products/luz-led-sensor-movimiento"
+          }
+        },
+        "b4": {
+          "type": "offer",
+          "settings": {
+            "color": "sun",
+            "tag": "Primer pedido",
+            "big": "-10 %",
+            "title": "Bienvenida a jarandana",
+            "text": "<p>En pedidos desde 25 €. Copia el código y pégalo al pagar.</p>",
+            "code": "BIENVENIDA10",
+            "btn_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "reviews",
+    "offers"
+  ]
+}

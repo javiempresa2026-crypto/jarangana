@@ -56,10 +56,12 @@
         {%- assign v = r.valoracion.value | plus: 0 -%}
         <article class="jd-card">
           <span class="jd-stars" aria-label="{{ v }} de 5">{%- for i in (1..5) -%}<span{% if i > v %} class="off"{% endif %}>{% render 'jd-icon', icon: 'star', size: 16 %}</span>{%- endfor -%}</span>
+          {%- if r.foto.value != blank -%}<div class="jd-card__photo">{{ r.foto.value | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Foto de la reseña' }}</div>{%- endif -%}
           <p>{{ r.texto.value | escape | newline_to_br }}</p>
           <div class="jd-card__who">
             {{ r.nombre.value | escape }}{% if r.ciudad.value != blank %}, {{ r.ciudad.value | escape }}{% endif %}
             {%- if r.compra_verificada.value -%} <span class="jd-ver">{% render 'jd-icon', icon: 'check', size: 14 %}Compra verificada</span>{%- endif -%}
+            {%- if r.muestra.value -%} <span class="jd-ver jd-ver--sample">🎁 Recibió el producto gratis para probarlo</span>{%- endif -%}
             <div class="jd-card__meta">
               {%- if r.producto.value != blank -%}<a href="{{ r.producto.value.url }}" style="color:inherit">{{ r.producto.value.title }}</a>{%- endif -%}
               {%- if r.fecha.value != blank -%} · {{ r.fecha.value | date: '%d/%m/%Y' }}{%- endif -%}
@@ -75,7 +77,7 @@
     </div>
     {%- endif -%}
 
-    <details class="jd-rev__toggle"{% if request.path contains 'contact' %} open{% endif %}>
+    <details class="jd-rev__toggle" id="escribir-resena"{% if request.path contains 'contact' or section.settings.form_open %} open{% endif %}>
       <summary class="jd__btns" style="margin-top:22px"><span class="jd__btn jd__btn--ghost">{% render 'jd-icon', icon: 'star', size: 18 %} Escribir una reseña</span></summary>
       {%- form 'contact', id: 'jd-review-form', class: 'jd-form' -%}
         {%- if form.posted_successfully? -%}
@@ -91,8 +93,8 @@
           <label>Ciudad (opcional)<input type="text" name="contact[Ciudad]" autocomplete="address-level2"></label>
           <label>Producto
             <select name="contact[Producto]">
-              {%- if product -%}<option>{{ product.title | escape }}</option>{%- endif -%}
-              {%- for p in collections.all.products limit: 30 -%}{%- unless product and p.id == product.id -%}<option>{{ p.title | escape }}</option>{%- endunless -%}{%- endfor -%}
+              {%- if product -%}<option data-handle="{{ product.handle }}">{{ product.title | escape }}</option>{%- endif -%}
+              {%- for p in collections.all.products limit: 30 -%}{%- unless product and p.id == product.id -%}<option data-handle="{{ p.handle }}">{{ p.title | escape }}</option>{%- endunless -%}{%- endfor -%}
             </select>
           </label>
         </div>
@@ -107,9 +109,18 @@
         </div>
         <label>Tu opinión<textarea name="contact[body]" required placeholder="¿Qué tal te ha ido? ¿Dónde lo has puesto?"></textarea></label>
         <button type="submit" class="jd__btn">Enviar reseña</button>
+        <p class="jd-card__meta" style="margin:0">📸 ¿Tienes una foto de cómo te ha quedado? Respóndenos al email de confirmación y la añadimos a tu reseña.</p>
         <p class="jd-card__meta" style="margin:0">Publicamos todas las reseñas reales, buenas y malas, tras comprobar que no contienen datos personales ni lenguaje ofensivo.</p>
       {%- endform -%}
-    </details>
+    <script>
+(function () {
+  var d = document.getElementById('escribir-resena'); if (!d) return;
+  var q = new URLSearchParams(location.search).get('producto');
+  if (q) { var o = d.querySelector('option[data-handle="' + q.replace(/[^a-z0-9-]/gi, '') + '"]'); if (o) o.selected = true; }
+  if (q || location.hash === '#escribir-resena') { d.open = true; setTimeout(function () { d.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300); }
+})();
+</script>
+</details>
   </div>
 </section>
 {% schema %}
@@ -151,6 +162,12 @@
      "label": "Amarillo sol"
     }
    ]
+  },
+  {
+   "type": "checkbox",
+   "id": "form_open",
+   "label": "Formulario de reseña abierto",
+   "default": false
   },
   {
    "type": "text",
