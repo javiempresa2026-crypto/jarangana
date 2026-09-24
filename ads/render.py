@@ -36,6 +36,24 @@ ADS = {
    ("bal6", "Sin taladro, sin obras"),
    ("ras4", "+ rasqueta y ganchos en un solo kit"),
  ]),
+ "grifo-ia": dict(bg=TEAL, price="12,90 €", name="Grifo 1080°", scenes=[
+   ("kling/grifo.mp4", "Tu grifo puede hacer [ESTO] 👀", 5.0),
+   ("grifo1", "Gira 1080° hacia donde quieras"),
+   ("paso_grifo", "2 chorros: suave o a presión"),
+   ("grifo3", "Se enrosca en 1 minuto. Sin fontanero"),
+ ]),
+ "luz-ia": dict(bg=INK, price="24,90 €", name="Luz LED con sensor", scenes=[
+   ("kling/luz.mp4", "Abres el armario y… [se enciende sola] 💡", 5.0),
+   ("luz4", "Sensor de movimiento hasta 3 m"),
+   ("luz3", "Imán + adhesivo. Cero agujeros"),
+   ("luz5", "Armario, cocina, pasillo o baño"),
+ ]),
+ "rasqueta-ia": dict(bg=OR, price="15,90 €", name="Rasqueta con soporte", scenes=[
+   ("kling/rasqueta.mp4", "Lo más [satisfactorio] de tu ducha ✨", 5.0),
+   ("ras5", "10 segundos y la mampara sin marcas"),
+   ("ras3", "Se cuelga en la mampara. Siempre a mano"),
+   ("ras1", "Silicona: no raya el cristal"),
+ ]),
  "fregadero": dict(bg=SUN, price="19,90 €", name="Kit Fregadero", scenes=[
    ("fre1", "Friegas con [una mano] 🧽"),
    ("fre3", "Presionas y sale el jabón justo"),
@@ -119,14 +137,27 @@ def photo_frame(img, t, idx):
     box = (max(0, box[0]), max(0, box[1]), min(iw, box[2]), min(ih, box[3]))
     return rounded(img.crop(tuple(map(int, box))).resize((side, side), Image.LANCZOS), 48)
 
+def load_video(path, side=960):
+    """Devuelve los fotogramas (PIL) del clip recortado al centro en cuadrado."""
+    cmd = [FFMPEG, "-loglevel", "error", "-i", path, "-vf", f"crop='min(iw,ih)':'min(iw,ih)',scale={side}:{side},fps={FPS}", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"]
+    raw = subprocess.run(cmd, capture_output=True, check=True).stdout
+    n = len(raw) // (side * side * 3)
+    return [rounded(Image.frombytes("RGB", (side, side), raw[i*side*side*3:(i+1)*side*side*3]), 48) for i in range(n)]
+
 def render(key):
     ad = ADS[key]; bg = ad["bg"]; dark = bg in (INK, TEAL, PK, OR)
     fg = (255, 255, 255) if dark else INK
     hl = SUN if bg != SUN else OR
     hlc = INK
-    imgs = {n: Image.open(next(f"{D}/img/{n}.{e}" for e in ("webp", "png", "jpg") if os.path.exists(f"{D}/img/{n}.{e}"))).convert("RGB") for n, _ in ad["scenes"]}
-    SC, END = 2.6, 3.4
-    total = SC * len(ad["scenes"]) + END
+    imgs = {}
+    for sc in ad["scenes"]:
+        n = sc[0]
+        if n.endswith(".mp4"): imgs[n] = load_video(f"{D}/{n}")
+        else: imgs[n] = Image.open(next(f"{D}/img/{n}.{e}" for e in ("webp", "png", "jpg") if os.path.exists(f"{D}/img/{n}.{e}"))).convert("RGB")
+    durs = [sc[2] if len(sc) > 2 else 2.6 for sc in ad["scenes"]]
+    starts = [sum(durs[:i]) for i in range(len(durs))]
+    END = 3.4
+    total = sum(durs) + END
     out = f"{D}/out/jarandana-{key}.mp4"; os.makedirs(f"{D}/out", exist_ok=True)
     p = subprocess.Popen([FFMPEG, "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
                           "-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo", "-shortest",
@@ -144,17 +175,18 @@ def render(key):
     for fi in range(n):
         t = fi / FPS
         c = base.copy()
-        si = int(t // SC)
-        if si < len(ad["scenes"]):
-            name, txt = ad["scenes"][si]; lt = (t - si * SC) / SC
-            ph = photo_frame(imgs[name], lt, si)
-            enter = ease((t - si * SC) / 0.35)
+        si = sum(1 for st in starts if t >= st) - 1
+        if t < sum(durs):
+            name, txt = ad["scenes"][si][:2]; SC = durs[si]; st = starts[si]; lt = (t - st) / SC
+            if name.endswith(".mp4"): fr = imgs[name]; ph = fr[min(len(fr) - 1, int((t - st) * FPS))]
+            else: ph = photo_frame(imgs[name], lt, si)
+            enter = ease((t - st) / 0.35)
             sh = Image.new("RGBA", (1000, 1000), (0, 0, 0, 0)); ImageDraw.Draw(sh).rounded_rectangle((20, 20, 980, 980), 48, fill=(0, 0, 0, 90))
             sh = sh.filter(ImageFilter.GaussianBlur(18))
             x = int(60 + (1 - enter) * 1080 * (1 if si % 2 == 0 else -1)) if si else 60
             y = 540
             c.alpha_composite(sh, (x - 20, y - 5)); c.alpha_composite(ph, (x, y))
-            draw_text_block(c, txt, 230, 92 if si == 0 else 72, fg, hl, (t - si * SC) / 0.9)
+            draw_text_block(c, txt, 230, 92 if si == 0 else 72, fg, hl, (t - st) / 0.9)
             # barra de progreso de escenas
             for k in range(len(ad["scenes"])):
                 d = ImageDraw.Draw(c); x0 = 90 + k * (900 / len(ad["scenes"]))
@@ -164,7 +196,7 @@ def render(key):
             pill(c, f"{ad['name']} · {ad['price']}", W / 2, 1540, 46, (255, 255, 255), INK, font_w=600)
             c.alpha_composite(logo, (int(W / 2 - logo.width / 2), 60))
         else:
-            et = t - SC * len(ad["scenes"])
+            et = t - sum(durs)
             c = Image.new("RGBA", (W, H), OR + (255,)); c.alpha_composite(pat)
             lg = LOGO.resize((760, int(760 * LOGO.height / LOGO.width)), Image.LANCZOS)
             sc = 0.85 + 0.15 * ease(et / 0.5)

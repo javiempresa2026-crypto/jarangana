@@ -1,0 +1,3 @@
+ads/voz/*.onnx
+ads/voz/*.onnx.json
+ads/voz/*.wav
