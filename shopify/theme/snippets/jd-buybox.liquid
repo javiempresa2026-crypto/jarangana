@@ -1,0 +1,41 @@
+{%- comment -%}
+  Caja de compra bajo el botón "Añadir al carrito": oferta automática, fecha estimada de entrega (7-15 días laborables
+  ≈ 9-21 días naturales), garantías y métodos de pago activos.
+{%- endcomment -%}
+{%- liquid
+  assign in_offer = false
+  for c in product.collections
+    if c.handle == 'ofertas'
+      assign in_offer = true
+    endif
+  endfor
+  assign meses = 'enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre' | split: ','
+  assign t1 = 'now' | date: '%s' | plus: 777600
+  assign t2 = 'now' | date: '%s' | plus: 1814400
+  assign d1 = t1 | date: '%-d'
+  assign m1 = t1 | date: '%-m' | minus: 1
+  assign d2 = t2 | date: '%-d'
+  assign m2 = t2 | date: '%-m' | minus: 1
+  assign price = product.selected_or_first_available_variant.price
+-%}
+<div class="jd-bb">
+  {%- if in_offer -%}
+  <div class="jd-bb__offer">
+    <span class="jd-bb__fire">🔥 -15 %</span>
+    <span>Descuento automático en el carrito: te queda en <strong>{{ price | times: 0.85 | round | money }}</strong></span>
+  </div>
+  {%- endif -%}
+  <div class="jd-bb__row jd-bb__ship">
+    {% render 'jd-icon', icon: 'truck', size: 22 %}
+    <span>Recíbelo aprox. <strong>entre el {{ d1 }} de {{ meses[m1] }} y el {{ d2 }} de {{ meses[m2] }}</strong><small>Envío con seguimiento a península y Baleares</small></span>
+  </div>
+  <ul class="jd-bb__trust">
+    <li>{% render 'jd-icon', icon: 'drill', size: 18 %}Sin taladro</li>
+    <li>{% render 'jd-icon', icon: 'return', size: 18 %}14 días para devolver</li>
+    <li>{% render 'jd-icon', icon: 'shield', size: 18 %}Garantía de 3 años</li>
+    <li>{% render 'jd-icon', icon: 'lock', size: 18 %}Pago seguro</li>
+  </ul>
+  {%- if shop.enabled_payment_types.size > 0 -%}
+  <div class="jd-bb__pay">{%- for t in shop.enabled_payment_types -%}{{ t | payment_type_svg_tag: class: 'jd-bb__icon' }}{%- endfor -%}</div>
+  {%- endif -%}
+</div>

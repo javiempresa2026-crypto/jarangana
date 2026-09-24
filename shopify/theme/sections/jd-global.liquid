@@ -24,6 +24,27 @@
 </div>
 {%- endif -%}
 <a href="#MainContent" class="jd-top" aria-label="Volver arriba" hidden>↑</a>
+{%- if template.name == 'product' and product -%}
+<div class="jd-sticky" id="jd-sticky" aria-hidden="true">
+  {%- if product.featured_image -%}{{ product.featured_image | image_url: width: 120 | image_tag: class: 'jd-sticky__img', alt: '' }}{%- endif -%}
+  <span class="jd-sticky__txt"><span class="jd-sticky__t">{{ product.title | split: ' — ' | first }}</span><span class="jd-sticky__p">{{ product.selected_or_first_available_variant.price | money }}</span></span>
+  <button type="button" class="jd__btn" id="jd-sticky-btn">Añadir al carrito</button>
+</div>
+<script>
+(function () {
+  var bar = document.getElementById('jd-sticky'); if (!bar) return;
+  var form = document.querySelector('form[action*="/cart/add"]');
+  var btn = form && form.querySelector('[type="submit"]');
+  if (!btn) { bar.remove(); return; }
+  document.getElementById('jd-sticky-btn').addEventListener('click', function () { btn.click(); });
+  new IntersectionObserver(function (e) {
+    var show = !e[0].isIntersecting && e[0].boundingClientRect.top < 0;
+    bar.classList.toggle('is-on', show); bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+    document.body.classList.toggle('jd-sticky-on', show);
+  }).observe(btn);
+})();
+</script>
+{%- endif -%}
 <script>
 (function () {
   var KEY = 'jd-cookies-v1', box = document.getElementById('jd-ck'), top = document.querySelector('.jd-top');

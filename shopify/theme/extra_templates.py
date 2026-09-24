@@ -33,10 +33,16 @@ cart = {"sections": {
  "cart-section": {"type": "main-cart", "blocks": {
    "cart-page-title": {"type": "_cart-title", "static": True, "settings": {"title": "Tu carrito", "show_count": True, "type_preset": "h4", "alignment": "left", **Z}, "blocks": {}},
    "cart-page-items": {"type": "_cart-products", "static": True, "settings": {"gap": 24, "image_ratio": "square", "dividers": True, "vendor": False, **Z}, "blocks": {}},
-   "cart-page-summary": {"type": "_cart-summary", "static": True, "settings": {"extend_summary": True, "background_color": "#EADFCB", "border": "none", "border_width": 1, "border_opacity": 100, "border_radius": 14}, "blocks": {}}},
+   "cart-page-summary": {"type": "_cart-summary", "static": True, "settings": {"extend_summary": True, "background_color": "#FFF3C4", "border": "solid", "border_width": 2, "border_opacity": 100, "border_radius": 20}, "blocks": {}}},
    "settings": {"section_width": "page-width", "background_color": BG, "padding-block-start": 24, "padding-block-end": 0}},
+ "trust": {"type": "jd-benefits", "settings": {"bg": "teal", "eyebrow": "Compra tranquilo", "heading": "Tu pedido, [en buenas manos]", "sticker": "Garantizado"}, "blocks": {
+   "b1": {"type": "item", "settings": {"icon": "lock", "title": "Pago 100 % seguro", "text": "Lo procesa Shopify. Nunca vemos los datos de tu tarjeta."}},
+   "b2": {"type": "item", "settings": {"icon": "truck", "title": "Envío con seguimiento", "text": "Te mandamos el número de seguimiento por email."}},
+   "b3": {"type": "item", "settings": {"icon": "return", "title": "14 días para devolver", "text": "Sin dar explicaciones."}},
+   "b4": {"type": "item", "settings": {"icon": "shield", "title": "Si llega roto, otro nuevo", "text": "Y garantía legal de 3 años."}}}, "block_order": ["b1", "b2", "b3", "b4"]},
+ "pay": {"type": "jd-payments", "settings": {"bg": "white", "heading": "Pago 100 % seguro y cifrado", "text": "Aceptamos los métodos que ves aquí. Si tienes un código (por ejemplo BIENVENIDA10), pégalo en la pantalla de pago."}, "blocks": {}, "block_order": []},
  "list": plist("Completa tu pedido", "Ver todo")},
- "order": ["cart-section", "list"]}
+ "order": ["cart-section", "trust", "pay", "list"]}
 
 lc = {"sections": {"collection_list_Wfgh3m": {"type": "main-collection-list", "blocks": {
    "group_4FtiAg": {"type": "group", "settings": {"content_direction": "column", "vertical_on_mobile": True, "horizontal_alignment": "flex-start", "vertical_alignment": "center", "align_baseline": False, "horizontal_alignment_flex_direction_column": "flex-start", "vertical_alignment_flex_direction_column": "center", "gap": 12, "width": "fit-content", "custom_width": 100, "width_mobile": "fit-content", "custom_width_mobile": 100, "height": "fit", "custom_height": 100, "background_media": "none", "video_position": "cover", "background_image_position": "cover", "border": "none", "border_width": 1, "border_opacity": 100, "border_radius": 0, "toggle_overlay": False, "overlay_color": "#00000026", "overlay_style": "solid", "gradient_direction": "to top", "open_in_new_tab": False, "padding-block-start": 0, "padding-block-end": 48, "padding-inline-start": 0, "padding-inline-end": 0},

@@ -118,6 +118,9 @@ m["settings"]["background_color"] = "#F5EFE4"
 pd = m["blocks"]["product-details"]["blocks"]
 pd["buy_buttons_eYQEYi"]["blocks"]["add-to-cart"]["settings"].update({"style_class": "button"})
 pd["variant_picker_R3rGDr"]["settings"]["show_swatches"] = False
+pd["jd_buybox"] = {"type": "custom-liquid", "settings": {"custom_liquid": "{% render 'jd-buybox', product: product %}"}, "blocks": {}}
+_bo = m["blocks"]["product-details"]["block_order"]
+_bo.insert(_bo.index("buy_buttons_eYQEYi") + 1, "jd_buybox")
 rec = prod["sections"]["product_recommendations_qggXJq"]
 rec["blocks"]["text_cbcgyb"]["settings"]["text"] = "<h3>Combina con</h3>"
 rec["settings"]["background_color"] = "#FFFFFF"

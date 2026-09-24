@@ -271,6 +271,13 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "jd_buybox": {
+              "type": "custom-liquid",
+              "settings": {
+                "custom_liquid": "{% render 'jd-buybox', product: product %}"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -278,6 +285,7 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
+            "jd_buybox",
             "text_aEtTtq"
           ]
         }

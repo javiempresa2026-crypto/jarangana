@@ -376,3 +376,27 @@ body.jd-ck-open .jd-top{display:none}
 .jd-card__photo{border-radius:14px;overflow:hidden;aspect-ratio:4/3}.jd-card__photo img{width:100%;height:100%;object-fit:cover;display:block}
 .jd-ver--sample{color:#9F1239;background:#FFE4EC;padding:2px 8px;border-radius:999px}
 #escribir-resena{scroll-margin-top:calc(var(--header-height,80px) + 16px)}
+/* caja de compra en la ficha */
+.jd-bb{display:grid;gap:10px;margin-top:6px;color:var(--jd-ink)}
+.jd-bb__offer{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 14px;border-radius:14px;background:linear-gradient(135deg,#FFF1E6,#FFE4EC);border:2px dashed #FF6B2C;font-size:.92rem;line-height:1.4}
+.jd-bb__fire{flex:none;background:linear-gradient(135deg,#FF9A3D,#FF4D6D);color:#fff;font-weight:900;padding:5px 10px;border-radius:999px;font-size:.85rem}
+.jd-bb__row{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:#E6FAF7;font-size:.92rem;line-height:1.4}
+.jd-bb__row svg{flex:none;color:#0E7490;margin-top:1px}
+.jd-bb__row small{display:block;opacity:.75;font-size:.8rem;margin-top:2px}
+.jd-bb__trust{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.jd-bb__trust li{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;background:#fff;border:2px solid #F1E7D6;font-weight:800;font-size:.82rem}
+.jd-bb__trust svg{flex:none;color:#FF6B2C}
+.jd-bb__pay{display:flex;flex-wrap:wrap;gap:6px}.jd-bb__icon{width:40px;height:auto}
+/* botón de añadir al carrito más llamativo */
+product-form-component button[type="submit"],.product-form-buttons button[type="submit"],.add-to-cart-button{background:linear-gradient(135deg,#FF8A3D,#FF5A2C)!important;color:#fff!important;border:0!important;border-radius:999px!important;font-weight:900!important;min-height:54px;box-shadow:0 10px 24px rgba(255,90,44,.35);transition:transform .15s ease,box-shadow .15s ease}
+product-form-component button[type="submit"]:hover,.add-to-cart-button:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(255,90,44,.45)}
+/* barra fija de compra en móvil */
+.jd-sticky{position:fixed;z-index:60;left:0;right:0;bottom:0;display:none;align-items:center;gap:12px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#fff;box-shadow:0 -10px 30px rgba(30,43,55,.18);border-top:3px solid #FFC845;transform:translateY(110%);transition:transform .25s ease}
+.jd-sticky.is-on{transform:none}
+.jd-sticky__img{width:44px;height:44px;border-radius:10px;object-fit:cover;flex:none}
+.jd-sticky__txt{min-width:0;flex:1;line-height:1.2}
+.jd-sticky__t{display:block;font-weight:800;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.jd-sticky__p{font-weight:900;color:#E4502E}
+.jd-sticky .jd__btn{min-height:46px;padding:0 18px;font-size:.95rem;flex:none}
+@media (max-width:989px){.jd-sticky{display:flex}body.jd-sticky-on .jd-top{bottom:84px}}
+body.jd-ck-open .jd-sticky{display:none}
