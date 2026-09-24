@@ -400,3 +400,19 @@ product-form-component button[type="submit"]:hover,.add-to-cart-button:hover{tra
 .jd-sticky .jd__btn{min-height:46px;padding:0 18px;font-size:.95rem;flex:none}
 @media (max-width:989px){.jd-sticky{display:flex}body.jd-sticky-on .jd-top{bottom:84px}}
 body.jd-ck-open .jd-sticky{display:none}
+/* ===== menú lateral (móvil) ===== */
+.header__icon--menu{background:linear-gradient(135deg,#FF8A3D,#FF5A2C);color:#fff!important;border-radius:14px;width:44px;height:44px;display:grid;place-items:center;box-shadow:0 6px 16px rgba(255,90,44,.35)}
+.header__icon--menu svg{color:#fff}
+.menu-drawer{background:radial-gradient(circle at 100% 0,rgba(255,154,61,.25) 0,transparent 40%),radial-gradient(circle at 0 100%,rgba(25,194,176,.2) 0,transparent 45%),#FFF8EE!important}
+.menu-drawer__navigation{padding-top:4px}
+.menu-drawer__navigation:before{content:"¿Qué buscas hoy? 👋";display:block;margin:6px 16px 12px;font-weight:900;font-size:1.35rem;letter-spacing:-.02em;color:var(--jd-ink)}
+.menu-drawer__menu-item--mainlist{display:flex!important;align-items:center;justify-content:space-between;margin:0 14px 10px;padding:14px 18px!important;border-radius:18px;background:#fff;border:2px solid rgba(30,43,55,.08);box-shadow:0 4px 0 rgba(30,43,55,.08);font-weight:800!important;font-size:1.1rem!important;color:var(--jd-ink)!important;text-decoration:none;transition:transform .15s ease,background .15s ease}
+.menu-drawer__menu-item--mainlist:after{content:"›";font-size:1.6rem;line-height:1;color:#FF6B2C;font-weight:900}
+.menu-drawer__menu-item--mainlist:active,.menu-drawer__menu-item--mainlist:hover{transform:translateX(4px);background:#FFF1E6}
+.menu-drawer__menu-item--mainlist[href*="/collections/ofertas"]{background:linear-gradient(135deg,#FF9A3D,#FF4D6D);color:#fff!important;border-color:transparent;box-shadow:0 4px 0 #C2410C,0 10px 22px rgba(255,77,109,.3)}
+.menu-drawer__menu-item--mainlist[href*="/collections/ofertas"]:after{color:#fff}
+.menu-drawer__menu-item--mainlist[href*="/collections/novedades"]{background:#FFC845;border-color:#F5B000;box-shadow:0 4px 0 #D99A00}
+.menu-drawer__menu-item--mainlist[aria-current="page"]{background:#19C2B0;color:#fff!important;border-color:#0FA3A3;box-shadow:0 4px 0 #0E7490}
+.menu-drawer__menu-item--mainlist[aria-current="page"]:after{color:#fff}
+.menu-drawer__navigation:after{content:"🎁 -10 % con BIENVENIDA10\A🚚 Envío GRATIS desde 35 €";white-space:pre-line;display:block;margin:14px 14px 18px;padding:16px 18px;border-radius:18px;background:linear-gradient(135deg,#19C2B0,#0E7490);color:#fff;font-weight:800;line-height:1.6;box-shadow:0 10px 24px rgba(14,116,144,.3)}
+.menu-drawer__utility-links{margin:0 14px;padding:14px 18px;border-radius:18px;background:#fff;border:2px dashed #EADFCB}

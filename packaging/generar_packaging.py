@@ -14,22 +14,18 @@ def inner(name):
 
 LOGO_COLOR, LOGO_WHITE, ISO = inner("jarandana-logo-horizontal.svg"), inner("jarandana-logo-mono-blanco.svg"), inner("jarandana-isotipo-transparente.svg")
 INK, CREAM, ORANGE = "#1E2B37", "#F5EFE4", "#FF6B2C"
-LINES = {"Baño": ("#0FA3A3", "#19C2B0"), "Cocina": ("#FF6B2C", "#FF9A3D"), "Novedad": ("#E0245E", "#FF7A9A")}
+LINES = {"Universal": ("#FF4D6D", "#FF9A3D")}
 
 # clave, nombre, línea, frase, 3 ventajas, contenido, (ancho, fondo, alto) mm ORIENTATIVO
+# Caja UNIVERSAL: el mismo diseño para todo, en 6 tamaños (medidas ORIENTATIVAS, ancho × fondo × alto en mm).
+FRASE = "Ni un agujero. Ni una marca."
 PRODUCTOS = [
- ("balda", "Balda de ducha", "Baño", "Se pega. Aguanta. Se va contigo.", ["Sin taladrar", "Para azulejo, cristal y metal", "Se quita con un secador"], "1 balda de ducha", (300, 100, 60)),
- ("rasqueta", "Rasqueta para mampara", "Baño", "Mampara limpia en 20 segundos.", ["Silicona que no raya", "Con soporte adhesivo", "Sin productos químicos"], "1 rasqueta + 1 soporte", (100, 40, 260)),
- ("ganchos", "Ganchos adhesivos", "Baño", "Toallas en su sitio, azulejo intacto.", ["Sin taladrar", "Acero para zonas húmedas", "Se quitan sin marcas"], "2 o 4 ganchos", (110, 30, 160)),
- ("kit-fregadero", "Kit Fregadero", "Cocina", "Jabón con una mano. Esponja seca.", ["Dispensador de pulsar", "Esponjero que escurre", "Ocupa muy poco"], "1 dispensador + 1 esponjero", (180, 90, 190)),
- ("esquinera", "Esquinera doble", "Baño", "Dos alturas de orden, cero agujeros.", ["Sin taladrar", "2 baldas de esquina", "Para azulejo y cristal"], "Estantería de esquina de 2 alturas", (250, 250, 70)),
- ("bayetas", "Bayetas de microfibra", "Cocina", "Cristales y grifos sin marcas.", ["Microfibra gruesa", "Sin productos químicos", "Lavables"], "8 bayetas", (160, 60, 160)),
- ("recambio", "Recambio de adhesivos", "Baño", "Para volver a pegarlo al mudarte.", ["Cinta doble cara", "3 metros", "Cortas a medida"], "1 rollo de 3 m", (100, 100, 30)),
- ("kit-ducha", "Kit Ducha Sin Cal", "Baño", "Tu ducha, ordenada en 1 minuto.", ["Balda + Rasqueta + 2 Ganchos", "Sin taladrar", "Adiós a la cal"], "1 balda, 1 rasqueta y 2 ganchos", (320, 120, 110)),
- ("grifo", "Grifo 1080°", "Novedad", "Gira hacia donde lo necesites.", ["Giro 1080°", "2 tipos de chorro", "Se enrosca sin herramientas"], "1 o 2 cabezales giratorios", (70, 70, 120)),
- ("luz", "Luz LED con sensor", "Novedad", "Se enciende sola cuando pasas.", ["Sensor de movimiento", "Recargable", "Magnética, sin taladrar"], "1 o 2 luces LED", (80, 40, 240)),
- ("alcachofa", "Alcachofa 5 chorros", "Novedad", "5 chorros para una ducha nueva.", ["5 tipos de chorro", "Con filtro", "Rosca estándar"], "1 alcachofa de ducha", (110, 80, 250)),
- ("dispensador", "Dispensador de pasta", "Novedad", "Pasta justa, lavabo despejado.", ["Dispensa la pasta solo", "Con portacepillos", "Sin taladrar"], "1 dispensador con portacepillos", (180, 70, 150)),
+ ("xs", "Talla XS", "Universal", FRASE, [], "Recambio de adhesivos", (110, 110, 40)),
+ ("s", "Talla S", "Universal", FRASE, [], "Grifo 1080° · Ganchos", (120, 80, 170)),
+ ("m", "Talla M (alta)", "Universal", FRASE, [], "Rasqueta · Luz LED · Alcachofa", (120, 90, 270)),
+ ("l", "Talla L", "Universal", FRASE, [], "Kit Fregadero · Dispensador de pasta · Bayetas", (200, 100, 200)),
+ ("xl", "Talla XL (plana)", "Universal", FRASE, [], "Balda · Kit Ducha", (330, 130, 120)),
+ ("xxl", "Talla XXL (cuadrada)", "Universal", FRASE, [], "Esquinera doble", (270, 270, 90)),
 ]
 S = 4  # px por mm en el SVG (el SVG está en mm vía viewBox; S solo escala el texto)
 TUCK, GLUE = 15, 12
@@ -75,21 +71,19 @@ def front(x, y, W, H, p):
     c1, c2 = LINES[line]
     m = min(W, H)
     cx, cy = x + W / 2, y + H / 2
-    s = [f'<rect x="{x}" y="{y}" width="{W}" height="{H}" fill="url(#g{k})"/>', pattern(x, y, W, H, k),
-         f'<circle cx="{x + W*0.88:.1f}" cy="{y + H*0.12:.1f}" r="{m*0.42:.1f}" fill="#fff" opacity=".12"/>',
-         f'<circle cx="{x + W*0.08:.1f}" cy="{y + H*0.95:.1f}" r="{m*0.3:.1f}" fill="#FFC845" opacity=".35"/>']
+    cid = f"f{k}{int(x)}"
+    s = [f'<clipPath id="{cid}"><rect x="{x}" y="{y}" width="{W}" height="{H}"/></clipPath>',
+         f'<rect x="{x}" y="{y}" width="{W}" height="{H}" fill="url(#g{k})"/>', pattern(x, y, W, H, k),
+         f'<g clip-path="url(#{cid})"><circle cx="{x + W*0.88:.1f}" cy="{y + H*0.12:.1f}" r="{m*0.42:.1f}" fill="#fff" opacity=".12"/>'
+         f'<circle cx="{x + W*0.08:.1f}" cy="{y + H*0.95:.1f}" r="{m*0.3:.1f}" fill="#FFC845" opacity=".35"/></g>']
     lw = min(W * 0.72, H * 2.2)
     lh = lw * 200 / 739
     fs = min(W * 0.075, H * 0.075)
-    total = lh + fs * 2.2
+    total = lh + fs * 3.4
     top = cy - total / 2 - fs * 0.4
     s.append(logo(cx - lw / 2, top, lw, white=True))
-    t, _ = txt(cx, top + lh + fs * 1.5, claim, fs, W * 0.86, "#FFF8EE", 800, "middle"); s.append(t)
-    ps = min(W * 0.04, H * 0.045)
-    pw = min(W * 0.8, len(name) * ps * 0.62 + ps * 2)
-    py = y + H - ps * 3.2
-    s += [f'<rect x="{cx - pw/2:.1f}" y="{py:.1f}" width="{pw:.1f}" height="{ps*2:.1f}" rx="{ps:.1f}" fill="{INK}"/>',
-          f'<text x="{cx:.1f}" y="{py + ps*1.35:.1f}" font-family="DM Sans, Arial" font-size="{ps:.1f}" font-weight="800" fill="#fff" text-anchor="middle" letter-spacing="{ps*0.08:.2f}">{e(name.upper())}</text>']
+    for i, frase in enumerate(claim.replace(". ", ".|").split("|")):
+        s.append(f'<text x="{cx:.1f}" y="{top + lh + fs * (1.5 + 1.2*i):.1f}" font-family="DM Sans, Arial" font-size="{fs:.1f}" font-weight="800" fill="#FFF8EE" text-anchor="middle">{e(frase)}</text>')
     return "".join(s)
 
 def side(x, y, D_, H, p):
@@ -184,14 +178,14 @@ if __name__ == "__main__":
     for p in PRODUCTOS:
         open(os.path.join(out, p[0] + ".svg"), "w").write(caja(p))
         open(os.path.join(fr, p[0] + ".svg"), "w").write(front_only(p))
-        cards.append(f'<figure><img src="cajas/{p[0]}.svg" alt="Troquel {e(p[1])}"><figcaption><b>{e(p[1])}</b> · {p[6][0]}×{p[6][1]}×{p[6][2]} mm (orientativo) · <a href="cajas/{p[0]}.svg">SVG troquel</a> · <a href="frontales/{p[0]}.svg">cara frontal</a></figcaption></figure>')
+        cards.append(f'<figure><img src="cajas/{p[0]}.svg" alt="Troquel {e(p[1])}"><figcaption><b>{e(p[1])}</b> · {p[6][0]}×{p[6][1]}×{p[6][2]} mm (orientativo) · Para: {e(p[5])} · <a href="cajas/{p[0]}.svg">SVG troquel</a> · <a href="frontales/{p[0]}.svg">cara frontal</a></figcaption></figure>')
     open(os.path.join(D, "pegatina.svg"), "w").write(pegatina())
     open(os.path.join(D, "tarjeta-gracias.svg"), "w").write(tarjeta())
     fronts = "".join(f'<img class="f" src="frontales/{p[0]}.svg" alt="{e(p[1])}">' for p in PRODUCTOS)
     open(os.path.join(D, "index.html"), "w").write(f'''<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Packaging jarandana</title>
 <style>body{{font-family:DM Sans,Arial,sans-serif;background:#F5EFE4;color:#1E2B37;margin:0;padding:24px}}h1,h2{{margin:.2em 0}}.row{{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end}}.f{{height:220px;box-shadow:0 10px 30px rgba(0,0,0,.18);border-radius:4px}}figure{{background:#fff;border-radius:14px;padding:14px;margin:0 0 18px}}figure img{{width:100%;height:auto}}figcaption{{font-size:14px;margin-top:8px}}.sm{{height:200px}}</style>
-<h1>Packaging jarandana</h1><p>Colores por línea: <b style="color:#0FA3A3">Baño</b> turquesa · <b style="color:#FF6B2C">Cocina</b> naranja · <b style="color:#E0245E">Novedad</b> rosa. Medidas orientativas: confírmalas con cada proveedor.</p>
-<h2>Caras frontales</h2><div class="row">{fronts}</div>
+<h1>Packaging jarandana</h1><p>Caja <b>universal</b>: el mismo diseño para todos los productos en 6 tallas. Medidas orientativas: confírmalas con el proveedor o la imprenta.</p>
+<h2>Cara frontal por talla</h2><div class="row">{fronts}</div>
 <h2>Pegatina de cierre y tarjeta de gracias</h2><div class="row"><img class="sm" src="pegatina.svg" alt="Pegatina"><img class="sm" src="tarjeta-gracias.svg" alt="Tarjeta"></div>
 <h2>Troqueles (caja de solapas)</h2>{"".join(cards)}</html>''')
     print("ok", len(PRODUCTOS), "cajas")
