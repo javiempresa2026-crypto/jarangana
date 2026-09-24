@@ -440,7 +440,7 @@
     "p_benefits": {
       "type": "jd-benefits",
       "settings": {
-        "bg": "sand"
+        "bg": "orange"
       },
       "blocks": {
         "b1": {
@@ -498,7 +498,7 @@
     "p_steps": {
       "type": "jd-steps",
       "settings": {
-        "bg": "cream",
+        "bg": "teal",
         "eyebrow": "Cómo se instala",
         "heading": "3 pasos, 1 minuto",
         "note": "Solo superficies lisas: azulejo, cristal o metal. No apto para gotelé, pintura, madera sin lacar ni juntas."
@@ -535,11 +535,86 @@
     "p_reviews": {
       "type": "jd-reviews",
       "settings": {
-        "bg": "white",
+        "bg": "pop",
         "filter_product": true
       },
       "blocks": {},
       "block_order": []
+    },
+    "p_pay": {
+      "type": "jd-payments",
+      "settings": {
+        "bg": "white",
+        "heading": "Pago 100 % seguro y cifrado",
+        "text": "Envío con seguimiento · 14 días para devolver · Si llega roto, te enviamos otro."
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "p_offers": {
+      "type": "jd-offers",
+      "settings": {
+        "bg": "pop",
+        "eyebrow": "Ofertas especiales",
+        "heading": "Ahorra en tu pedido",
+        "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti."
+      },
+      "blocks": {
+        "b1": {
+          "type": "offer",
+          "settings": {
+            "color": "orange",
+            "tag": "Automático",
+            "big": "-15 %",
+            "title": "En 5 favoritos de la casa",
+            "text": "<p>Balda, Kit Fregadero, Grifo 1080°, Alcachofa 5 chorros y Dispensador de pasta. Sin código.</p>",
+            "btn_label": "Ver las ofertas",
+            "btn_link": "shopify://collections/ofertas"
+          }
+        },
+        "b2": {
+          "type": "offer",
+          "settings": {
+            "color": "teal",
+            "tag": "Pack x2",
+            "big": "Ahorra 5,90 €",
+            "title": "2 Grifos 1080° por 19,90 €",
+            "text": "<p>En vez de 25,80 € comprando 2 sueltos. Uno para la cocina y otro para el baño.</p>",
+            "btn_label": "Elegir el pack",
+            "btn_link": "shopify://products/grifo-giratorio-1080"
+          }
+        },
+        "b3": {
+          "type": "offer",
+          "settings": {
+            "color": "pink",
+            "tag": "Pack x2",
+            "big": "Ahorra 4,90 €",
+            "title": "2 Luces LED por 44,90 €",
+            "text": "<p>En vez de 49,80 € sueltas. Se encienden solas al pasar: pasillo, armario o escalera.</p>",
+            "btn_label": "Elegir el pack",
+            "btn_link": "shopify://products/luz-led-sensor-movimiento"
+          }
+        },
+        "b4": {
+          "type": "offer",
+          "settings": {
+            "color": "sun",
+            "tag": "Primer pedido",
+            "big": "-10 %",
+            "title": "Bienvenida a jarandana",
+            "text": "<p>En pedidos desde 25 €. Copia el código y pégalo al pagar.</p>",
+            "code": "BIENVENIDA10",
+            "btn_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
     },
     "p_faq": {
       "type": "jd-faq",
@@ -597,10 +672,12 @@
   },
   "order": [
     "main",
+    "p_pay",
     "p_video",
     "p_benefits",
     "p_steps",
     "p_reviews",
+    "p_offers",
     "p_faq",
     "product_recommendations_qggXJq"
   ]

@@ -1,0 +1,55 @@
+{{ 'jarandana.css' | asset_url | stylesheet_tag }}
+<section class="jd jd--{{ section.settings.bg }}" id="ofertas">
+  <div class="jd__wrap">
+    <div class="jd__center">
+      {%- if section.settings.eyebrow != blank -%}<p class="jd__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="jd__h">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="jd__lead">{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+    <div class="jd-offers">
+      {%- for b in section.blocks -%}
+      <div class="jd-offer jd-offer--{{ b.settings.color }}" {{ b.shopify_attributes }}>
+        {%- if b.settings.tag != blank -%}<span class="jd-offer__tag">{{ b.settings.tag }}</span>{%- endif -%}
+        <p class="jd-offer__big">{{ b.settings.big }}</p>
+        <h3 class="jd-offer__t">{{ b.settings.title }}</h3>
+        {%- if b.settings.text != blank -%}<div class="jd-offer__d">{{ b.settings.text }}</div>{%- endif -%}
+        {%- if b.settings.code != blank -%}
+          <button type="button" class="jd-offer__code" data-code="{{ b.settings.code | escape }}" onclick="navigator.clipboard&&navigator.clipboard.writeText(this.dataset.code);this.classList.add('is-ok');this.querySelector('span').textContent='¡Copiado!';">
+            <strong>{{ b.settings.code }}</strong><span>Copiar código</span>
+          </button>
+        {%- endif -%}
+        {%- if b.settings.btn_label != blank -%}
+          <a class="jd__btn jd-offer__btn" href="{{ b.settings.btn_link | default: routes.all_products_collection_url }}">{{ b.settings.btn_label }}</a>
+        {%- endif -%}
+      </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.note != blank -%}<p class="jd-note">{{ section.settings.note }}</p>{%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "jarandana · Ofertas",
+  "settings": [
+    {"type":"select","id":"bg","label":"Fondo","default":"pop","options":[{"value":"cream","label":"Crema"},{"value":"sand","label":"Arena"},{"value":"white","label":"Blanco"},{"value":"pop","label":"Pop (manchas de color)"},{"value":"orange","label":"Naranja intenso"},{"value":"teal","label":"Turquesa"},{"value":"sun","label":"Amarillo sol"}]},
+    {"type":"text","id":"eyebrow","label":"Antetítulo","default":"Ofertas especiales"},
+    {"type":"text","id":"heading","label":"Título","default":"Ahorra en tu pedido"},
+    {"type":"richtext","id":"text","label":"Texto"},
+    {"type":"text","id":"note","label":"Nota final"}
+  ],
+  "blocks": [
+    {"type":"offer","name":"Oferta","settings":[
+      {"type":"select","id":"color","label":"Color","default":"orange","options":[{"value":"orange","label":"Naranja"},{"value":"teal","label":"Turquesa"},{"value":"sun","label":"Amarillo"},{"value":"pink","label":"Rosa"}]},
+      {"type":"text","id":"tag","label":"Etiqueta","default":"Oferta"},
+      {"type":"text","id":"big","label":"Texto grande","default":"-15 %"},
+      {"type":"text","id":"title","label":"Título","default":"En productos seleccionados"},
+      {"type":"richtext","id":"text","label":"Texto"},
+      {"type":"text","id":"code","label":"Código (opcional, con botón de copiar)"},
+      {"type":"text","id":"btn_label","label":"Botón","default":"Ver ofertas"},
+      {"type":"url","id":"btn_link","label":"Enlace"}
+    ]}
+  ],
+  "max_blocks": 6,
+  "presets": [{"name":"jarandana · Ofertas","blocks":[{"type":"offer"}]}]
+}
+{% endschema %}

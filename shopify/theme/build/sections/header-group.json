@@ -15,9 +15,21 @@
             "case": "none"
           },
           "blocks": {}
+        },
+        "announcement_ofertas": {
+          "type": "_announcement",
+          "settings": {
+            "text": "Ofertas especiales: -15 % en 5 favoritos, se aplica solo en el carrito",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.8125rem",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
+        "announcement_ofertas",
         "announcement_BxgCk9"
       ],
       "name": "t:names.announcement_bar",

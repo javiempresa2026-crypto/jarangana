@@ -62,7 +62,7 @@
     "hero": {
       "type": "jd-hero",
       "settings": {
-        "bg": "cream",
+        "bg": "pop",
         "eyebrow": "Baño y cocina sin taladrar",
         "heading": "Tu casa, sin taladrar.",
         "text": "<p>Baldas, rasquetas y ganchos que se pegan al azulejo, aguantan la ducha y se vienen contigo cuando te mudas.</p>",
@@ -113,7 +113,7 @@
     "benefits": {
       "type": "jd-benefits",
       "settings": {
-        "bg": "white",
+        "bg": "orange",
         "eyebrow": "Por qué jarandana",
         "heading": "Orden en casa, sin pedir permiso al casero"
       },
@@ -386,7 +386,7 @@
     "feat_fregadero": {
       "type": "jd-feature",
       "settings": {
-        "bg": "sand",
+        "bg": "sun",
         "reverse": true,
         "image": "shopify://shop_images/EMXN1y8qngEKBnVwbG9hZBIOeWxhYi1zdHVudC1zZ3AagwFLbGluZ0FJX0tvbG9yc19EaVRfSDgwMF8xX0tvbG9ycy12Ml82LXQyaS1vbW5pLXJlZmluZXItdjNfU0dQX1BST0RfYWlfd2ViXzMyMjE3MDM4ODY1ODUxNF8yN2QxMzY5OWZlYWU.png",
         "video_url": "https://cdn.shopify.com/s/files/1/1085/1552/4953/files/jarandana-fregadero.mp4?v=1790201505",
@@ -425,7 +425,7 @@
     "steps": {
       "type": "jd-steps",
       "settings": {
-        "bg": "cream",
+        "bg": "teal",
         "eyebrow": "Cómo se instala",
         "heading": "Listo en 1 minuto. Sin herramientas.",
         "note": "Solo superficies lisas: azulejo, cristal o metal. No apto para gotelé, pintura, madera sin lacar ni juntas."
@@ -826,7 +826,7 @@
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
         "gap": 28,
-        "background_color": "#FFFFFF",
+        "background_color": "#FFE9D6",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
@@ -834,8 +834,300 @@
     "reviews": {
       "type": "jd-reviews",
       "settings": {
-        "bg": "cream",
+        "bg": "pop",
         "filter_product": true
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "payments": {
+      "type": "jd-payments",
+      "settings": {
+        "bg": "white",
+        "heading": "Pago 100 % seguro y cifrado",
+        "text": "Compra con total tranquilidad: el pago lo procesa Shopify y tus datos de tarjeta nunca pasan por nosotros."
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "offers": {
+      "type": "jd-offers",
+      "settings": {
+        "bg": "pop",
+        "eyebrow": "Ofertas especiales",
+        "heading": "Ahorra hoy en baño y cocina",
+        "text": "<p>Descuentos reales sobre nuestros precios de siempre. Se aplican solos en el carrito.</p>",
+        "note": "Los descuentos no se suman entre sí: en el carrito se aplica el mejor para ti. Packs calculados sobre el precio de 1 unidad."
+      },
+      "blocks": {
+        "b1": {
+          "type": "offer",
+          "settings": {
+            "color": "orange",
+            "tag": "Automático",
+            "big": "-15 %",
+            "title": "En 5 favoritos de la casa",
+            "text": "<p>Balda, Kit Fregadero, Grifo 1080°, Alcachofa 5 chorros y Dispensador de pasta. Sin código.</p>",
+            "btn_label": "Ver las ofertas",
+            "btn_link": "shopify://collections/ofertas"
+          }
+        },
+        "b2": {
+          "type": "offer",
+          "settings": {
+            "color": "teal",
+            "tag": "Pack x2",
+            "big": "Ahorra 5,90 €",
+            "title": "2 Grifos 1080° por 19,90 €",
+            "text": "<p>En vez de 25,80 € comprando 2 sueltos. Uno para la cocina y otro para el baño.</p>",
+            "btn_label": "Elegir el pack",
+            "btn_link": "shopify://products/grifo-giratorio-1080"
+          }
+        },
+        "b3": {
+          "type": "offer",
+          "settings": {
+            "color": "pink",
+            "tag": "Pack x2",
+            "big": "Ahorra 4,90 €",
+            "title": "2 Luces LED por 44,90 €",
+            "text": "<p>En vez de 49,80 € sueltas. Se encienden solas al pasar: pasillo, armario o escalera.</p>",
+            "btn_label": "Elegir el pack",
+            "btn_link": "shopify://products/luz-led-sensor-movimiento"
+          }
+        },
+        "b4": {
+          "type": "offer",
+          "settings": {
+            "color": "sun",
+            "tag": "Primer pedido",
+            "big": "-10 %",
+            "title": "Bienvenida a jarandana",
+            "text": "<p>En pedidos desde 25 €. Copia el código y pégalo al pagar.</p>",
+            "code": "BIENVENIDA10",
+            "btn_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "list_ofertas": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_YFtzcL": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_list_button_MWeP9V": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "Ver todo",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_YFtzcL",
+            "product_list_button_MWeP9V"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 14,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_677WP3": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "square",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 14,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_YXxMTj": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_JQzVV4": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_677WP3",
+            "product_title_YXxMTj",
+            "price_JQzVV4"
+          ]
+        }
+      },
+      "name": "t:names.product_list",
+      "settings": {
+        "collection": "ofertas",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 5,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 28,
+        "background_color": "#FFFFFF",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "banner_nov": {
+      "type": "jd-banner",
+      "settings": {
+        "bg": "orange",
+        "image": "shopify://shop_images/EMXN1y8qUAoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo2c3RhcmdhdGUvMTE0LzUwOTU4ODdiLTY0MzQtNGI2OS1iNDA4LWY5OWQyMGYyNDYwNS5qcGVn.jpg",
+        "align": "left",
+        "eyebrow": "Novedades",
+        "heading": "Ideas que te hacen la vida más fácil",
+        "text": "<p>Grifo giratorio 1080°, luz que se enciende sola, ducha de 5 chorros y dispensador de pasta. Todo sin obras.</p>",
+        "btn_label": "Descubrir novedades",
+        "btn_link": "shopify://collections/novedades"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "banner_bano": {
+      "type": "jd-banner",
+      "settings": {
+        "bg": "teal",
+        "image": "shopify://shop_images/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1c3RhcmdhdGUvMTEyL2JhNjgyOWZmLTQxYTMtNDk3Yy04OWJjLTE2YTkyNzQ2YzZlNy5wbmc.png",
+        "align": "right",
+        "eyebrow": "Baño sin agujeros",
+        "heading": "Tu ducha, ordenada en 1 minuto",
+        "text": "<p>Balda, esquinera, rasqueta y ganchos que se pegan al azulejo. Sin taladro, sin obras.</p>",
+        "btn_label": "Ver todo para el baño",
+        "btn_link": "shopify://collections/ducha"
       },
       "blocks": {},
       "block_order": []
@@ -902,15 +1194,20 @@
   },
   "order": [
     "intro",
+    "offers",
+    "list_ofertas",
+    "banner_nov",
     "list_nov",
     "hero",
     "benefits",
+    "banner_bano",
     "list_ducha",
     "feat_rasqueta",
     "feat_fregadero",
     "steps",
     "list_todo",
     "reviews",
+    "payments",
     "faq",
     "contact"
   ]

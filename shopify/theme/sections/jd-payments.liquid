@@ -1,0 +1,23 @@
+{{ 'jarandana.css' | asset_url | stylesheet_tag }}
+<section class="jd jd--{{ section.settings.bg }}" style="padding:clamp(28px,4vw,48px) 0">
+  <div class="jd__wrap jd__center">
+    <p class="jd-pay__lock">{% render 'jd-icon', icon: 'lock', size: 20 %} {{ section.settings.heading }}</p>
+    {%- if shop.enabled_payment_types.size > 0 -%}
+    <div class="jd-pay" aria-label="Métodos de pago aceptados">
+      {%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag: class: 'jd-pay__icon' }}{%- endfor -%}
+    </div>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}<p class="jd-note" style="margin-top:12px">{{ section.settings.text }}</p>{%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "jarandana · Pagos",
+  "settings": [
+    {"type":"select","id":"bg","label":"Fondo","default":"white","options":[{"value":"cream","label":"Crema"},{"value":"sand","label":"Arena"},{"value":"white","label":"Blanco"},{"value":"pop","label":"Pop (manchas de color)"},{"value":"orange","label":"Naranja intenso"},{"value":"teal","label":"Turquesa"},{"value":"sun","label":"Amarillo sol"}]},
+    {"type":"text","id":"heading","label":"Título","default":"Pago 100 % seguro y cifrado"},
+    {"type":"text","id":"text","label":"Texto","default":"Los iconos se muestran solos según los métodos de pago que tengas activados en Shopify."}
+  ],
+  "presets": [{"name":"jarandana · Pagos"}]
+}
+{% endschema %}
