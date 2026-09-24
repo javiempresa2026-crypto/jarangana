@@ -79,7 +79,7 @@
     "quick_add_background": "#FF6B2C",
     "quick_add_text": "#FFFFFF",
     "product_corner_radius": 8,
-    "card_corner_radius": 20,
+    "card_corner_radius": 8,
     "show_variant_image": true,
     "variant_swatch_width": 34,
     "variant_swatch_height": 34,

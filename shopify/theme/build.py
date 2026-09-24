@@ -172,7 +172,7 @@ u["settings"]["background_color"] = "#EADFCB"
 
 # --- ajustes globales
 st = json.load(open(os.path.join(D, "settings_data.json")))
-st["current"].update({"palette_primary_button_background": "#FF6B2C", "palette_primary_button_border": "#FF6B2C", "badge_sale_background_color": "#FF4D6D", "logo": si("logo"), "logo_inverse": si("logo_w"), "favicon": si("fav"), "logo_height": 44, "logo_height_mobile": 34, "quick_add": True, "mobile_quick_add": True, "quick_add_background": "#FF6B2C", "quick_add_text": "#FFFFFF", "card_corner_radius": 20})
+st["current"].update({"palette_primary_button_background": "#FF6B2C", "palette_primary_button_border": "#FF6B2C", "badge_sale_background_color": "#FF4D6D", "logo": si("logo"), "logo_inverse": si("logo_w"), "favicon": si("fav"), "logo_height": 44, "logo_height_mobile": 34, "quick_add": True, "mobile_quick_add": True, "quick_add_background": "#FF6B2C", "quick_add_text": "#FFFFFF"})
 
 # --- página "Cómo se instala"
 FAQ_INST = [
