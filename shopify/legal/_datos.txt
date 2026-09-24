@@ -1,4 +1,6 @@
-Rellena en Shopify (Ajustes → Políticas) y en la página "Política de cookies" los huecos entre [CORCHETES]:
-[TITULAR]  = tu nombre y apellidos (autónomo) o razón social (empresa)
-[NIF]      = tu NIF/CIF
-[DIRECCIÓN] = calle, número, piso (la ciudad ya está: 18600 Motril, Granada)
+Datos del titular usados en las páginas legales (actualizado 24-09-2026):
+Titular:   jarandana (nombre comercial)
+NIF:       sin poner todavía (aún no hay alta de autónomo). Añádelo al darte de alta.
+Domicilio: Granada, España
+Email:     jarandanainfo@gmail.com
+Cuando tengas el alta: añade tu nombre y apellidos, NIF y dirección completa en Aviso legal, Privacidad, Condiciones y Cookies.

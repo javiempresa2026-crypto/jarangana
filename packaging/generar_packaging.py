@@ -108,7 +108,7 @@ def back(x, y, W, H, p):
               f'<text x="{cx:.1f}" y="{cy + r*0.36:.1f}" font-family="DM Sans, Arial" font-size="{r:.1f}" font-weight="900" fill="#fff" text-anchor="middle">{i+1}</text>',
               f'<text x="{cx:.1f}" y="{cy + r*1.9:.1f}" font-family="DM Sans, Arial" font-size="{r*0.55:.1f}" font-weight="800" fill="{INK}" text-anchor="middle">{word}</text>']
     fs = min(W * 0.028, H * 0.03)
-    t, _ = txt(x + W/2, y + H - pad - fs * 1.4, "[TITULAR] · [DIRECCIÓN] · javiempresa2026@gmail.com · Fabricado en [PAÍS] · Lote [__]", fs, W * 0.9, INK, 500, "middle"); s.append(t)
+    t, _ = txt(x + W/2, y + H - pad - fs * 1.4, "jarandana · Granada (España) · jarandanainfo@gmail.com · Fabricado en [PAÍS] · Lote [__]", fs, W * 0.9, INK, 500, "middle"); s.append(t)
     return "".join(s)
 
 def lid(x, y, W, D_, top, p):

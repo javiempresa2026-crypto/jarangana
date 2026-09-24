@@ -15,7 +15,7 @@ No tienes que activar nada. Solo revisa estas 4 cosas para que salgan bonitos y 
 1. **Idioma:** Ajustes → Idiomas → pon **Español** como idioma principal. Los correos salen en el idioma principal de la tienda, que ahora mismo es el inglés.
 2. **Marca:** Ajustes → Notificaciones → Notificaciones para clientes → **Personalizar plantillas de correo** → sube el **logo** y pon el color **#FF6B2C**.
 3. **Nombre del remitente:** Ajustes → Detalles de la tienda → cambia «My Store» por **jarandana**. Es lo que ve el cliente en su bandeja de entrada.
-4. **Avisos a ti de cada pedido:** Ajustes → Notificaciones → **Notificaciones del personal** → añade `javiempresa2026@gmail.com` → «Nuevo pedido».
+4. **Avisos a ti de cada pedido:** Ajustes → Notificaciones → **Notificaciones del personal** → añade `jarandanainfo@gmail.com` → «Nuevo pedido».
 
 ## 2. Bloques para pegar en los correos
 Ruta: **Ajustes → Notificaciones → Notificaciones para clientes → (elige el correo) → Editar código**. Pega cada bloque **justo encima** de la línea que empieza por `{% if order_status_url %}` o, si no la encuentras, antes del bloque de «Resumen del pedido». Pulsa **Guardar** y después **Enviar correo de prueba** para verlo.
@@ -65,7 +65,7 @@ Pégalo en **«Pedido entregado»** (Delivered). Si tu transportista no marca la
   - Enlaces directos:
     - `/pages/opiniones#escribir-resena` abre el formulario.
     - `/pages/opiniones?producto=balda-ducha-sin-taladrar` lo abre con el producto ya elegido.
-- **Qué pasa al enviarla:** te llega por email a `javiempresa2026@gmail.com` con el nombre, la ciudad, el producto, las estrellas y el texto. El cliente ve el mensaje «¡Gracias! La publicaremos tras revisarla».
+- **Qué pasa al enviarla:** te llega por email a `jarandanainfo@gmail.com` con el nombre, la ciudad, el producto, las estrellas y el texto. El cliente ve el mensaje «¡Gracias! La publicaremos tras revisarla».
 - **Cómo se publica:** Contenido → **Metaobjetos → Reseña → Añadir**. Rellena:
   - Nombre, ciudad, valoración, texto, producto y fecha.
   - **Compra verificada:** márcala si está en tus pedidos.
