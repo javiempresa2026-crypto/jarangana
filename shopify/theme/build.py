@@ -108,7 +108,14 @@ index = {"sections": {
  "banner_bano": sec("jd-banner", {"bg": "teal", "image": si("ban_bano"), "align": "right", "eyebrow": "Baño sin agujeros", "heading": "Tu ducha, ordenada en [1 minuto]", "sticker": "Sin obras", "text": "<p>Balda, esquinera, rasqueta y ganchos que se pegan al azulejo. Sin taladro, sin obras.</p>", "btn_label": "Ver todo para el baño", "btn_link": "shopify://collections/ducha"}),
  "faq": sec("jd-faq", {"bg": "white", "heading": "Preguntas [frecuentes]", "open_first": True, "link_label": "Ver todas las preguntas", "link": "shopify://pages/preguntas-frecuentes"}, faq_blocks),
  "contact": sec("jd-contact", {}),
-}, "order": ["intro", "marquee", "offers", "list_ofertas", "banner_nov", "list_nov", "hero", "benefits", "marquee2", "banner_bano", "list_ducha", "feat_rasqueta", "feat_fregadero", "steps", "list_todo", "reviews", "payments", "faq", "contact"]}
+}, "order": ["hero", "marquee", "list_todo", "offers", "banner_bano", "feat_rasqueta", "steps", "reviews", "faq"]}
+# Portada optimizada (revisión UX, doc 24): hero primero y 9 secciones.
+index["sections"] = {k: v for k, v in index["sections"].items() if k in index["order"]}
+_h = index["sections"]["list_todo"]["blocks"]["static-header"]["blocks"]["product_list_text_YFtzcL"]["settings"]
+_h["text"] = "<h3>Nuestros favoritos</h3>"
+index["sections"]["list_todo"]["settings"]["max_products"] = 8
+index["sections"]["marquee"]["blocks"] = {f"i{n}": {"type": "item", "settings": {"text": t}} for n, t in enumerate(["Envío GRATIS desde 35 €", "Sin taladro · Sin obras", "BIENVENIDA10: -10 % en tu primer pedido", "14 días para devolver", "Si llega roto, te enviamos otro", "Pago seguro"])}
+index["sections"]["marquee"]["block_order"] = list(index["sections"]["marquee"]["blocks"])
 
 # --- producto: se parte del original de Horizon
 prod = json.load(open(os.path.join(D, "product.orig.json")))

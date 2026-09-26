@@ -32,6 +32,8 @@
     assign avg_int = sum | times: 1.0 | divided_by: count | round
   endif
 -%}
+{%- comment -%} Sin reseñas reales publicadas: la sección no se muestra (salvo en la página de opiniones, que tiene el formulario abierto). {%- endcomment -%}
+{%- if a_count > 0 or section.settings.form_open -%}
 <section class="jd jd--{{ section.settings.bg }}" id="resenas">
   {%- render 'jd-bg', s: section -%}
   <div class="jd__wrap">
@@ -123,6 +125,7 @@
 </details>
   </div>
 </section>
+{%- endif -%}
 {% schema %}
 {
  "name": "jarandana · Reseñas",

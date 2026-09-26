@@ -39,3 +39,16 @@
   <div class="jd-bb__pay">{%- for t in shop.enabled_payment_types -%}{{ t | payment_type_svg_tag: class: 'jd-bb__icon' }}{%- endfor -%}</div>
   {%- endif -%}
 </div>
+{%- comment -%} Ficha técnica: metafield custom.ficha, una línea por dato con el formato "Clave: valor". Solo datos confirmados por el proveedor. {%- endcomment -%}
+{%- assign ficha = product.metafields.custom.ficha.value -%}
+{%- if ficha != blank -%}
+<details class="jd-spec">
+  <summary>📋 Ficha técnica</summary>
+  <table>
+    {%- assign lineas = ficha | newline_to_br | split: '<br />' -%}
+    {%- for l in lineas -%}{%- assign par = l | strip | split: ':' -%}{%- if par.size > 1 -%}
+      <tr><th>{{ par[0] | strip }}</th><td>{{ l | strip | remove_first: par[0] | remove_first: ':' | strip }}</td></tr>
+    {%- endif -%}{%- endfor -%}
+  </table>
+</details>
+{%- endif -%}
