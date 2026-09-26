@@ -72,7 +72,7 @@ def fill_frame(img, t, eff, seed):
 def video_frames(path):
     """Clip cuadrado → fotogramas 9:16 recortando el centro."""
     side = 1920
-    cmd = [R.FFMPEG, "-loglevel", "error", "-i", path, "-vf", f"scale={side}:{side},crop={W}:{H},fps={FPS}", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"]
+    cmd = [R.FFMPEG, "-loglevel", "error", "-i", path, "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS}", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"]
     raw = subprocess.run(cmd, capture_output=True, check=True).stdout
     n = len(raw) // (W * H * 3)
     return [Image.frombytes("RGB", (W, H), raw[i * W * H * 3:(i + 1) * W * H * 3]) for i in range(n)]

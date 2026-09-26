@@ -12,6 +12,31 @@ SR = 44100
 
 # plano: (fuente, segundos, texto, efecto, inicio_clip_s)
 VIDEOS = {
+ # ===== UGC en primera persona (fotos POV animadas en 3D + clips reales) =====
+ "ugc-grifo": [
+  ("ugc_clips/grifo.mp4", 2.6, "POV: le pones esto a tu grifo de siempre 👀", "none", 0),
+  ("kling/grifo.mp4", 2.6, "y ahora gira 1080° y cambia a modo ducha 🤯", "none", 0),
+  ("grifo1", 1.6, "se enrosca en 1 minuto, sin fontanero", "zoom", 0),
+  ("kling/grifo.mp4", 2.2, "12,90 € · enlace en el perfil", "none", 2.6),
+ ],
+ "ugc-luz": [
+  ("ugc_clips/luz.mp4", 2.8, "cosas que tu piso de alquiler necesita y no sabías 💡", "none", 0),
+  ("kling/luz.mp4", 2.6, "se enciende sola cuando abres", "none", 0),
+  ("luz3", 1.8, "imán + adhesivo · cero agujeros", "zoom", 0),
+  ("ugc_clips/luz.mp4", 1.6, "enlace en el perfil 🔗", "none", 2.2),
+ ],
+ "ugc-mampara": [
+  ("ugc_clips/rasqueta.mp4", 2.8, "el truco de 10 segundos para que la mampara no tenga marcas ✨", "none", 0),
+  ("kling/rasqueta.mp4", 3.0, "quitas el agua antes de que se seque", "none", 0.5),
+  ("ras3", 1.8, "y se queda colgada en la mampara", "zoom", 0),
+  ("ugc_clips/rasqueta.mp4", 1.4, "15,90 € · enlace en el perfil", "none", 2.4),
+ ],
+ "ugc-ducha": [
+  ("ugc_clips/balda.mp4", 2.6, "tu casero: «ni un agujero» 🙅\ntú:", "none", 0),
+  ("bal4", 1.8, "balda que se cuelga del grifo", "zoom", 0),
+  ("gan1", 1.6, "+ ganchos adhesivos", "shake", 0),
+  ("ugc_clips/balda.mp4", 2.0, "todo sin taladrar 🙌 enlace en el perfil", "none", 1.8),
+ ],
  # 1 · Frustración → solución
  "frustracion-ducha": [
   ("bal5", 2.2, "nadie te avisa de lo difícil que es tener la ducha ordenada en un piso de alquiler 😩", "shake", 0),
