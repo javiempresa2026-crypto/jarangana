@@ -26,5 +26,15 @@ Marca alegre y reconocible: colores, azulejo, "sin taladrar". **Pero al entrar n
 - Páginas legales completas, aviso de cookies correcto y enlaces del pie claros
 - Identidad visual coherente en toda la web
 
-## Siguiente paso
-Si me das el visto bueno, preparo un tema v10 (sin publicar, para que lo revises) con los puntos 1, 2, 4 y 6 aplicados.
+## ✅ Aplicado en el tema v10 («jarandana v10 (publicar este)», sin publicar)
+| # | Cambio |
+|---|---|
+| 1 | Portada con **9 secciones y el hero primero**: hero → cinta → «Nuestros favoritos» (8) → ofertas → baño → rasqueta → cómo se instala → opiniones → FAQ |
+| 2 | La sección de opiniones **se oculta sola** mientras no haya reseñas reales |
+| 3 | Foto principal limpia en el **dispensador** y las **bayetas** (recortes de la foto real, sin textos ajenos) |
+| 4 | Colores más oscuros en naranja, turquesa y rosa, y en los botones de compra: **contraste AA** con texto blanco |
+| 6 | Desplegable **«📋 Ficha técnica»** en 10 productos (medidas, material y peso del proveedor). Fregadero y dispensador no tienen datos fiables, así que no lo muestran |
+| 7 | Aviso en el carrito: «Si pides varios productos, pueden llegar en paquetes separados». FAQ de peso reescrita con honestidad |
+
+**Qué tienes que hacer tú:** Tienda online → Temas → «jarandana v10 (publicar este)» → **Vista previa** → si te gusta, **Publicar**.
+Pendiente tuyo: dominio (5), pagos y NIF (9).
